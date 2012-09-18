@@ -304,3 +304,35 @@ monit とか logrotate とか munin とかもやらねば。
 - [http://wiki.opscode.com/display/~tily/Chef+Solo](http://wiki.opscode.com/display/~tily/Chef+Solo)
 - [chef-soloで作業環境構築の自動化 | ひげろぐ](http://higelog.brassworks.jp/?p=654)
 
+
+## 追記
+このあと2つほどハマッてしまった。
+
+1. VirtualBox の GuestAdditions を入れようとしたら gcc, make, autoconf が必要だった。
+1. SELinux 有効の状態で Postfix が起動しなかった。
+
+SELinux の件は潔く無効にした。
+
+```
+$ sudo getenforce
+Enforcing # => 有効
+$ sudo setenforce 0 # => 無効にする
+$ sudo getenforce
+Permissive
+# 続いて、再起動後も無効になるようにする
+$ sudo vi /etc/sysconfig/selinux
+SELinux=disabled # この一行のみ編集
+```
+
+## 追記2
+こうして準備したサーバに capistrano で初めてデプロイするときの手順。
+
+```
+$ cap staging deploy:setup
+$ cap staging deploy:check
+$ cap staging deploy:update
+
+# サーバ上で
+$ rake RAILS_ENV=production db:setup
+$ rake RAILS_ENV=production db:seed
+```

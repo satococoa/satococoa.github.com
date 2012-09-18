@@ -41,7 +41,7 @@ ISO イメージは "CentOS-6.3-x86_64-netinstall.iso" を使用。
 システムを最新にしておく。
 
 ```
-$ yum update
+# yum update
 ```
 
 

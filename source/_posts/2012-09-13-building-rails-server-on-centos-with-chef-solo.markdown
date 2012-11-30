@@ -325,7 +325,8 @@ SELinux=disabled # この一行のみ編集
 ```
 
 ## 追記2
-こうして準備したサーバに capistrano で初めてデプロイするときの手順。
+こうして準備したサーバに capistrano で初めてデプロイするときの手順。  
+(capistrano-ext を使っている前提)
 
 ```
 $ cap staging deploy:setup
@@ -333,6 +334,15 @@ $ cap staging deploy:check
 $ cap staging deploy:update
 
 # サーバ上で
-$ rake RAILS_ENV=production db:setup
-$ rake RAILS_ENV=production db:seed
+$ rake RAILS_ENV=staging db:setup
+$ rake RAILS_ENV=staging db:seed
 ```
+
+## 追記3
+
+```
+$ cap staging deploy:cold
+```
+これで `rake db:migration` までやってくれるんですね。知らなかった。  
+restartじゃなくて、startになるようですし、こちらの方がいいですね。
+

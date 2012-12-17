@@ -5,6 +5,8 @@ date: 2012-12-17 20:50
 comments: true
 categories: RubyMotion
 ---
+この記事は [RubyMotion Advent Calendar 2012](http://www.adventar.org/calendars/18) の17日目の記事です。
+
 ## Nimbus?
 
 最近 [新Google Mapsアプリ採用のフレームワーク NimbusKit がいい感じ](http://fladdict.net/blog/2012/12/nimbus-kit.html) で話題になった [NimbusKit](http://nimbuskit.info) というフレームワークに興味を持ってちらっと調べてみたのですが、なんと CSS でアプリの View の定義ができるらしいということがわかりました。

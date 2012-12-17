@@ -5,8 +5,6 @@ date: 2012-12-17 20:50
 comments: true
 categories: RubyMotion
 ---
-RubyMotion で Nimbus の CSS を使ってみる
-
 ## Nimbus?
 
 最近 [新Google Mapsアプリ採用のフレームワーク NimbusKit がいい感じ](http://fladdict.net/blog/2012/12/nimbus-kit.html) で話題になった [NimbusKit](http://nimbuskit.info) というフレームワークに興味を持ってちらっと調べてみたのですが、なんと CSS でアプリの View の定義ができるらしいということがわかりました。

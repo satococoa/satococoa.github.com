@@ -29,7 +29,7 @@ RubyMotion を使って、Rails の Scaffold で作った簡単なアプリケ�
 
 コードは github で公開されていますので、よろしければご覧下さい。
 
-[BubbleWrap](http://bubblewrap.io) と [http://clayallsopp.github.com/formotion/](Formotion) を使っていて、これらのおかげで非常に簡単にサーバと通信するフォームやリストを作ることが出来ました。
+[BubbleWrap](http://bubblewrap.io) と [Formotion](http://clayallsopp.github.com/formotion/) を使っていて、これらのおかげで非常に簡単にサーバと通信するフォームやリストを作ることが出来ました。
 
 - [サーバ側](https://github.com/satococoa/tkrk10_server)
 - [クライアント側](https://github.com/satococoa/tkrk10_client)

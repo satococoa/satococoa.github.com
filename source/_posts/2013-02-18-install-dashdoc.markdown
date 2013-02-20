@@ -9,7 +9,9 @@ Dash を Sublime Text からワンタッチで引くことができる DashDoc �
 
 インストールはいつも通り Package Control からで OK。
 
-デフォルトで ctrl+h が割り当てられてしまっていたので、変更した。
+デフォルトで ctrl+h が割り当てられてしまっていたので、変更した。  
+（この方法だと日本語入力時に不具合があります。追記をご参照ください。）
+
 Preferences > Package Settings > DashDoc > Key Bindings - User
 
 ```
@@ -59,3 +61,34 @@ Preferences > Package Settings > DashDoc > Settings - User
 ```
 
 しばらく使ってみよう。
+
+----
+
+2013-02-20 追記:
+
+`left_delete` を `ctrl+h` に割り当てると、日本語の入力時におかしなことになってしまいました。具体的には、確定前の日本語を `ctrl+h` で消したときに次の文字を入力すると復活してしまうという使いにくい状態になってしまいました。
+
+結局、以下のようにしました
+
+
+Preferences > Package Settings > DashDoc > Key Bindings - Default
+
+```
+# 全部コメントアウト
+[
+  // { "keys": ["ctrl+h"], "command": "dash_doc"},
+  // { "keys": ["ctrl+alt+h"], "command": "dash_doc",
+  //                           "args": { "syntax_sensitive": "true" } }
+]
+```
+
+
+Preferences > Package Settings > DashDoc > Key Bindings - User
+
+```
+[
+  { "keys": ["shift+command+h"], "command": "dash_doc"},
+  { "keys": ["ctrl+command+h"], "command": "dash_doc",
+                            "args": { "syntax_sensitive": "true" } }
+]
+```

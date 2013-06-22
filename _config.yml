@@ -99,3 +99,6 @@ google_analytics_tracking_id: UA-32351198-1
 
 # Facebook Like
 facebook_like: true
+
+# Facebook User
+facebook_user: satoshi.ebisawa

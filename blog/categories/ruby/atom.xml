@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby | satococoa's blog]]></title>
+  <link href="http://satococoa.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://satococoa.github.io/"/>
+  <updated>2013-06-22T16:06:02+09:00</updated>
+  <id>http://satococoa.github.io/</id>
+  <author>
+    <name><![CDATA[Satoshi Ebisawa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[東京 Ruby 会議 10に参加しました]]></title>
+    <link href="http://satococoa.github.io/blog/2013/01/15/tkrk10/"/>
+    <updated>2013-01-15T04:37:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/01/15/tkrk10</id>
+    <content type="html"><![CDATA[<p><a href="http://tokyo10.rubykaigi.info">東京 Ruby 会議 10</a> に2日間フルに参加してきました。</p>
+
+<h2>1日目</h2>
+
+<p>僕はほとんど #p4d の <a href="http://tokyo10.rubykaigi.info/workshops/p4d">Rubyist のためのデザイン講座</a> のことで頭がいっぱいだったので、無事にこれを実現できたことで満足です。</p>
+
+<p><a href="http://connpass.com/event/1185/">第一回プログラマ向けデザイン講座</a> に参加できなかった方にもたくさん参加していただけて、ワークショップの部屋がほぼ満員という状態にまでなったのでとても嬉しかったです。</p>
+
+<p>初導入の実習コーナーも楽しかったですね！</p>
+
+<p>#p4d を主催していながら、最近僕は自分の個人名義のプロダクトをあまり作れていなくてせっかく学んだことを活かす機会が作れていないので、今年は頑張りたいです。</p>
+
+<h2>2日目</h2>
+
+<p>朝から雨風が強く、お昼からは完全に大雪でした。</p>
+
+<p>本当はこの日の午後から RubyMotion 関連で発表をするはずだったのですが、残念ながらその前に東京 Ruby 会議 10 が大雪のため前倒しで終了となってしまいました。</p>
+
+<p>なので、しばらくは「幻のスピーカー」を名乗っていこうと思います。</p>
+
+<h3>発表しようと思っていたこと</h3>
+
+<p>RubyMotion を使って、Rails の Scaffold で作った簡単なアプリケーションのデータの CRUD を iOS で実装するライブコーディングをしようと思っていました。</p>
+
+<p>コードは github で公開されていますので、よろしければご覧下さい。</p>
+
+<p><a href="http://bubblewrap.io">BubbleWrap</a> と <a href="http://clayallsopp.github.com/formotion/">Formotion</a> を使っていて、これらのおかげで非常に簡単にサーバと通信するフォームやリストを作ることが出来ました。</p>
+
+<ul>
+<li><a href="https://github.com/satococoa/tkrk10_server">サーバ側</a></li>
+<li><a href="https://github.com/satococoa/tkrk10_client">クライアント側</a></li>
+</ul>
+
+
+<h2>まとめ</h2>
+
+<p>僕はほぼ #p4d のワークショップに時間を使っていてあまり歩き回ったりはしていなかったのですが、それでも今回もたくさんの Rubyist と交流することが出来ました。</p>
+
+<p>バッヂを使った交流は良いアイディアだな、と思いました。どうしても発表形式の勉強会なんかだと他の人と話をせずに終わってしまう可能性がありますからね。</p>
+
+<p>あと、大雪での打ち切りは本当にスタッフの方は悔しい思いをされたと思います。それを思うと心苦しいですが、でも2日間とても楽しかったです！</p>
+
+<p>スタッフのみなさん、発表者のみなさん、そして #p4d ワークショップに来てくれた方や協力してくれた方々、どうもありがとうございました。</p>
+]]></content>
+  </entry>
+  
+</feed>

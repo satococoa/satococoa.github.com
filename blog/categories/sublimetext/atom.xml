@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sublimetext | satococoa's blog]]></title>
+  <link href="http://satococoa.github.io/blog/categories/sublimetext/atom.xml" rel="self"/>
+  <link href="http://satococoa.github.io/"/>
+  <updated>2013-06-22T16:06:02+09:00</updated>
+  <id>http://satococoa.github.io/</id>
+  <author>
+    <name><![CDATA[Satoshi Ebisawa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[DashDoc を入れてみた]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/18/install-dashdoc/"/>
+    <updated>2013-02-18T15:53:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/18/install-dashdoc</id>
+    <content type="html"><![CDATA[<p>Dash を Sublime Text からワンタッチで引くことができる DashDoc というプラグインを入れてみた。</p>
+
+<p>インストールはいつも通り Package Control からで OK。</p>
+
+<p>デフォルトで ctrl+h が割り当てられてしまっていたので、変更した。<br/>
+（この方法だと日本語入力時に不具合があります。追記をご参照ください。）</p>
+
+<p>Preferences > Package Settings > DashDoc > Key Bindings &ndash; User</p>
+
+<p>```
+[
+  { &ldquo;keys&rdquo;: [&ldquo;ctrl+h&rdquo;], &ldquo;command&rdquo;: &ldquo;left_delete&rdquo;},
+  { &ldquo;keys&rdquo;: [&ldquo;shift+command+h&rdquo;], &ldquo;command&rdquo;: &ldquo;dash_doc&rdquo;},
+  { &ldquo;keys&rdquo;: [&ldquo;ctrl+command+h&rdquo;], &ldquo;command&rdquo;: &ldquo;dash_doc&rdquo;,</p>
+
+<pre><code>                        "args": { "syntax_sensitive": "true" } }
+</code></pre>
+
+<p>]
+```</p>
+
+<hr />
+
+<p>あと、RubyMotion のドキュメントを直で引きたかったので追加した。
+Preferences > Package Settings > DashDoc > Settings &ndash; User</p>
+
+<p>```
+{
+  &ldquo;syntax_sensitive&rdquo;: false,
+  &ldquo;syntax_docset_map&rdquo;:
+  {</p>
+
+<pre><code>"ActionScript": "actionscript",
+"C"           : "c",
+"C++"         : "cpp",
+"Clojure"     : "clojure",
+"CSS"         : "css",
+"Erlang"      : "erlang",
+"Groovy"      : "groovy",
+"Haskell"     : "haskell",
+"HTML"        : "html",
+"Java"        : "java7",
+"JavaScript"  : "javascript",
+"Lisp"        : "lisp",
+"Lua"         : "lua",
+"Perl"        : "perl",
+"PHP"         : "php",
+"Python"      : "python2",
+"Rails"       : "rails",
+"Ruby"        : "ruby",
+"Scala"       : "scala",
+"ShellScript" : "manpages",
+"SQL"         : "psql",
+"TCL"         : "tcl",
+"RubyMotion"  : "rubymotion"
+</code></pre>
+
+<p>  }
+}
+```</p>
+
+<p>しばらく使ってみよう。</p>
+
+<hr />
+
+<p>2013-02-20 追記:</p>
+
+<p><code>left_delete</code> を <code>ctrl+h</code> に割り当てると、日本語の入力時におかしなことになってしまいました。具体的には、確定前の日本語を <code>ctrl+h</code> で消したときに次の文字を入力すると復活してしまうという使いにくい状態になってしまいました。</p>
+
+<p>結局、以下のようにしました</p>
+
+<p>Preferences > Package Settings > DashDoc > Key Bindings &ndash; Default</p>
+
+<p>```</p>
+
+<h1>全部コメントアウト</h1>
+
+<p>[
+  // { &ldquo;keys&rdquo;: [&ldquo;ctrl+h&rdquo;], &ldquo;command&rdquo;: &ldquo;dash_doc&rdquo;},
+  // { &ldquo;keys&rdquo;: [&ldquo;ctrl+alt+h&rdquo;], &ldquo;command&rdquo;: &ldquo;dash_doc&rdquo;,
+  //                           &ldquo;args&rdquo;: { &ldquo;syntax_sensitive&rdquo;: &ldquo;true&rdquo; } }
+]
+```</p>
+
+<p>Preferences > Package Settings > DashDoc > Key Bindings &ndash; User</p>
+
+<p>```
+[
+  { &ldquo;keys&rdquo;: [&ldquo;shift+command+h&rdquo;], &ldquo;command&rdquo;: &ldquo;dash_doc&rdquo;},
+  { &ldquo;keys&rdquo;: [&ldquo;ctrl+command+h&rdquo;], &ldquo;command&rdquo;: &ldquo;dash_doc&rdquo;,</p>
+
+<pre><code>                        "args": { "syntax_sensitive": "true" } }
+</code></pre>
+
+<p>]
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

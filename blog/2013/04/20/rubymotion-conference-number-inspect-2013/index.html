@@ -1,0 +1,493 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>RubyMotion Conference #inspect 2013 - satococoa's blog</title>
+	<meta name="author" content="Satoshi Ebisawa">
+
+	
+	<meta name="description" content="3/28, 29 にベルギーのブリュッセルで開催された RubyMotion Conference #inspect 2013 に参加しました。 英語力にだいぶ不安がある中、頑張って聴き取ってきた内容をメモしたいと思います。 1 日目 A Brave New World: Learning iOS &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="satococoa's blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">satococoa's blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:satococoa.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		<a class="facebook" href="http://www.facebook.com/satoshi.ebisawa" title="Facebook">Facebook</a>
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/satococoa" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/satococoa" title="GitHub">GitHub</a>
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:satococoa.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">RubyMotion Conference #inspect 2013</h2>
+	<div class="entry-content"><p>3/28, 29 にベルギーのブリュッセルで開催された <a href="http://www.rubymotion.com/conference/">RubyMotion Conference #inspect 2013</a> に参加しました。</p>
+
+<p>英語力にだいぶ不安がある中、頑張って聴き取ってきた内容をメモしたいと思います。</p>
+
+<h3>1 日目</h3>
+
+<h4>A Brave New World: Learning iOS for the Ruby Refugee &ndash; Nick Quaranto さん</h4>
+
+<p>37signals で働く Nick さんがいかにして RubyMotion で Basecamp for iPhone を作って、どういうことを感じたのか、というお話でした。</p>
+
+<p>Nick さんにとっては Objective-C で開発するということは Xcode というツールを強制されることが苦痛であり、自分の好きなツールを使って自由に開発ができる RubyMotion 無くして Basecamp for iPhone は作れなかっただろう、と話していました。<br/>
+Interface Builder を見たときに、まるで Visual Basic を思い出すようだったというところで笑いを取っていました。</p>
+
+<p>また、有用な gem や community のリソースの紹介もされました。</p>
+
+<h5>Community</h5>
+
+<ul>
+<li><a href="https://groups.google.com/forum/?fromgroups#!forum/rubymotion">Google Group</a></li>
+<li><a href="https://github.com/rubymotion">https://github.com/rubymotion</a></li>
+<li><a href="http://www.rubymotion.com/developer-center/api/">http://www.rubymotion.com/developer-center/api/</a></li>
+<li><a href="https://github.com/HipByte/RubyMotion-Samples">https://github.com/HipByte/RubyMotion-Samples</a></li>
+</ul>
+
+
+<h5>Gem</h5>
+
+<ul>
+<li><a href="http://bubblewrap.io">bubble-wrap</a>, ほとんど全てのプロジェクトで使っている Cocoa Touch の wrapper</li>
+<li><a href="https://github.com/qrush/motion-settings-bundle">motion-settings-bundle</a>, 設定 app 用の bundle を作る gem</li>
+<li><a href="https://github.com/qrush/motion-layout">motion-layout</a>, iOS 6.0 から使える auto-layout の gem</li>
+<li><a href="http://cocoapods.org">CocoaPods</a> (motion-cocoapods)</li>
+</ul>
+
+
+<p>ちなみに質疑応答で「テストは書いているか？」という質問がされ、Basecamp アプリはテストを書いていないそうです。<br/>
+その後、「テストを書いていますか？」 &ndash;> 「書いてないです」というやりとりはほぼ全部の発表後に様式美的に繰り返されることになります。 (1日目後半からは「ノベルティの T シャツはあるのか？」という質問も決まり文句として繰り返されて、笑いを誘っていました。)</p>
+
+<p>RubyMotion でテストを書くときに参考にすべき良いアプリとして、<a href="https://github.com/tkadauke/TinyMon">TinyMon</a> というアプリが挙げられました。</p>
+
+<h4>Behaviour Driven Motion using Calabash &ndash; Karl Krukow さん</h4>
+
+<p><a href="http://calaba.sh">Carabash</a> というテスティングフレームワークのお話とデモでした。</p>
+
+<p>会場にその場で挙手を求めてアンケートをとったところ、約 30% の人が RubyMotion のプロジェクトではユニットテストを書いていて、Acceptance Test を書いている人はたったの 2 人でした。</p>
+
+<p>Carabash は Cucumber を利用して受け入れテストを記述するフレームワークで、マルチプラットフォームであることも特徴です。</p>
+
+<p>また、client-server の構成を取っていて、リモートでテストを実行することも可能です。実際にリモートの実機で動作している様子も映像で見せてもらいました。</p>
+
+<p>デモで動かしていたテストのリポジトリは以下です。(RubyMotion-Samples にある Beer アプリに対して受け入れテストを実行しました。)
+<a href="https://github.com/krukow/motion-calabash-inspect2013">https://github.com/krukow/motion-calabash-inspect2013</a></p>
+
+<h4>Controlling the Real World with RubyMotion &ndash; Rich Kilmer さん</h4>
+
+<p>bluetooth のお話でした。</p>
+
+<p>bluetooth の出始めの頃のお話から最近の bluetooth4 の仕様の話という歴史をおさらいするところから始まって、Apple 公式のドキュメントには全く記載のない (でもなぜかサンプルコードは配布されている) bluetooth を使って iPhone をサーバとして周囲の機器をスキャンし、その値を受け取ることもできるそうです。</p>
+
+<p>これも実際にデモをされていました。</p>
+
+<h4>Elevate your Intent &ndash; Matt Green さん</h4>
+
+<p>ソフトウェアの設計のお話でした。(RubyMotion に特化した訳ではなく、一般的な概念)</p>
+
+<p>責任の所在をドメインに応じて適宜分散し、小さくてシンプルなクラスを定義することで意図を明確に伝えるソースコードが書けるというお話でした。</p>
+
+<p>Dependencies (依存関係) は複雑さを生み、バグを生み出すので、それをドメインに合うように分離することが大事と説いていました。</p>
+
+<p>結局、依存は厄介なものであって、特に MVC の境界 (サービス層にあたるようなもの) はその依存関係が発生してしまうのでしいですが、それをうまく切り分けてシンプルにし、ドメインに基づいた名前を与え、エラー時には派手にエラーを挙げる (fail loudly) というのがうまく設計するポイントだと話していました。</p>
+
+<p>また、それを支援するライブラリとして <a href="https://github.com/mattgreen/elevate">Elevate</a> という gem を作って公開されました。</p>
+
+<p>スライド: <a href="https://speakerdeck.com/mattgreen/elevate-your-intent">Elevate Your Intent</a></p>
+
+<h4>Accessibility and RubyMotion &ndash; Austin Seraphin</h4>
+
+<p>アクセシビリティについての話でした。</p>
+
+<p>生まれつきの全盲である Austin さんの生活がいかにして iPhone の登場によって快適になり、さらに RubyMotion のおかげでいかにソフトウェア開発が容易になったか、というお話をまずはされました。</p>
+
+<p>『カメラを使って色を認識し、その色を音声で教えてくれるアプリを使ってみたけど、何にかざしても &ldquo;Black!&rdquo; としか認識されず、最初はアプリが壊れているのかと思ったら、実は夜で電気をつけていなかったために &ldquo;Black&rdquo; と認識されていたと気づき、電気をつけた』というエピソードが印象的でした。</p>
+
+<p>Xcode の Interface Builder は全く全盲者にとってはアクセシビリティに乏しく、とても辛いものだそうです。しかし、自分の好きなツールを自由に選択でき、コードで開発ができる RubyMotion はそんな方にも可能性を与えるものとして素晴らしいとのことでした。</p>
+
+<p>その話の後は、実際に開発者はどんな所に気をつけて開発すればいいのか、というところを具体的にレクチャーして頂きました。</p>
+
+<p>スライド: <a href="http://www.slideshare.net/AdrianoMartino/ruby-motion-andiosaccessibility">RUBY MOTION &amp; ACCESSIBILITY</a></p>
+
+<h4>Core Data For The Curious Rubyist &ndash; Jonathan Penn さん</h4>
+
+<p>資料 (PDF): <a href="http://cocoamanifest.net/features/2013-03-core-data-in-motion.pdf">Core Data For The Curious Rubyist</a></p>
+
+<p>Core Data についてのお話でした。</p>
+
+<p>「Core Data は SQLite の ORM ではなくオブジェクトグラフである」という話から始まり、Core Data を使う上で理解する必要のある以下の 5 つの概念についての説明がありました。</p>
+
+<ul>
+<li>Context (NSManagedObjectContext)</li>
+<li>Object (NSManagedObject)</li>
+<li>Model (NSManagedObejctModel)</li>
+<li>StoreCoordinator (NSPersistentStoreCoordinator)</li>
+<li>FetchedResultsController (NSFetchedResultsController)</li>
+</ul>
+
+
+<p>特に非同期処理周りはややこしそうですね。。。iOS 5 以上からは <code>parentContext</code> というプロパティができてやりやすくはなったらしいですが。</p>
+
+<p>Core Data のモデルファイルをコードから生成できる <a href="http://fousa.github.io/motion_migrate/">Motion Migrate</a> という gem も紹介されました。</p>
+
+<p>あとは RubyMotion 用の Core Data のラッパーとして以下の2つの gem が挙げられました。</p>
+
+<ul>
+<li><a href="https://github.com/alloy/MotionData">MotionData</a></li>
+<li><a href="https://github.com/awdogsgo2heaven/superbox">superbox</a></li>
+</ul>
+
+
+<h4>The Life and Times of an Object &ndash; Josh Ballanco さん</h4>
+
+<p>gdb を使った RubyMotion のデバッグの仕方の紹介とデモでした。</p>
+
+<p>RubyMotion では以下のコマンドで dbg が起動します。</p>
+
+<p><code>$ rake debug=1</code></p>
+
+<p>また、gdb 上で bt(backtrace), b(breakpoint), p(print), pro(print-ruby-object), x(x/4w と打っていた) などを使って実際のデバッグ風景を見せてくれました。</p>
+
+<p>僕が一番驚いたのは、<code>p (char *)class_getName(&lt;address&gt;)</code> のようにして Objective-C Runtime の関数が呼べることや、<code>(char *)[[$1 keys] inspect]</code> のようにして Ruby のメソッドも呼べてしまうことでした。Ruby 処理系が Objective-C Runtime 上で実装されているおかげなんですね。</p>
+
+<p>最後に <code>MallocStackLoggingNoCompat=YES rake debug=1</code> でデバッガを起動した後で <code>malloc_history</code> を使ってメモリの確保 / 解放の履歴を見る方法の説明がありました。</p>
+
+<h4>Concurrency in RubyMotion: Use the Multicore Luke! &ndash; Mateus Armando さん</h4>
+
+<p>GCD, NSOperationQueue を使った非同期処理についてのお話でした。</p>
+
+<p>GCD, NSOperationQueue の使い方についての全般的な説明、GCD / NSOperationQueue の比較もありました。</p>
+
+<p><a href="http://seanlilmateus.github.io">Mateus さんのブログ</a>には他にも GCD 関連のわかりやすい記事が掲載されています。</p>
+
+<p>スライド: <a href="https://speakerdeck.com/seanlilmateus/concurrency-patterns-in-rubymotion">CONCURRENCY PATTERNS IN RUBYMOTION</a></p>
+
+<h4>Get More From RubyMotion with RubyMine &ndash; Dennis Ushakov さん</h4>
+
+<p>RubyMine での開発、デバッグなどのデモでした。</p>
+
+<p>デバッグ用途だけで RubyMine を使うというのも割とありな気がします。</p>
+
+<h4>Crafting iOS Dev Tools in Redcar &ndash; Delisa Mason さん</h4>
+
+<p>Ruby で実装された <a href="http://redcareditor.com">Redcar</a> というエディタの紹介でした。</p>
+
+<p>実際に HTML でプラグインを書くライブコーディングによるデモと、エディタ上でドキュメントを見られたり、デバッグができると言った特徴の説明がありました。</p>
+
+<p>スライド: <a href="https://speakerdeck.com/kattrali/crafting-ios-dev-tools-in-redcar-the-ruby-editor">Crafting iOS Dev Tools in Redcar, the Ruby Editor</a></p>
+
+<p>以上で 1 日目が終わり、その日の夜は @watson1978 さんとムール貝食べてきました。</p>
+
+<p><img src="/images/201304/dinner.jpg"></p>
+
+<h3>2 日目</h3>
+
+<h4>NSRevolution: How Ruby hackers built the new Objective-C Open Source community &ndash; Mattt Thompson さん</h4>
+
+<p>Ruby, Objective-C 双方の歴史などを振り返るところから話が始まりました。</p>
+
+<p>Ruby は Smalltalk, perl, eiffel, lisp から強く影響を受けていて、ObjC は Smalltalk, C から影響を (C は影響というよりは、親みたいなものですが) 受けていて、双方ともメッセージパッシングについては Smalltalk の影響が大きいといった感じです。</p>
+
+<p>そして Ruby の影響で Objective-C での開発フローやツールも変わってきているという話に移り、以下のライブラリやツールの紹介がありました。</p>
+
+<h5><a href="http://cocoapods.org">CocoaPods</a></h5>
+
+<p>Bundler for Objective-C</p>
+
+<h5><a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a></h5>
+
+<p>Functional Reactive Programming Framework</p>
+
+<h5><a href="https://github.com/tombenner/nui">NUI</a></h5>
+
+<p>Stylesheets for iOS</p>
+
+<h5><a href="https://github.com/square/KIF">KIF</a></h5>
+
+<p>Testing framework</p>
+
+<h5><a href="https://github.com/moredip/Frank">Frank</a></h5>
+
+<p>Cucumber for iOS</p>
+
+<h5><a href="https://github.com/mattt/cupertino">Cupertino</a></h5>
+
+<p>CLI for Apple Developer
+<a href="https://github.com/mattt/shenzhen">Shenzhen</a>, <a href="https://github.com/mattt/houston">Houston</a>, <a href="https://github.com/mattt/venice">Venice</a>, <a href="https://github.com/mattt/dubai">Dubai</a></p>
+
+<h4>More Than You Need to Know About CocoaPods &ndash; Eloy Duran さん</h4>
+
+<p>CocoaPods についての説明と、今後の展開についてのお話でした。</p>
+
+<p>例えば <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> を使おうとした場合、通常は Xcode であちこちをいじらないといけないところ、CocoaPods を使えばとても簡単に使えるというのを実際に動画であらかじめ撮影したデモを見せてもらい、CocoaPods 無しのライブラリのインストールのあまりの煩雑さに会場は大ウケでした。</p>
+
+<p>CocoaPods の .podspec ファイルの運用については、従来は GitHub の Pull Request ベースで人力で運用していたところを、GitHub API と TravisCI API を使って、自動的に Pull Request を出してマージするサーバを作るようにする、というお話がありました。</p>
+
+<p>また、CocoaPods でインストールできるライブラリのドキュメントを集約する <a href="http://cocoadocs.org">CocoaDocs</a> というサイトができました。(Ruby で言うところの <a href="http://rubydoc.info">RubyDoc.info</a> ですね。</p>
+
+<h4>Wrapping iOS in RubyMotion &ndash; Clay Allsopp さん</h4>
+
+<p>RubyMotion でより Ruby らしくアプリケーションを作るためのラッパーを作るコツのお話でした。</p>
+
+<p>例えば delegate の代わりに callback を使うという例で以下のコードが挙げられていました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># CoreLocation delegate
+</span><span class='line'>Location.get do |location|
+</span><span class='line'>  p location[:to]
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>Location.get</code> メソッドはブロックをインスタンス変数に入れて保持し、delegate を <code>self</code> として delegate メソッド内でそのブロックを <code>call</code> しているといった具合です。</p>
+
+<p>また、ブロックを書くときも <code>-&gt;(arg1, arg2) {}</code> の記法を使ったり、成功時と失敗時に別々のブロックを渡すような ObjC のメソッドをラップするときには Ruby では一つのブロックを渡すようにしてブロック中で <code>if request.success?</code> みたいにして分岐する方が Ruby らしくなる、という話もありました。</p>
+
+<p>あとは定数や ENUM は Symbol で指定できるようにすると使いやすいね、とか camelCase は snake_case に、演算子のオーバーロード、メタプログラミングなどの話もありましたのでスライドを参照してください。</p>
+
+<p>スライド: <a href="https://speakerdeck.com/clayallsopp/wrapping-ios-with-rubymotion">Wrapping iOS with RubyMotion</a></p>
+
+<h4>Goodbye IB, Hello Teacup &ndash; Colin Gray さん</h4>
+
+<p>まずは <a href="https://github.com/rubymotion/teacup">teacup</a> gem の紹介でした。</p>
+
+<p>Layout と Style というオブジェクトを使ってロジックと見た目を切り離して書くことができます。</p>
+
+<p>また、<a href="https://github.com/colinta/sweettea">sweettea</a> も使うことで、Style をより CSS っぽく書くことも可能になります。</p>
+
+<p>この場で実機で UI を Firebug や Chrome の開発者ツールのようにデバッグができる Kiln (今は名前が変わって <a href="https://github.com/colinta/motion-xray">motion-xray</a> になっています) という gem の発表がありました。</p>
+
+<h4>Using BubbleWrap to Quickly Build RubyMotion Apps &ndash; Marin Usalj さん</h4>
+
+<p><a href="http://bubblewrap.io">BubbleWrap</a> の各モジュールの紹介と簡単な使い方のお話でした。</p>
+
+<h4>Mixing CoffeeScript in RubyMotion apps &ndash; Michael Erasmus さん</h4>
+
+<p>cross platform の開発のために Web と Native のハイブリッドアプリを作っていて、Web の部分では CoffeeScript を使っているよ、という内容でした。</p>
+
+<p>まだ試しているだけの段階で深いところまではやっていないけれども、ロジックを Web の中の CoffeeScript で書くことで各プラットフォームで再利用できるようにしたい、という狙いだそうです。</p>
+
+<p>Native と CoffeeScript (JavaScript) とのやりとりは iframe を使っているそうです。</p>
+
+<h4>Building Interactive Data Visualization Charts &ndash; Amit Kumar さん</h4>
+
+<p>Data visualization ということで、いくつかのグラフを描画するライブラリについての紹介の後、ご自身で作られた gem の紹介でした。</p>
+
+<h5>UIWebView を使うもの</h5>
+
+<ul>
+<li><a href="http://www.highcharts.com">Highcharts JS</a></li>
+</ul>
+
+
+<h5>Native</h5>
+
+<ul>
+<li>Shinobi (有償)</li>
+<li>iOS:Charts (有償)</li>
+<li>CorePlot</li>
+</ul>
+
+
+<p>このうち、Native かつ Open Source の CorePlot のラッパーが <a href="https://github.com/toamitkumar/motion-plot">motion-plot</a> です。</p>
+
+<p>スライド: <a href="https://speakerdeck.com/toamitkumar/rubymotion-building-interactive-data-visualization-charts">RubyMotion &ndash; Building Interactive Data Visualization Charts</a></p>
+
+<h4>Cocos2D, an Easier Way &ndash; Juan Karam さん</h4>
+
+<p>ゲーム開発用のフレームワークである Cocos2D と、それとよく組み合わせて使われる物理演算エンジンの Box2D についてのお話でした。</p>
+
+<p>Box2D は C++ で書かれているためにそのままでは RubyMotion から扱うことが出来ず、Objective-C でラッパーを書いてあげる必要があります。</p>
+
+<p>そのあたりに手をつけ、RubyMotion から扱いやすくした gem がこの場で発表された <a href="https://github.com/rubymotion/Joybox">Joybox</a> です。</p>
+
+<p>ライブコーディングであっという間にゲームを作っていた様子が圧巻でした。</p>
+
+<p>まだまだ未実装だったり、ドキュメントが全然なかったりするので協力者を募集しています。</p>
+
+<h4>Let&rsquo;s Move with CoreMotion &ndash; Akshat Paul さん、Abhishek Nalwaya さん</h4>
+
+<p>正直、内容をあんまり覚えていません。</p>
+
+<p>iPhone の Prezi アプリでプレゼンをしていたのですが、途中で Push 通知が来たり、電話がかかってきたりして爆笑した記憶が強く。。。</p>
+
+<p>iOS での加速度センサやジャイロスコープの扱いの話でした。</p>
+
+<h4>RubyMotion: Past, Present and Future &ndash; Laurent Sansonetti さん</h4>
+
+<p>Laurent さんのこれまでの半生と、今後の RubyMotion のロードマップについての発表がありました。</p>
+
+<h5>ロードマップ</h5>
+
+<ul>
+<li>Toolchain improvements</li>
+<li>Code generators</li>
+<li>Profiler (CPU, Memory)</li>
+<li>Code reloading (REPL)</li>
+<li>Static code analysis</li>
+<li>Tutorials</li>
+<li>Enterprise support</li>
+<li>More platforms</li>
+</ul>
+
+
+<p>この中では、やはり More platforms が気になりますね。(BlackBerry ではないそうです/笑)</p>
+
+<p>あとは Code reloading が便利そう。ちょっとした View の変更とかが再ビルドしなくても確認できるとなるとなかなか嬉しいですね。</p>
+
+<p>次回のカンファレンス、#inspect 2014 は NewYork city か Mexico あたりで開催される予定らしいです。</p>
+
+<h3>まとめ</h3>
+
+<p>暗い場所だったのでだいぶブレましたが、アフターパーティで Laurent さんと撮りました。</p>
+
+<p><img src="/images/201304/laurent.jpg"></p>
+
+<p>英語力の不足をひしひしと感じる中、なんとか発表の内容を理解しようと必死の2日間でした。なかなか参加者の方とコミュニケーションを取ることも大変だったのですが、最終日のアフターパーティではお酒の勢いを借りて色んな人とお話しできてよかったです。</p>
+
+<p>日本でも 5/29 に <a href="http://connpass.com/event/2095/">RubyMotion Kaigi 2013</a> というイベントを予定していて、Laurent さんにもしゃべってもらう予定です。</p>
+
+<p>15 年以上ぶりの海外で色々戸惑うところも多かったですが、記念すべき初めてのカンファレンスに参加できてとてもよかったです。</p>
+
+<p>あわせて読みたい: <a href="http://watson1978.github.io/blog/2013/03/31/rubymotion-conference-2013/">RubyMotion Conference 2013 &ndash; Watson&rsquo;s Blog</a></p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-20T14:00:00+09:00" pubdate data-updated="true">Apr 20<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rubymotion/'>RubyMotion</a>, <a class='category' href='/blog/categories/event/'>event</a>
+
+
+</div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2013
+
+    Satoshi Ebisawa
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-32351198-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

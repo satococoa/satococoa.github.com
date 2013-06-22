@@ -1,0 +1,1459 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>satococoa's blog</title>
+	<meta name="author" content="Satoshi Ebisawa">
+
+	
+	<meta name="description" content="httperf は ab (apache bench) と同じようなツールで、サーバの負荷テストに使うことができます。 もうすぐリリースのサーバーに負荷をかける目的で使ってみたのでメモします。 インストール 1
+2
+3
+4
+# Homebrew
+$ brew install httperf
+# &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="satococoa's blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">satococoa's blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:satococoa.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		<a class="facebook" href="http://www.facebook.com/satoshi.ebisawa" title="Facebook">Facebook</a>
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/satococoa" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/satococoa" title="GitHub">GitHub</a>
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:satococoa.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/10/25/performance-test-with-httperf/">
+		
+			Httperf でパフォーマンステストを行う</a>
+	</h2>
+	<div class="entry-content">
+		<p>httperf は ab (apache bench) と同じようなツールで、サーバの負荷テストに使うことができます。</p>
+
+<p>もうすぐリリースのサーバーに負荷をかける目的で使ってみたのでメモします。</p>
+
+<h2>インストール</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Homebrew
+</span><span class='line'>$ brew install httperf
+</span><span class='line'># CentOS
+</span><span class='line'>$ sudo yum install httperf</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>URLリストを作る</h2>
+
+<p>URLをファイルにまとめておいて、順番にアクセスさせることができます。
+実際のユーザのアクセスに近い負荷を作り出すことができますね！</p>
+
+<p>ちなみにファイルのフォーマットはnull文字区切りのテキストファイルです。nginxのアクセスログから作ってみます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ zcat /path/to/access.log-20121024.gz | awk '{ print $7 }' &gt; urllist.txt
+</span><span class='line'>$ tr "\n" "\0" &lt; urllist.txt &gt; wlog.log</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>実行</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ httperf --hog --server example.com --port 80 --wlog Y,/tmp/wlog.log --rate 200 --num-conn 720000 --num-call 1 --timeout 5</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>$ man httperf</code>するとたくさんのオプションの説明が出てきますが、とりあえず使った物は以下の通り。</p>
+
+<ul>
+<li>hog: 必要な限り多くのTCPポートを使おうとします。指定しないと1024 から 5000 ポートしか使ってくれないのでボトルネックになってしまうことがあるそうです。(正直よくわかってないです。)</li>
+<li>server: ドメインかIPを指定</li>
+<li>port: 接続先ポート</li>
+<li>wlog: アクセス先のpathのリストが入ったファイルを指定する。頭のY/Nはファイル末尾まで終わった後にもう一度頭から繰り返すか。Nにすると、そこで動作終了します。</li>
+<li>rate: 1秒あたりのリクエスト数</li>
+<li>num-conn: 合計接続数。接続数がこの値に達すると動作終了します。</li>
+<li>num-call: 1接続あたりのリクエスト数。今回はセッションを使ったりしないステートレスなサーバなのでシンプルに1にしてみました。</li>
+<li>timeout: タイムアウト（秒）を指定</li>
+</ul>
+
+
+<p>上記だと、秒間200接続を行い、接続ごとに1つずつpathにアクセスします。合計の接続数が720000になると止まるので、大体1時間くらい負荷をかけ続けることになります。</p>
+
+<h2>参考URL</h2>
+
+<ul>
+<li><a href="http://na-ga.net/blog/?p=527">Na-ga.net » Blog Archive » httperf で Web サーバのベンチマーク &ndash; Linux を中心とした忘却メモ</a></li>
+<li><a href="http://memo.majide.com/index.php?httperf%A4%CB%A4%E8%A4%EBWeb%A5%B5%A1%BC%A5%D0%A4%CE%A5%D9%A5%F3%A5%C1%A5%DE%A1%BC%A5%AF">httperfによるWebサーバのベンチマーク &ndash; (・∀・)イイ!!Memo</a></li>
+<li><a href="http://d.hatena.ne.jp/defiant/20080527/1211873545">httperf &ndash; TenForwardの日記 (defiantの日記改め)</a></li>
+<li><a href="http://na-ga.net/blog/?p=559">Na-ga.net » Blog Archive » httperf man (OUTPUT) &ndash; Linux を中心とした忘却メモ</a></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-25T01:23:00+09:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>linux</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/09/13/building-rails-server-on-centos-with-chef-solo/">
+		
+			CentOS + Chef-solo で Rails が動くサーバを作る</a>
+	</h2>
+	<div class="entry-content">
+		<p>CentOS + chef-solo で rails が動く All in one サーバを準備する</p>
+
+<h2>目標</h2>
+
+<p>VPS を立ちあげてすぐに All-in-one (DB, Web, App 全部入り) で rails アプリケーションが動くシンプルなサーバを立ち上げる。</p>
+
+<p>ローカルの VirtualBox にインストールして検証する。</p>
+
+<p>ちなみに、Linux のセットアップをするときには未だに僕は slicehost のドキュメント <a href="http://articles.slicehost.com">http://articles.slicehost.com</a> を見ています。
+もっとモダンなところがあったら教えて下さい。</p>
+
+<p>chef の概要については <a href="http://wiki.opscode.com/pages/viewpage.action?pageId=24019581">http://wiki.opscode.com/pages/viewpage.action?pageId=24019581</a> をざっと読んだのみで、あとは使いながら覚えていく戦法。</p>
+
+<h2>構成</h2>
+
+<ul>
+<li>CentOS 6.3</li>
+<li>Ruby 1.9.3</li>
+<li>node (asset pipeline のため)</li>
+<li>nginx</li>
+<li>passenger</li>
+<li>MySQL</li>
+</ul>
+
+
+<p>ruby のインストールは、変なことにハマりたくないので rvm も rbenv も使わず、/usr/local に普通にインストールする。</p>
+
+<h2>OS インストール</h2>
+
+<p>OS タイプは Red Hat (64bit) を選択。メインメモリは 512MB。
+ISO イメージは &ldquo;CentOS-6.3-x86_64-netinstall.iso&rdquo; を使用。
+ネットワークの設定はアダプタ 1 が NAT、アダプタ 2 をホストオンリーアダプタとし、vboxnet0 をあらかじめ VirtualBox の環境設定から作成しておく。</p>
+
+<p>あとは普通にインストール。ネットインストールなので OS イメージの URL を聞かれる。&#8221;<a href="http://ftp.iij.ad.jp/pub/linux/centos/6.3/os/x86_64">http://ftp.iij.ad.jp/pub/linux/centos/6.3/os/x86_64</a>&#8221; を指定した。</p>
+
+<p>インストールが終わったら Devices メニューから .iso を取り外して再起動。</p>
+
+<p>システムを最新にしておく。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># yum update</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>基本設定 (chef が動くところまで)</h2>
+
+<h3>ネットワークの設定 (ホストオンリーネットワーク)</h3>
+
+<p>eth0 は NAT としてセットアップされているので VM からインターネットはアクセスできる。
+ローカルから VM へアクセスできるように、eth1 をセットアップする。</p>
+
+<p>vi /etc/sysconfig/network-scripts/ifcfg-eth1</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>DEVICE="eth1"
+</span><span class='line'>BOOTPROTO="static" # 変更
+</span><span class='line'>HWADDR="XX:XX:XX:XX:XX:XX"
+</span><span class='line'>NM_CONTROLLED="yes"
+</span><span class='line'>ONBOOT="yes" # 変更
+</span><span class='line'>TYPE="Ethernet"
+</span><span class='line'>UUID="xxxxxxxxxx"
+</span><span class='line'>IPADDR="192.168.56.10" # 追加
+</span><span class='line'>NETMASK="255.255.255.0" # 追加</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最後の IPADDR, NETMASK は VirtualBox の環境設定から作ったホストオンリーアダプタの設定に合わせる。</p>
+
+<p>ネットワークを再起動して ping が通ることを確認。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># service network restart # VM 上で
+</span><span class='line'>$ ping 192.168.56.10 # ローカルから</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>一般ユーザの作成</h3>
+
+<p>deploy というユーザーを作り、そのユーザーでデプロイしたりrailsを動かしたりする。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># useradd deploy -G wheel
+</span><span class='line'># passwd deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>sudo できるように。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># visudo</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以下の行のコメントアウトを解除</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># %wheel  ALL=(ALL) ALL</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ここから先は deploy ユーザーで作業するので、一度ログアウトして deploy ユーザーでログイン。</p>
+
+<p><strong>余談</strong>
+ここまでやったところで、<a href="http://vagrantup.com">Vagrant</a> というものの存在を思い出して少し萎えた。</p>
+
+<h3>SSH</h3>
+
+<p>ローカルマシンから公開鍵を転送。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ scp ~/.ssh/id_rsa.pub deploy@192.168.56.10:/tmp
+</span><span class='line'>bash: scp: コマンドが見つかりません
+</span><span class='line'>lost connection</span></code></pre></td></tr></table></div></figure>
+
+
+<p>あれ、VM 側に scp が入っていない。</p>
+
+<p>VM 側で openssh-clients を入れてから再挑戦して OK。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo yum install openssh-clients</span></code></pre></td></tr></table></div></figure>
+
+
+<p>改めて共通鍵のコピー。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir .ssh
+</span><span class='line'>$ chmod 700 .ssh
+</span><span class='line'>$ mv /tmp/id_rsa.pub .ssh/authorized_keys
+</span><span class='line'>$ chmod 600 .ssh/authorized_keys</span></code></pre></td></tr></table></div></figure>
+
+
+<p>sshd の設定、再起動。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo vi /etc/ssh/sshd_config
+</span><span class='line'># 変更点
+</span><span class='line'>Port XXXX # 適当なポートに変更
+</span><span class='line'>PubkeyAuthentication yes
+</span><span class='line'>PasswordAuthentication no
+</span><span class='line'>$ sudo service sshd restart</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ここから先はローカルからログインして作業する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh deploy@192.168.56.10 -p XXXX</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>iptables</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo iptables -L # 現状を確認
+</span><span class='line'>Chain INPUT (policy ACCEPT)
+</span><span class='line'>target     prot opt source               destination         
+</span><span class='line'>ACCEPT     all  --  anywhere             anywhere            state RELATED,ESTABLISHED 
+</span><span class='line'>ACCEPT     icmp --  anywhere             anywhere            
+</span><span class='line'>ACCEPT     all  --  anywhere             anywhere            
+</span><span class='line'>ACCEPT     tcp  --  anywhere             anywhere            state NEW tcp dpt:ssh 
+</span><span class='line'>REJECT     all  --  anywhere             anywhere            reject-with icmp-host-prohibited 
+</span><span class='line'>
+</span><span class='line'>Chain FORWARD (policy ACCEPT)
+</span><span class='line'>target     prot opt source               destination         
+</span><span class='line'>REJECT     all  --  anywhere             anywhere            reject-with icmp-host-prohibited 
+</span><span class='line'>
+</span><span class='line'>Chain OUTPUT (policy ACCEPT)
+</span><span class='line'>target     prot opt source               destination
+</span><span class='line'>$ sudo iptables -F # 一旦すべて削除
+</span><span class='line'>$ sudo vi /etc/iptables.up.rules
+</span><span class='line'># http://articles.slicehost.com/assets/2007/9/4/iptables.txt からまるごと。SSH のポートを自分の環境に合わせるのを忘れないように。
+</span><span class='line'>*filter
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>#  Allows all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
+</span><span class='line'>-A INPUT -i lo -j ACCEPT
+</span><span class='line'>-A INPUT ! -i lo -d 127.0.0.0/8 -j REJECT
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>#  Accepts all established inbound connections
+</span><span class='line'>-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>#  Allows all outbound traffic
+</span><span class='line'>#  You can modify this to only allow certain traffic
+</span><span class='line'>-A OUTPUT -j ACCEPT
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'># Allows HTTP and HTTPS connections from anywhere (the normal ports for websites)
+</span><span class='line'>-A INPUT -p tcp --dport 80 -j ACCEPT
+</span><span class='line'>-A INPUT -p tcp --dport 443 -j ACCEPT
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>#  Allows SSH connections
+</span><span class='line'>#
+</span><span class='line'># THE -dport NUMBER IS THE SAME ONE YOU SET UP IN THE SSHD_CONFIG FILE
+</span><span class='line'>#
+</span><span class='line'>-A INPUT -p tcp -m state --state NEW --dport XXXX -j ACCEPT
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'># Allow ping
+</span><span class='line'>-A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'># log iptables denied calls
+</span><span class='line'>-A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'># Reject all other inbound - default deny unless explicitly allowed policy
+</span><span class='line'>-A INPUT -j REJECT
+</span><span class='line'>-A FORWARD -j REJECT
+</span><span class='line'>
+</span><span class='line'>COMMIT
+</span><span class='line'>$ sudo iptables-restore &lt; /etc/iptables.up.rules
+</span><span class='line'>$ sudo service iptables save</span></code></pre></td></tr></table></div></figure>
+
+
+<p>いったんここで VirtualBox のスナップショットを取っておいた。
+<strong>実はssh, iptablesもchefで管理するもの？</strong></p>
+
+<h3>chef のインストールまで</h3>
+
+<p>ruby, chef をインストールするのに必要なところまでインストールする。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># ruby インストールに必要なパッケージ
+</span><span class='line'>$ sudo yum -y install git gcc gcc-c++ make autoconf openssl-devel zlib-devel readline-devel curl-devel gettext-devel
+</span><span class='line'>$ curl -O http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
+</span><span class='line'>$ tar xzvf yaml-0.1.4.tar.gz
+</span><span class='line'>$ cd yaml-0.1.4
+</span><span class='line'>$ ./configure --prefix=/usr/local
+</span><span class='line'>$ make
+</span><span class='line'>$ sudo make install
+</span><span class='line'>$ cd ..
+</span><span class='line'>
+</span><span class='line'># ruby インストール
+</span><span class='line'>$ curl -O http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz
+</span><span class='line'>$ tar xzvf ruby-1.9.3-p194.tar.gz
+</span><span class='line'>$ cd ruby-1.9.3-p194
+</span><span class='line'>$ ./configure --prefix=/usr/local --enable-shared --disable-install-doc --with-opt-dir=/usr/local/lib
+</span><span class='line'>$ make
+</span><span class='line'>$ make test
+</span><span class='line'>$ sudo make install
+</span><span class='line'>$ cd ..
+</span><span class='line'>
+</span><span class='line'># /usr/local/bin に ruby が入るので、sudo 時に path が通るようにする
+</span><span class='line'>$ sudo visudo
+</span><span class='line'># ":/usr/local/bin"を追加
+</span><span class='line'>Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
+</span><span class='line'>
+</span><span class='line'># chef インストール
+</span><span class='line'>$ sudo gem install chef --no-ri --no-rdoc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ここまでで chef のインストール完了。
+スナップショットをとっておく。</p>
+
+<h2>chef のリポジトリを作る</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git://github.com/opscode/chef-repo.git
+</span><span class='line'>$ cd chef-repo</span></code></pre></td></tr></table></div></figure>
+
+
+<p>chef-solo の設定を config/solo.rb に作る。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>file_cache_path "/home/deploy/chef-repo"
+</span><span class='line'>cookbook_path "/home/deploy/chef-repo/cookbooks"
+</span><span class='line'>role_path "/home/deploy/chef-repo/roles"
+</span><span class='line'>log_level :debug</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>chef の cookbook を作る (もらってくる)</h2>
+
+<p>以下のように chef の cookbook が公開されているところが複数ある。</p>
+
+<ul>
+<li><a href="http://community.opscode.com/cookbooks">http://community.opscode.com/cookbooks</a></li>
+<li><a href="https://github.com/opscode-cookbooks">https://github.com/opscode-cookbooks</a></li>
+<li><a href="https://github.com/cookbooks">https://github.com/cookbooks</a></li>
+</ul>
+
+
+<p>もらってきて必要に応じてカスタマイズする。
+自分のリポジトリに置いてみました。試行錯誤中。
+まだ全然足りていない。</p>
+
+<p>これ、取得元と同期とったりするのは大変ですね。</p>
+
+<p><a href="https://github.com/satococoa/chef-repo">satococoa/chef-repo</a></p>
+
+<p>submoduleにしちゃうと自前でカスタマイズしたときに面倒だし、どうしよう。。。</p>
+
+<p>あとは今回作りたいサーバは All-in-one だが、後で使いやすいように base, web, db に role を分けてみた。</p>
+
+<h2>chef でインストール</h2>
+
+<p>サーバに deploy ユーザーでログインした状態で以下を実行。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git://github.com/satococoa/chef-repo.git
+</span><span class='line'>$ sudo chef-solo -c ~/chef-repo/config/solo.rb -j ~/chef-repo/config/all_in_one.json</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>あとは</h2>
+
+<p>ひたすら cookbook を作ったりカスタマイズしたりするのみ。
+iptables とかも chef を使ったほうがいいのだろうか。
+（インストールするソフトウェアによってはポート開ける必要があるため）
+monit とか logrotate とか munin とかもやらねば。</p>
+
+<h2>参考 URL</h2>
+
+<ul>
+<li><a href="http://wiki.opscode.com/display/~tily/Home">http://wiki.opscode.com/display/~tily/Home</a></li>
+<li><a href="http://wiki.opscode.com/display/~tily/Chef+Solo">http://wiki.opscode.com/display/~tily/Chef+Solo</a></li>
+<li><a href="http://higelog.brassworks.jp/?p=654">chef-soloで作業環境構築の自動化 | ひげろぐ</a></li>
+</ul>
+
+
+<h2>追記</h2>
+
+<p>このあと2つほどハマッてしまった。</p>
+
+<ol>
+<li>VirtualBox の GuestAdditions を入れようとしたら gcc, make, autoconf が必要だった。</li>
+<li>SELinux 有効の状態で Postfix が起動しなかった。</li>
+</ol>
+
+
+<p>SELinux の件は潔く無効にした。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo getenforce
+</span><span class='line'>Enforcing # =&gt; 有効
+</span><span class='line'>$ sudo setenforce 0 # =&gt; 無効にする
+</span><span class='line'>$ sudo getenforce
+</span><span class='line'>Permissive
+</span><span class='line'># 続いて、再起動後も無効になるようにする
+</span><span class='line'>$ sudo vi /etc/sysconfig/selinux
+</span><span class='line'>SELinux=disabled # この一行のみ編集</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>追記2</h2>
+
+<p>こうして準備したサーバに capistrano で初めてデプロイするときの手順。<br/>
+(capistrano-ext を使っている前提)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cap staging deploy:setup
+</span><span class='line'>$ cap staging deploy:check
+</span><span class='line'>$ cap staging deploy:update
+</span><span class='line'>
+</span><span class='line'># サーバ上で
+</span><span class='line'>$ rake RAILS_ENV=staging db:setup
+</span><span class='line'>$ rake RAILS_ENV=staging db:seed</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>追記3</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cap staging deploy:cold</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで <code>rake db:migration</code> までやってくれるんですね。知らなかった。<br/>
+restartじゃなくて、startになるようですし、こちらの方がいいですね。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-13T15:32:00+09:00" pubdate data-updated="true">Sep 13<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/08/05/rubymotionjp-meetup-1st/">
+		
+			第1回RubyMotion勉強会を開催しました</a>
+	</h2>
+	<div class="entry-content">
+		<p>報告が遅くなってしまいましたが、7/22(日)に無事に<a href="http://connpass.com/event/665/">第1回RubyMotion勉強会</a>を開催しましたのでご報告します。</p>
+
+<p>まだRubyMotion自体の発売からあまり時間が経っていないことがあって、みんなで半日かけて勉強する内容がちゃんとあるかなぁ。。。というのが最初の不安でしたが、ふたを開けてみると発表2本、LT3本、オープンセッション2本という充実した内容で開催することができました。</p>
+
+<h2>発表1 RubyMotionは誰得？ (+ 宣伝)</h2>
+
+<ul>
+<li>発表者: <a href="https://twitter.com/satococoa">@satococoa</a></li>
+<li>資料: <a href="https://speakerdeck.com/u/satococoa/p/rubymotion-hashui-de-%3F">RubyMotionは誰得？</a></li>
+</ul>
+
+
+<script async class="speakerdeck-embed" data-id="500b40cf4eac5400020565f7" data-ratio="1.299492385786802" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>実際にRubyMotionを使って仕事をしてみた経験から、現状のRubyMotionはどんな人にお勧めできて、どんな人は待った方がいいのか、というお話をさせていただきました。</p>
+
+<p>このときにお話しした、僕が仕事でRubyMotionで開発した<a href="http://itunes.apple.com/jp/app/batteri-by-dapan/id538707566?mt=8">アプリ</a>ですが、見事にAppStoreの無料トップを獲得しました！RubyMotionでも問題なく仕事ができることの証明ができたと思います。</p>
+
+<p>（こっそり宣伝: RubyMotionやRailsでお仕事したいエンジニアさんや、スマートフォンアプリの開発に携わりたいデザイナーさん、ディレクターさんはいらっしゃいませんか？お気軽に@satococoaまで声をおかけください。）</p>
+
+<h2>発表2 Differences CRuby/MacRuby/RubyMotion</h2>
+
+<ul>
+<li>発表者: <a href="https://twitter.com/watson1978">@watson1978</a> さん</li>
+<li>資料: <a href="https://speakerdeck.com/u/watson/p/rubymotion">Differences CRuby/MacRuby/RubyMotion</a></li>
+</ul>
+
+
+<script async class="speakerdeck-embed" data-id="500a284b4eac540002002cbe" data-ratio="1.3333333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>タイトル通り、CRubyとMacRubyの違い、そしてMacRubyとRubyMotionの違いについてお話ししていただきました。</p>
+
+<p>RubyMotionのソースコードのほとんどはMacRubyと同じで、大きな違いは以下の3点だそうです。</p>
+
+<ul>
+<li>Rubyソースをネイティブの実行ファイルにコンパイル</li>
+<li>添付ライブラリは廃止 (Kernel#requireメソッドも動かない)</li>
+<li>GCを独自に実装</li>
+</ul>
+
+
+<p>GC周りは今後RubyMotionもよりよいものに実装が変わるらしいですし、それがMacRubyの方へも実装されるかもしれない、という耳寄りな情報もありました。</p>
+
+<p>この資料は、MacRubyやRubyMotionをやる人にとっては必見だと思います。詳しい内容は資料をご参照 or 直接@watson1978さんまで！</p>
+
+<h2>LT1 RubyMotion 1.15で追加されたtest周りの話</h2>
+
+<ul>
+<li>発表者: <a href="https://twitter.com/pchw">@pchw</a> さん</li>
+<li>資料: <a href="https://speakerdeck.com/u/pchw/p/rubymotion-1-dot-15dezhui-jia-saretatestzhou-rifalsehua">RubyMotion 1.15で追加されたtest周りの話</a></li>
+</ul>
+
+
+<script async class="speakerdeck-embed" data-id="500eced96005c30002059d98" data-ratio="1.7297297297297298" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>1.15で実装された、UIAutomationを利用したテストをRubyで書けてしまうRubyMotionの新機能を、デモを交えて紹介していただきました。ぐりぐりシミュレータが動く様は、まるでSeleniumで書かれたテストを動かしているようでした。</p>
+
+<h2>LT2 SublimeRubyMotionBuilderの紹介</h2>
+
+<ul>
+<li>発表者: <a href="https://twitter.com/haraken3">@haraken3</a> さん</li>
+<li>資料: <a href="https://speakerdeck.com/u/haraken3/p/sublimerubymotionbuilderfalseshao-jie">SublimeRubyMotionBuilderの紹介</a></li>
+</ul>
+
+
+<script async class="speakerdeck-embed" data-id="500bf388d4056800020008b7" data-ratio="1.3333333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>当日会場で使っているエディタについて尋ねたところ、一番多かったのがSublime Text 2でした。 (ちなみに次点はEmacs)<br/>
+そのSublime Text 2用のRubyMotionプラグインの作者様に作ろうと思ったきっかけやプラグインの紹介などをしていただきました。</p>
+
+<p>このプラグイン、AppStoreの複数の国で有料アプリ1位を獲得したEverClipの作者さんも使っているそうで、もはや完全に世界的に定番となっています。</p>
+
+<blockquote><p>I use Sublime Text 2 with the RubyMotion plugin which is extremely handy.</p></blockquote>
+
+<p>引用: <a href="http://blog.rubymotion.com/post/27906866028/rubymotion-success-story-everclip">RubyMotion Success Story: EverClip</a></p>
+
+<h2>LT3 nitronの紹介</h2>
+
+<ul>
+<li>発表者: <a href="https://twitter.com/mah_lab">@mah_lab</a> さん</li>
+</ul>
+
+
+<p>RubyMotion用のgemである、<a href="https://github.com/mattgreen/nitron">nitron</a>の紹介をしていただきました。</p>
+
+<p>RubyMotionでCoreDataをActiveRecord風に使えるようになっていたり、とても短い記述でTableViewControllerを使ったviewが書けたりする、「未来を感じる」gemでした。</p>
+
+<p>ただし、未来を感じつつも現実はテストコードがゼロというオチもあり。。。。うーん。</p>
+
+<h2>オープンセッション</h2>
+
+<p>当日にみんなの話したい/知りたいところを募って、2セッション行うことにしました。</p>
+
+<h3>1. <a href="http://rubymotion-tutorial.com">RubyMotion Tutorial</a> をやってみる</h3>
+
+<p>まだRubyMotionを購入されていない方もいたので、RubyMotionを使った開発がどのようなものか、という実例を見るという意味も兼ねて、僕がプロジェクタに自分のスクリーンを映しつつ、ブツブツつぶやきながらやれるところまで実際にコードを書いてみました。</p>
+
+<h3>2. nitronソースコードリーディング</h3>
+
+<p><a href="https://twitter.com/mah_lab">@mah_lab</a>さんにリードしていただきながら、nitronのソースコードを読んでみました。</p>
+
+<p>まだまだ発展途上という感じもありましたが、今後こういったライブラリが増えてくると、きっとRubyMotionの優位性が上がってくるのかなぁというのが個人的な感想です。</p>
+
+<h2>今後について</h2>
+
+<p>日本語の情報をそろそろまとめていこう、という話が懇親会で挙がり、今後以下のような活動をしていこうと思います。</p>
+
+<h3>日本語でRubyMotionについて語ったり、相談できる場を作る</h3>
+
+<p>Facebook上に既にグループがありますので、そちらを使わせていただくことにしました。<br/>
+参加自由ですので、どうぞお気軽に加わってください。</p>
+
+<ul>
+<li><a href="https://www.facebook.com/groups/149315595198329/">RubyMotion JP(facebook group)</a></li>
+</ul>
+
+
+<h3>github上で有益なコンテンツの翻訳等を公開する。</h3>
+
+<ul>
+<li><a href="http://rubymotion.jp">RubyMotionJP</a></li>
+</ul>
+
+
+<p>Github上にOrganizationを作って活動しています。<a href="https://github.com/RubyMotionJP">https://github.com/RubyMotionJP</a><br/>
+協力していただける方はぜひGithubアカウントを添えて@satococoaまで！</p>
+
+<p>第2回のRubyMotion勉強会は事例等がたまってきた頃にやろうかなと思っています。</p>
+
+<p>それとは別に、場所さえ確保できれば月1回くらいのペースでもくもく&amp;相談ができるといいなぁと、今のところ考えています。</p>
+
+<p>あと、<a href="http://jp.rubyist.net/magazine/">Rubyist Magazine &ndash; るびま</a>に記事を書く予定です。次号に間に合うように絶賛執筆中ですのでお楽しみに。</p>
+
+<p>最後に、ご参加いただきましたみなさんやスタッフ、発表者としてご協力いただいたみなさん、そして会場を提供していただいた<a href="http://www.kddi-webcommunications.co.jp">KDDI ウェブコミュニケーションズ</a>様、本当にありがとうございました。<br/>
+今後ともよろしくお願いいたします。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-05T18:07:00+09:00" pubdate data-updated="true">Aug 5<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rubymotion/'>RubyMotion</a>, <a class='category' href='/blog/categories/event/'>event</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/07/17/rubymotion-faq/">
+		
+			RubyMotionでよくある質問</a>
+	</h2>
+	<div class="entry-content">
+		<p>RubyMotionでよく聞かれる質問をまとめてみました。</p>
+
+<h2>Q1. いくらですか？</h2>
+
+<p>現在 ¥16,354 となっています。無料版もお試し版もありません。</p>
+
+<p>学生や大企業は個別に連絡することで対応してくれるそうです。</p>
+
+<h2>Q2. ライセンスは何年有効ですか？</h2>
+
+<p>サポート（アップデート含む）は年間契約です。継続料は通常料金の半額だそうです。</p>
+
+<p>アップデートが不要であれば一度買えばずっと使えるわけですが、現実的には毎年¥8,000ちょいを払って継続することになります。</p>
+
+<h2>Q3. Androidのアプリは作れる？</h2>
+
+<p>できません。今後その予定もありません。</p>
+
+<p>公式サイトでもAndroidやりたい場合は <a href="http://ruboto.org/">Ruboto</a> をチェックするようにとの旨書いてあります。</p>
+
+<h2>Q4. オープンソースですか？</h2>
+
+<p>一部OSSです。<a href="https://github.com/RubyMotion/RubyMotion">RubyMotion/RubyMotion</a></p>
+
+<p>これはRubyMotionのうちllvmを使ってRubyコードをバイナリにコンパイルするコマンドを実行するRakeタスクであって、RubyMotionのコンパイラ自体ではありません。</p>
+
+<p>OSSでは無い部分も、多くはMacRubyと共通しているそうです。（MacRubyはOSSです。）</p>
+
+<h2>Q5. 仕事で使えますか？</h2>
+
+<p>使えるといえば使えます。僕が仕事で作ったアプリは現在AppStoreでin reviewですし、次のアプリも作り始めています。</p>
+
+<p>ただ、開発しながらRubyMotion自体のバグを見つけてしまってそれの再現ケースを作ったり、修正パッチを作ったりという作業もしています。<br/>
+でもそれは他のどのライブラリやフレームワークを使っていても一緒ですよね？</p>
+
+<h2>Q6. メモリ管理まわりはどうなっていますか？</h2>
+
+<p>公式の情報によると、ARCと似たリファレンスカウンタ方式で自動的に管理してくれるそうです。</p>
+
+<p>なので、僕ら開発者はメモリ管理をする必要はありません。逆に言うとできません。
+やろうと思えば <code>obj.send(:retain)</code> とかも可能ですが、本来はそこはRubyMotionが面倒を見る部分なのであまりやらない方がいいと思います。</p>
+
+<p>とは言いつつもメモリリークが疑われるようなときなどは <code>obj.retainCount</code> をログに出しながら開発したりしています。（で、おかしかったら再現ケースつくってサポートチケット投げる）</p>
+
+<h2>Q7. Objective-C のコードに変換されるのですか？</h2>
+
+<p>いいえ。直接LLVMのバイトコードに変換されます。</p>
+
+<p>実行速度的には有利ですが、RubyMotionがもし開発停止とかになったときにObjCのコードが手元に残らないというのは、Titaniumとの比較のときに考慮に入れるべきかもしれませんね。</p>
+
+<h2>Q8. Apple の審査は通るのですか？</h2>
+
+<p>通ります。</p>
+
+<p>公式で開発した <a href="http://itunes.apple.com/us/app/mustachio/id525324802?mt=8">Mustachio</a> というアプリが AppStore で公開されていますし、今AppStoreの有料上位の <a href="http://clip.ignition.hk/">EverClip</a> というアプリもRubyMotion製です。（BubbleWrapとかmotion-nanostoreとかのgemを使っているそうです。）</p>
+
+<h2>Q9. Objective-C のライブラリは使えますか？</h2>
+
+<p>使えます。</p>
+
+<p><a href="http://cocoapods.org/">CocoaPods</a>をmotion-cocoapodsというgemを利用すると使えるのでそれが一番手軽ですが、静的にコンパイルされたライブラリやXcodeのプロジェクトをそのまま使うことも可能です。</p>
+
+<h2>Q10. 既存の gem は使えますか？</h2>
+
+<p>使えません。RubyMotion用に作られたgemを使ってください。あるいはObjective-Cのライブラリを探して使ってください。</p>
+
+<hr />
+
+<p>他に追加したいFAQがありましたら @satococoa までお願いします。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-17T03:24:00+09:00" pubdate data-updated="true">Jul 17<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rubymotion/'>RubyMotion</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/07/02/rubymotionjp1-application-page/">
+		
+			第一回RubyMotion勉強会 募集開始</a>
+	</h2>
+	<div class="entry-content">
+		<p>参加者の募集ページをオープンしました。</p>
+
+<p><a href="http://connpass.com/event/665/">第一回 RubyMotion 勉強会</a></p>
+
+<p>引き続き発表者、LT希望者、スタッフも募集していますのでお気軽に <a href="https://twitter.com/satococoa">@satococoa</a> までお声がけください。</p>
+
+<p>よろしくお願いします。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-02T00:03:00+09:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rubymotion/'>RubyMotion</a>, <a class='category' href='/blog/categories/event/'>event</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/06/23/rubymotion-meetup-1st-announcement/">
+		
+			第一回RubyMotion勉強会のご案内</a>
+	</h2>
+	<div class="entry-content">
+		<p>以前ブログで告知したとおり、RubyMotion勉強会を開催したいと思います。</p>
+
+<p>開催概要は以下のとおりです。</p>
+
+<ul>
+<li>日時： 7/22（日） 14:00〜18:00（13:30開場、18:00〜20:00 希望者のみプチ懇親会）</li>
+<li>場所： <a href="http://www.cloudcore.jp/vps/develop/">KDDIウェブコミュニケーションズ 様</a></li>
+<li>人数： 30名を予定</li>
+<li>内容： 発表メイン。詳細はこれから決まります。</li>
+</ul>
+
+
+<p>現在発表者とスタッフを募集しており、参加者の募集は7/1（日）から始めたいと思います。
+(<a href="http://connpass.com/">connpass</a>にて募集します。)</p>
+
+<p>「発表 or スタッフやってもいいよ！」という方、あとは「こんなこと知りたい」「こんなことやりたい」というアイディアをお持ちの方はぜひメーリングリストの方に投稿していただければと思います。</p>
+
+<p>詳しくは以下のトピックをご参照ください。</p>
+
+<p><a href="https://groups.google.com/d/topic/rubymotionjp/PgViYjcxU9w/discussion">第一回 RubyMotion 勉強会の日時・場所のご連絡 &amp; 発表者・スタッフを募集します。</a></p>
+
+<p>第一回なのでどのくらい発表してくれる人が集まるのか、正直不安です。<br/>
+ご協力をよろしくお願いします！</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-23T18:55:00+09:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rubymotion/'>RubyMotion</a>, <a class='category' href='/blog/categories/event/'>event</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/06/06/cool-tools-for-rubymotion/">
+		
+			RubyMotionと使っているツール</a>
+	</h2>
+	<div class="entry-content">
+		<p>最近仕事でRubyMotionを使っています。</p>
+
+<p>まだまだ開発を効率化する方法を模索中なのですが、みなさんのおすすめなども知りたいと思い、まずは今自分が使っていて便利だなーと思うものを共有したいと思います。</p>
+
+<p>より良い方法とか、「これ使うと効率上がるよ！」というのがあったら @satococoa まで教えて下さい。</p>
+
+<h2>vim</h2>
+
+<p>エディタは<a href="http://blog.macromates.com/2011/textmate-2-0-alpha/">TextMate 2</a>や<a href="http://www.sublimetext.com/2">Sublime Text 2</a>も試しましたが、指がvimを欲してしまうので結局vimに戻ってきてしまいました。コード補完を重視する人には現時点ではSublime Text 2が一番おすすめだと思います。</p>
+
+<p>ちなみに特にsnippetも使わずにtag補完だけでやっています。</p>
+
+<h2><a href="http://fileability.net/ingredients/">Ingredients</a></h2>
+
+<p><img src="/images/201206/ingredients.png">
+iOS SDKのリファレンスを見るのに使います。<br/>
+Webで検索するよりはるかにサクサクしていて使いやすいです。</p>
+
+<h2>motion-testflight</h2>
+
+<p><a href="https://testflightapp.com">testflight</a>での配布を簡単にしてくれるgemです。<br/>
+設定手順は公式のページに掲載されています。<a href="http://www.rubymotion.com/developer-center/articles/testflight/">Submit RubyMotion Apps to TestFlight</a></p>
+
+<p>rakeタスクでビルドを配布可能になります。超便利。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake testflight note="hoge"</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ライブラリ等</h2>
+
+<p>日々RubyMotion用のgemが充実してきていますね。<br/>
+いくつか僕の知っている範囲でご紹介します。</p>
+
+<h3><a href="https://github.com/mattetti/BubbleWrap">BubbleWrap</a></h3>
+
+<p>Rubyっぽくもろもろ書けるようにするラッパー集。</p>
+
+<h3><a href="https://github.com/mattgreen/nitron">nitron</a></h3>
+
+<p>こっちはUITableViewControllerとCoreDateに特化したラッパーでしょうか。CoreDataあたりは対応始めたばかりっぽい？</p>
+
+<h3><a href="https://github.com/railsfactory/rubymotion-sqlite">rubymotion-sqlite</a></h3>
+
+<p>ActiveRecordっぽいインターフェイスでsqliteを使えるようにしてくれる。</p>
+
+<h3><a href="https://github.com/fusionbox/sugarcube">sugarcube</a></h3>
+
+<p>便利なヘルパの寄せ集めみたいな感じ。StringとかSymbolまでもがすごい勢いで拡張されます。Rubyっぽい。</p>
+
+<hr />
+
+<p>まだObjective-Cに移行する可能性もあるのでiOS SDKに親しみたいという目的から僕はそれらを使っていません。ヘルパが必要なときは自分で定義して<code>app/helpers/</code>あたりに入れています。</p>
+
+<p>とはいえ、TableViewのdelegate地獄はなかなかきついです。</p>
+
+<p>あと、まだWebのAPIとあれこれするようなアプリを作っていないのですが、railsで作ったAPIとうまいことやる方法もこれから確立していきたいと思います。調べてみたいと思っているのは以下。</p>
+
+<ul>
+<li><a href="https://github.com/RestKit/RestKit">RestKit</a></li>
+<li><a href="https://github.com/dingbat/nsrails">NSRails</a> (+ <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a>?)</li>
+<li><a href="https://github.com/railsfactory/rubymotion-sqlite">rubymotion-sqlite</a> (+ <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a>?)</li>
+</ul>
+
+
+<p>試した方はぜひブログ書いておすすめを教えてください。</p>
+
+<h2>命名規約</h2>
+
+<p>Google Groupの方にも最近投稿がありましたが、基本的にはObjective-C由来のものはcamelCase、その他はRubyのよくある命名規約に則ろうと思っています。<br/>
+つまり、変数やメソッド名はsnake_caseで定数は全部大文字で、などですね。</p>
+
+<p>僕が今書いているアプリではそのへんが混ざってしまっています。どけんかせんといかん。</p>
+
+<h2>テストについて</h2>
+
+<p>どう書いていいのやら、というかそもそもiOS SDK自体を全然知らないためにどこをどうテストしていいのかわからず、結局まだ全然書いていません。</p>
+
+<p>気になっているのは <a href="https://github.com/moredip/Frank">Frank</a> です。cucumber風にiOSのテストがかけるらしいので使ってみたい。もうちょっとiOS SDKに親しんで、テストしたい項目がわかってきたら。</p>
+
+<h2>【宣伝】RubyMotion勉強会始めます</h2>
+
+<p>そろそろ色々試している皆さんはノウハウが溜まってきた頃だと思います。こういうノウハウを貯めておく場を作りたいと思いますし、これを共有する場がそろそろ欲しいと思っています。</p>
+
+<p>とりあえず言い出しっぺなのでGoogleグループで作ってみました。 <a href="https://groups.google.com/d/forum/rubymotionjp">RubyMotion勉強会 in Japan</a></p>
+
+<p>第1回目の勉強会を東京にて6月下旬〜7月上旬くらいにやりたいと思っています。<br/>
+内容とかもこれから考えていきたいと思いますので、興味のある方はぜひお気軽に加わってください。</p>
+
+<p>よろしくお願いします！</p>
+
+<h2>追記</h2>
+
+<p>リファレンスを検索するアプリとして <a href="http://itunes.apple.com/jp/app/dash/id458034879">Dash</a> というアプリを@watson1978さんに教えて頂きました。</p>
+
+<p><img src="/images/201206/dash.png"></p>
+
+<p>こちらも今試してみた感じだと、さくさくマニュアル引けますね！本来はスニペット管理アプリみたい？</p>
+
+<p>明日一日使ってみようと思います、ありがとうございます。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-06T10:22:00+09:00" pubdate data-updated="true">Jun 6<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rubymotion/'>RubyMotion</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/06/04/minato-rubykaigi-01/">
+		
+			みなとRuby会議01</a>
+	</h2>
+	<div class="entry-content">
+		<p>6/2(土)は<a href="http://regional.rubykaigi.org/minato01">みなとRuby会議01</a>でした。</p>
+
+<p>このRuby会議は僕の参加する<a href="http://bukt.org/groups/3">Yokohama.rb</a>にとって初めて主催する地域Ruby会議でした。</p>
+
+<p>初主催の上にネットワークが不安定だったり人数が100人超だったり、そんな中で更にコーディングまでやろう。。。なんていう、僕らにとっては相当チャレンジングな企画でした。</p>
+
+<p>まだようやく気持ちが落ち着いてきたところであまりうまくまとまらないかもしれませんが、気持ちが熱いうちに少し裏側とか、企画を考えた側の気持ちとかそんなことを書き記しておこうと思います。</p>
+
+<h2>ソーシャルコーディングについて</h2>
+
+<p>正直「どこが <strong>ソーシャル</strong> コーディングなんだ！？」とDisられるのを覚悟していたのですが、TL見る限りはそんなこともなくみなさん思い思いに楽しんでいただけたようで安心しました。</p>
+
+<p>この企画のスタートは半年前の第1回(?)みなとRuby会議実行委員会で行われたブレストにまでさかのぼります。</p>
+
+<p>メンバーから一番多く挙がった声が「実際に手を動かすことがしたい」ということでした。</p>
+
+<p>このみなとRuby会議の（結果的に）隠れたテーマの一つとして「技術」があります。あくまで「技術」にフォーカスしたRuby会議にしたい。そしてその上でさらにYokohama.rbらしさを出したい。</p>
+
+<p>「Yokohama.rbらしさってなんだろう」とふと考えたときに僕が思いつくことが、懐の広さです。これはファウンダーのだんさんはじめ、メンバーの人柄によるところが非常に大きいと思います。<br/>
+みんな真剣で熱く、でもどこかほんわかとした優しい方が多い印象です。言ってしまえばゆるふわです。</p>
+
+<p>そしてそれは結果的に以下のような要求となり、プログラム班の頭を悩ませることになりました。</p>
+
+<ul>
+<li>実際に手を動かすセッションにしたい</li>
+<li>初級者〜上級者までそれぞれの楽しみ方で楽しめるようにしたい
+
+<ul>
+<li>まったくの初心者〜Rubyコミッタまで幅広い層の参加が見込まれる</li>
+</ul>
+</li>
+<li>ネットワークはつながらないかもしれない</li>
+</ul>
+
+
+<p>最初はYokohama.rbメンバーのgithub上のリポジトリを漁り、いくつかいじりやすいものを抽出してそれらにPull Requestを送ろう！という企画として進めていました。しかし最後のネットワークの問題が立ちはだかります。</p>
+
+<p>そもそもインターネット無しで僕らはちゃんとプログラムを書けるのか？という心配もありますし、100人が一気にbundle installをやったりしたらまともなネットワークが引けていてもうまくいくかわからない。</p>
+
+<p>しばらく悩んだ末、プログラム班ミーティングで出した答えがTDDBCをモデルにして何かこちらで用意した課題を解くようにしよう、という今回のソーシャルコーディング企画の原型でした。</p>
+
+<p>次に悩んだのがペア決め。というか、最初はペアでやるかどうかも決まっておらず、どうやってグループにしようか。。。という状態からのスタートです。</p>
+
+<p>これは大きく分けて2つの案の間で激しい葛藤がありました。1つはなるべく初級者と上級者でペアを組むようにする案、他方は同じくらいの経験の人をまとめる案。</p>
+
+<p>色々考えた結果、ちょっと冗談めいた内容ではありましたが「生涯に書いたRubyコードの行数」というアンケートをとる、あとは名前を見て適当にそれっぽくグループ分けだけすればいい。そして経験が浅い方のサポートはスタッフがTA的に動いてがんばる、という方法に落ち着きました。</p>
+
+<p>そして当日もプログラム班メンバーを始めとするスタッフの絶妙な動きのお陰でかなりうまくいったのでは、と思っています。</p>
+
+<h2>招待講演について</h2>
+
+<p>本当に講演者の方々にはうまく趣旨を汲み取っていただいて、とてもバランスのとれたセッションにすることができました。ありがとうございました。</p>
+
+<h2>Rubyアイドル枠について</h2>
+
+<p>ごめんなさい、僕がふられました。モテへの道は果てしなく遠い。</p>
+
+<h2>まとめ</h2>
+
+<p>スタッフ目線でつらつらと書き連ねてみました。</p>
+
+<p>まだアンケートを取り始めたばかりで率直な参加者の方々の意見が見られていない状態ではありますが、まずは無事に当日を終えることができてほっとしています。
+（とは言え、こんな風に書いている間もまだレポート班の戦いが続いています。きっとるびまに素晴らしい記事が掲載されることと思います。僕も楽しみにしています。）</p>
+
+<p>スタッフのみなさん、講演者の@nagachikaさん、つじたさん、大場さん、日本Rubyの会のメンバーはじめご協力いただいた各方面の方々、そして参加者のみなさんに助けられてなんとかはじめの一歩を踏み出すことができました。ありがとうございました！</p>
+
+<p>そして参加者のみなさんはどんなはじめの一歩を踏み出せたでしょうか。ぜひぜひブログ書いて教えてください！</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-04T01:45:00+09:00" pubdate data-updated="true">Jun 4<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/community/'>Community</a>, <a class='category' href='/blog/categories/event/'>event</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2012/06/04/hello-octopress/">
+		
+			Hello Octopress</a>
+	</h2>
+	<div class="entry-content">
+		<p>遅ればせながら<a href="http://octopress.org/">Octopress</a>を始めてみました。</p>
+
+<p>単にはてな記法を調べるのに疲れたのです。。。<br/>
+ほら、最近はほとんどMarkdownでメモ書きますし。</p>
+
+<p>インストールはこんな感じでした。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>$ cd octopress
+</span><span class='line'>$ bundle install --path vendor
+</span><span class='line'>$ rake setup_github_pages # リポジトリのURL聞かれるので答える
+</span><span class='line'>$ rake install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>デフォルトでも文字が大きめでコードハイライトが楽なのがいいですね。<br/>
+なるべく楽をしたいですからね。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-04T00:45:00+09:00" pubdate data-updated="true">Jun 4<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ri-ji/'>日記</a>
+
+
+</div>
+	
+</div>
+</article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/2/" class="prev">Prev</a>
+    
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2013
+
+    Satoshi Ebisawa
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-32351198-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

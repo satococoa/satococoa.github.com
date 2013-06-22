@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: linux | satococoa's blog]]></title>
+  <link href="http://satococoa.github.io/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://satococoa.github.io/"/>
+  <updated>2013-06-22T16:06:02+09:00</updated>
+  <id>http://satococoa.github.io/</id>
+  <author>
+    <name><![CDATA[Satoshi Ebisawa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[httperf でパフォーマンステストを行う]]></title>
+    <link href="http://satococoa.github.io/blog/2012/10/25/performance-test-with-httperf/"/>
+    <updated>2012-10-25T01:23:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/10/25/performance-test-with-httperf</id>
+    <content type="html"><![CDATA[<p>httperf は ab (apache bench) と同じようなツールで、サーバの負荷テストに使うことができます。</p>
+
+<p>もうすぐリリースのサーバーに負荷をかける目的で使ってみたのでメモします。</p>
+
+<h2>インストール</h2>
+
+<p>```</p>
+
+<h1>Homebrew</h1>
+
+<p>$ brew install httperf</p>
+
+<h1>CentOS</h1>
+
+<p>$ sudo yum install httperf
+```</p>
+
+<h2>URLリストを作る</h2>
+
+<p>URLをファイルにまとめておいて、順番にアクセスさせることができます。
+実際のユーザのアクセスに近い負荷を作り出すことができますね！</p>
+
+<p>ちなみにファイルのフォーマットはnull文字区切りのテキストファイルです。nginxのアクセスログから作ってみます。</p>
+
+<p><code>
+$ zcat /path/to/access.log-20121024.gz | awk '{ print $7 }' &gt; urllist.txt
+$ tr "\n" "\0" &lt; urllist.txt &gt; wlog.log
+</code></p>
+
+<h2>実行</h2>
+
+<p><code>
+$ httperf --hog --server example.com --port 80 --wlog Y,/tmp/wlog.log --rate 200 --num-conn 720000 --num-call 1 --timeout 5
+</code></p>
+
+<p><code>$ man httperf</code>するとたくさんのオプションの説明が出てきますが、とりあえず使った物は以下の通り。</p>
+
+<ul>
+<li>hog: 必要な限り多くのTCPポートを使おうとします。指定しないと1024 から 5000 ポートしか使ってくれないのでボトルネックになってしまうことがあるそうです。(正直よくわかってないです。)</li>
+<li>server: ドメインかIPを指定</li>
+<li>port: 接続先ポート</li>
+<li>wlog: アクセス先のpathのリストが入ったファイルを指定する。頭のY/Nはファイル末尾まで終わった後にもう一度頭から繰り返すか。Nにすると、そこで動作終了します。</li>
+<li>rate: 1秒あたりのリクエスト数</li>
+<li>num-conn: 合計接続数。接続数がこの値に達すると動作終了します。</li>
+<li>num-call: 1接続あたりのリクエスト数。今回はセッションを使ったりしないステートレスなサーバなのでシンプルに1にしてみました。</li>
+<li>timeout: タイムアウト（秒）を指定</li>
+</ul>
+
+
+<p>上記だと、秒間200接続を行い、接続ごとに1つずつpathにアクセスします。合計の接続数が720000になると止まるので、大体1時間くらい負荷をかけ続けることになります。</p>
+
+<h2>参考URL</h2>
+
+<ul>
+<li><a href="http://na-ga.net/blog/?p=527">Na-ga.net » Blog Archive » httperf で Web サーバのベンチマーク &ndash; Linux を中心とした忘却メモ</a></li>
+<li><a href="http://memo.majide.com/index.php?httperf%A4%CB%A4%E8%A4%EBWeb%A5%B5%A1%BC%A5%D0%A4%CE%A5%D9%A5%F3%A5%C1%A5%DE%A1%BC%A5%AF">httperfによるWebサーバのベンチマーク &ndash; (・∀・)イイ!!Memo</a></li>
+<li><a href="http://d.hatena.ne.jp/defiant/20080527/1211873545">httperf &ndash; TenForwardの日記 (defiantの日記改め)</a></li>
+<li><a href="http://na-ga.net/blog/?p=559">Na-ga.net » Blog Archive » httperf man (OUTPUT) &ndash; Linux を中心とした忘却メモ</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CentOS + chef-solo で rails が動くサーバを作る]]></title>
+    <link href="http://satococoa.github.io/blog/2012/09/13/building-rails-server-on-centos-with-chef-solo/"/>
+    <updated>2012-09-13T15:32:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/09/13/building-rails-server-on-centos-with-chef-solo</id>
+    <content type="html"><![CDATA[<p>CentOS + chef-solo で rails が動く All in one サーバを準備する</p>
+
+<h2>目標</h2>
+
+<p>VPS を立ちあげてすぐに All-in-one (DB, Web, App 全部入り) で rails アプリケーションが動くシンプルなサーバを立ち上げる。</p>
+
+<p>ローカルの VirtualBox にインストールして検証する。</p>
+
+<p>ちなみに、Linux のセットアップをするときには未だに僕は slicehost のドキュメント <a href="http://articles.slicehost.com">http://articles.slicehost.com</a> を見ています。
+もっとモダンなところがあったら教えて下さい。</p>
+
+<p>chef の概要については <a href="http://wiki.opscode.com/pages/viewpage.action?pageId=24019581">http://wiki.opscode.com/pages/viewpage.action?pageId=24019581</a> をざっと読んだのみで、あとは使いながら覚えていく戦法。</p>
+
+<h2>構成</h2>
+
+<ul>
+<li>CentOS 6.3</li>
+<li>Ruby 1.9.3</li>
+<li>node (asset pipeline のため)</li>
+<li>nginx</li>
+<li>passenger</li>
+<li>MySQL</li>
+</ul>
+
+
+<p>ruby のインストールは、変なことにハマりたくないので rvm も rbenv も使わず、/usr/local に普通にインストールする。</p>
+
+<h2>OS インストール</h2>
+
+<p>OS タイプは Red Hat (64bit) を選択。メインメモリは 512MB。
+ISO イメージは &ldquo;CentOS-6.3-x86_64-netinstall.iso&rdquo; を使用。
+ネットワークの設定はアダプタ 1 が NAT、アダプタ 2 をホストオンリーアダプタとし、vboxnet0 をあらかじめ VirtualBox の環境設定から作成しておく。</p>
+
+<p>あとは普通にインストール。ネットインストールなので OS イメージの URL を聞かれる。"<a href="http://ftp.iij.ad.jp/pub/linux/centos/6.3/os/x86_64">http://ftp.iij.ad.jp/pub/linux/centos/6.3/os/x86_64</a>" を指定した。</p>
+
+<p>インストールが終わったら Devices メニューから .iso を取り外して再起動。</p>
+
+<p>システムを最新にしておく。</p>
+
+<p>```</p>
+
+<h1>yum update</h1>
+
+<p>```</p>
+
+<h2>基本設定 (chef が動くところまで)</h2>
+
+<h3>ネットワークの設定 (ホストオンリーネットワーク)</h3>
+
+<p>eth0 は NAT としてセットアップされているので VM からインターネットはアクセスできる。
+ローカルから VM へアクセスできるように、eth1 をセットアップする。</p>
+
+<p>vi /etc/sysconfig/network-scripts/ifcfg-eth1</p>
+
+<p><code>
+DEVICE="eth1"
+BOOTPROTO="static" # 変更
+HWADDR="XX:XX:XX:XX:XX:XX"
+NM_CONTROLLED="yes"
+ONBOOT="yes" # 変更
+TYPE="Ethernet"
+UUID="xxxxxxxxxx"
+IPADDR="192.168.56.10" # 追加
+NETMASK="255.255.255.0" # 追加
+</code>
+最後の IPADDR, NETMASK は VirtualBox の環境設定から作ったホストオンリーアダプタの設定に合わせる。</p>
+
+<p>ネットワークを再起動して ping が通ることを確認。</p>
+
+<p>```</p>
+
+<h1>service network restart # VM 上で</h1>
+
+<p>$ ping 192.168.56.10 # ローカルから
+```</p>
+
+<h3>一般ユーザの作成</h3>
+
+<p>deploy というユーザーを作り、そのユーザーでデプロイしたりrailsを動かしたりする。</p>
+
+<p>```</p>
+
+<h1>useradd deploy -G wheel</h1>
+
+<h1>passwd deploy</h1>
+
+<p>```</p>
+
+<p>sudo できるように。</p>
+
+<p>```</p>
+
+<h1>visudo</h1>
+
+<p>```</p>
+
+<p>以下の行のコメントアウトを解除</p>
+
+<p>```</p>
+
+<h1>%wheel  ALL=(ALL) ALL</h1>
+
+<p>```</p>
+
+<p>ここから先は deploy ユーザーで作業するので、一度ログアウトして deploy ユーザーでログイン。</p>
+
+<p><strong>余談</strong>
+ここまでやったところで、<a href="http://vagrantup.com">Vagrant</a> というものの存在を思い出して少し萎えた。</p>
+
+<h3>SSH</h3>
+
+<p>ローカルマシンから公開鍵を転送。</p>
+
+<p><code>
+$ scp ~/.ssh/id_rsa.pub deploy@192.168.56.10:/tmp
+bash: scp: コマンドが見つかりません
+lost connection
+</code></p>
+
+<p>あれ、VM 側に scp が入っていない。</p>
+
+<p>VM 側で openssh-clients を入れてから再挑戦して OK。</p>
+
+<p><code>
+$ sudo yum install openssh-clients
+</code></p>
+
+<p>改めて共通鍵のコピー。</p>
+
+<p><code>
+$ mkdir .ssh
+$ chmod 700 .ssh
+$ mv /tmp/id_rsa.pub .ssh/authorized_keys
+$ chmod 600 .ssh/authorized_keys
+</code></p>
+
+<p>sshd の設定、再起動。</p>
+
+<p>```
+$ sudo vi /etc/ssh/sshd_config</p>
+
+<h1>変更点</h1>
+
+<p>Port XXXX # 適当なポートに変更
+PubkeyAuthentication yes
+PasswordAuthentication no
+$ sudo service sshd restart
+```</p>
+
+<p>ここから先はローカルからログインして作業する。</p>
+
+<p><code>
+$ ssh deploy@192.168.56.10 -p XXXX
+</code></p>
+
+<h3>iptables</h3>
+
+<p>```
+$ sudo iptables -L # 現状を確認
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination       <br/>
+ACCEPT     all  &mdash;  anywhere             anywhere            state RELATED,ESTABLISHED
+ACCEPT     icmp &mdash;  anywhere             anywhere          <br/>
+ACCEPT     all  &mdash;  anywhere             anywhere          <br/>
+ACCEPT     tcp  &mdash;  anywhere             anywhere            state NEW tcp dpt:ssh
+REJECT     all  &mdash;  anywhere             anywhere            reject-with icmp-host-prohibited</p>
+
+<p>Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination       <br/>
+REJECT     all  &mdash;  anywhere             anywhere            reject-with icmp-host-prohibited</p>
+
+<p>Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+$ sudo iptables -F # 一旦すべて削除
+$ sudo vi /etc/iptables.up.rules</p>
+
+<h1><a href="http://articles.slicehost.com/assets/2007/9/4/iptables.txt">http://articles.slicehost.com/assets/2007/9/4/iptables.txt</a> からまるごと。SSH のポートを自分の環境に合わせるのを忘れないように。</h1>
+
+<p>*filter</p>
+
+<h1>Allows all loopback (lo0) traffic and drop all traffic to 127/8 that doesn&rsquo;t use lo0</h1>
+
+<p>-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -d 127.0.0.0/8 -j REJECT</p>
+
+<h1>Accepts all established inbound connections</h1>
+
+<p>-A INPUT -m state &mdash;state ESTABLISHED,RELATED -j ACCEPT</p>
+
+<h1>Allows all outbound traffic</h1>
+
+<h1>You can modify this to only allow certain traffic</h1>
+
+<p>-A OUTPUT -j ACCEPT</p>
+
+<h1>Allows HTTP and HTTPS connections from anywhere (the normal ports for websites)</h1>
+
+<p>-A INPUT -p tcp &mdash;dport 80 -j ACCEPT
+-A INPUT -p tcp &mdash;dport 443 -j ACCEPT</p>
+
+<h1>Allows SSH connections</h1>
+
+<p>#</p>
+
+<h1>THE -dport NUMBER IS THE SAME ONE YOU SET UP IN THE SSHD_CONFIG FILE</h1>
+
+<p>#
+-A INPUT -p tcp -m state &mdash;state NEW &mdash;dport XXXX -j ACCEPT</p>
+
+<h1>Allow ping</h1>
+
+<p>-A INPUT -p icmp -m icmp &mdash;icmp-type 8 -j ACCEPT</p>
+
+<h1>log iptables denied calls</h1>
+
+<p>-A INPUT -m limit &mdash;limit 5/min -j LOG &mdash;log-prefix &ldquo;iptables denied: &rdquo; &mdash;log-level 7</p>
+
+<h1>Reject all other inbound &ndash; default deny unless explicitly allowed policy</h1>
+
+<p>-A INPUT -j REJECT
+-A FORWARD -j REJECT</p>
+
+<p>COMMIT
+$ sudo iptables-restore &lt; /etc/iptables.up.rules
+$ sudo service iptables save
+```</p>
+
+<p>いったんここで VirtualBox のスナップショットを取っておいた。
+<strong>実はssh, iptablesもchefで管理するもの？</strong></p>
+
+<h3>chef のインストールまで</h3>
+
+<p>ruby, chef をインストールするのに必要なところまでインストールする。</p>
+
+<p>```</p>
+
+<h1>ruby インストールに必要なパッケージ</h1>
+
+<p>$ sudo yum -y install git gcc gcc-c++ make autoconf openssl-devel zlib-devel readline-devel curl-devel gettext-devel
+$ curl -O <a href="http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz">http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz</a>
+$ tar xzvf yaml-0.1.4.tar.gz
+$ cd yaml-0.1.4
+$ ./configure &mdash;prefix=/usr/local
+$ make
+$ sudo make install
+$ cd ..</p>
+
+<h1>ruby インストール</h1>
+
+<p>$ curl -O <a href="http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz">http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz</a>
+$ tar xzvf ruby-1.9.3-p194.tar.gz
+$ cd ruby-1.9.3-p194
+$ ./configure &mdash;prefix=/usr/local &mdash;enable-shared &mdash;disable-install-doc &mdash;with-opt-dir=/usr/local/lib
+$ make
+$ make test
+$ sudo make install
+$ cd ..</p>
+
+<h1>/usr/local/bin に ruby が入るので、sudo 時に path が通るようにする</h1>
+
+<p>$ sudo visudo</p>
+
+<h1>&ldquo;:/usr/local/bin"を追加</h1>
+
+<p>Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin</p>
+
+<h1>chef インストール</h1>
+
+<p>$ sudo gem install chef &mdash;no-ri &mdash;no-rdoc
+```</p>
+
+<p>ここまでで chef のインストール完了。
+スナップショットをとっておく。</p>
+
+<h2>chef のリポジトリを作る</h2>
+
+<p><code>
+$ git clone git://github.com/opscode/chef-repo.git
+$ cd chef-repo
+</code></p>
+
+<p>chef-solo の設定を config/solo.rb に作る。</p>
+
+<p><code>
+file_cache_path "/home/deploy/chef-repo"
+cookbook_path "/home/deploy/chef-repo/cookbooks"
+role_path "/home/deploy/chef-repo/roles"
+log_level :debug
+</code></p>
+
+<h2>chef の cookbook を作る (もらってくる)</h2>
+
+<p>以下のように chef の cookbook が公開されているところが複数ある。</p>
+
+<ul>
+<li><a href="http://community.opscode.com/cookbooks">http://community.opscode.com/cookbooks</a></li>
+<li><a href="https://github.com/opscode-cookbooks">https://github.com/opscode-cookbooks</a></li>
+<li><a href="https://github.com/cookbooks">https://github.com/cookbooks</a></li>
+</ul>
+
+
+<p>もらってきて必要に応じてカスタマイズする。
+自分のリポジトリに置いてみました。試行錯誤中。
+まだ全然足りていない。</p>
+
+<p>これ、取得元と同期とったりするのは大変ですね。</p>
+
+<p><a href="https://github.com/satococoa/chef-repo">satococoa/chef-repo</a></p>
+
+<p>submoduleにしちゃうと自前でカスタマイズしたときに面倒だし、どうしよう。。。</p>
+
+<p>あとは今回作りたいサーバは All-in-one だが、後で使いやすいように base, web, db に role を分けてみた。</p>
+
+<h2>chef でインストール</h2>
+
+<p>サーバに deploy ユーザーでログインした状態で以下を実行。</p>
+
+<p><code>
+$ git clone git://github.com/satococoa/chef-repo.git
+$ sudo chef-solo -c ~/chef-repo/config/solo.rb -j ~/chef-repo/config/all_in_one.json
+</code></p>
+
+<h2>あとは</h2>
+
+<p>ひたすら cookbook を作ったりカスタマイズしたりするのみ。
+iptables とかも chef を使ったほうがいいのだろうか。
+（インストールするソフトウェアによってはポート開ける必要があるため）
+monit とか logrotate とか munin とかもやらねば。</p>
+
+<h2>参考 URL</h2>
+
+<ul>
+<li><a href="http://wiki.opscode.com/display/~tily/Home">http://wiki.opscode.com/display/~tily/Home</a></li>
+<li><a href="http://wiki.opscode.com/display/~tily/Chef+Solo">http://wiki.opscode.com/display/~tily/Chef+Solo</a></li>
+<li><a href="http://higelog.brassworks.jp/?p=654">chef-soloで作業環境構築の自動化 | ひげろぐ</a></li>
+</ul>
+
+
+<h2>追記</h2>
+
+<p>このあと2つほどハマッてしまった。</p>
+
+<ol>
+<li>VirtualBox の GuestAdditions を入れようとしたら gcc, make, autoconf が必要だった。</li>
+<li>SELinux 有効の状態で Postfix が起動しなかった。</li>
+</ol>
+
+
+<p>SELinux の件は潔く無効にした。</p>
+
+<p>```
+$ sudo getenforce
+Enforcing # => 有効
+$ sudo setenforce 0 # => 無効にする
+$ sudo getenforce
+Permissive</p>
+
+<h1>続いて、再起動後も無効になるようにする</h1>
+
+<p>$ sudo vi /etc/sysconfig/selinux
+SELinux=disabled # この一行のみ編集
+```</p>
+
+<h2>追記2</h2>
+
+<p>こうして準備したサーバに capistrano で初めてデプロイするときの手順。<br/>
+(capistrano-ext を使っている前提)</p>
+
+<p>```
+$ cap staging deploy:setup
+$ cap staging deploy:check
+$ cap staging deploy:update</p>
+
+<h1>サーバ上で</h1>
+
+<p>$ rake RAILS_ENV=staging db:setup
+$ rake RAILS_ENV=staging db:seed
+```</p>
+
+<h2>追記3</h2>
+
+<p><code>
+$ cap staging deploy:cold
+</code>
+これで <code>rake db:migration</code> までやってくれるんですね。知らなかった。<br/>
+restartじゃなくて、startになるようですし、こちらの方がいいですね。</p>
+]]></content>
+  </entry>
+  
+</feed>

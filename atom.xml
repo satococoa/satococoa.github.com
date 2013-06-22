@@ -1,0 +1,2115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[satococoa's blog]]></title>
+  <link href="http://satococoa.github.io/atom.xml" rel="self"/>
+  <link href="http://satococoa.github.io/"/>
+  <updated>2013-06-22T16:06:02+09:00</updated>
+  <id>http://satococoa.github.io/</id>
+  <author>
+    <name><![CDATA[Satoshi Ebisawa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RubyMotion Conference #inspect 2013]]></title>
+    <link href="http://satococoa.github.io/blog/2013/04/20/rubymotion-conference-number-inspect-2013/"/>
+    <updated>2013-04-20T14:00:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/04/20/rubymotion-conference-number-inspect-2013</id>
+    <content type="html"><![CDATA[<p>3/28, 29 にベルギーのブリュッセルで開催された <a href="http://www.rubymotion.com/conference/">RubyMotion Conference #inspect 2013</a> に参加しました。</p>
+
+<p>英語力にだいぶ不安がある中、頑張って聴き取ってきた内容をメモしたいと思います。</p>
+
+<h3>1 日目</h3>
+
+<h4>A Brave New World: Learning iOS for the Ruby Refugee &ndash; Nick Quaranto さん</h4>
+
+<p>37signals で働く Nick さんがいかにして RubyMotion で Basecamp for iPhone を作って、どういうことを感じたのか、というお話でした。</p>
+
+<p>Nick さんにとっては Objective-C で開発するということは Xcode というツールを強制されることが苦痛であり、自分の好きなツールを使って自由に開発ができる RubyMotion 無くして Basecamp for iPhone は作れなかっただろう、と話していました。<br/>
+Interface Builder を見たときに、まるで Visual Basic を思い出すようだったというところで笑いを取っていました。</p>
+
+<p>また、有用な gem や community のリソースの紹介もされました。</p>
+
+<h5>Community</h5>
+
+<ul>
+<li><a href="https://groups.google.com/forum/?fromgroups#!forum/rubymotion">Google Group</a></li>
+<li><a href="https://github.com/rubymotion">https://github.com/rubymotion</a></li>
+<li><a href="http://www.rubymotion.com/developer-center/api/">http://www.rubymotion.com/developer-center/api/</a></li>
+<li><a href="https://github.com/HipByte/RubyMotion-Samples">https://github.com/HipByte/RubyMotion-Samples</a></li>
+</ul>
+
+
+<h5>Gem</h5>
+
+<ul>
+<li><a href="http://bubblewrap.io">bubble-wrap</a>, ほとんど全てのプロジェクトで使っている Cocoa Touch の wrapper</li>
+<li><a href="https://github.com/qrush/motion-settings-bundle">motion-settings-bundle</a>, 設定 app 用の bundle を作る gem</li>
+<li><a href="https://github.com/qrush/motion-layout">motion-layout</a>, iOS 6.0 から使える auto-layout の gem</li>
+<li><a href="http://cocoapods.org">CocoaPods</a> (motion-cocoapods)</li>
+</ul>
+
+
+<p>ちなみに質疑応答で「テストは書いているか？」という質問がされ、Basecamp アプリはテストを書いていないそうです。<br/>
+その後、「テストを書いていますか？」 &ndash;> 「書いてないです」というやりとりはほぼ全部の発表後に様式美的に繰り返されることになります。 (1日目後半からは「ノベルティの T シャツはあるのか？」という質問も決まり文句として繰り返されて、笑いを誘っていました。)</p>
+
+<p>RubyMotion でテストを書くときに参考にすべき良いアプリとして、<a href="https://github.com/tkadauke/TinyMon">TinyMon</a> というアプリが挙げられました。</p>
+
+<h4>Behaviour Driven Motion using Calabash &ndash; Karl Krukow さん</h4>
+
+<p><a href="http://calaba.sh">Carabash</a> というテスティングフレームワークのお話とデモでした。</p>
+
+<p>会場にその場で挙手を求めてアンケートをとったところ、約 30% の人が RubyMotion のプロジェクトではユニットテストを書いていて、Acceptance Test を書いている人はたったの 2 人でした。</p>
+
+<p>Carabash は Cucumber を利用して受け入れテストを記述するフレームワークで、マルチプラットフォームであることも特徴です。</p>
+
+<p>また、client-server の構成を取っていて、リモートでテストを実行することも可能です。実際にリモートの実機で動作している様子も映像で見せてもらいました。</p>
+
+<p>デモで動かしていたテストのリポジトリは以下です。(RubyMotion-Samples にある Beer アプリに対して受け入れテストを実行しました。)
+<a href="https://github.com/krukow/motion-calabash-inspect2013">https://github.com/krukow/motion-calabash-inspect2013</a></p>
+
+<h4>Controlling the Real World with RubyMotion &ndash; Rich Kilmer さん</h4>
+
+<p>bluetooth のお話でした。</p>
+
+<p>bluetooth の出始めの頃のお話から最近の bluetooth4 の仕様の話という歴史をおさらいするところから始まって、Apple 公式のドキュメントには全く記載のない (でもなぜかサンプルコードは配布されている) bluetooth を使って iPhone をサーバとして周囲の機器をスキャンし、その値を受け取ることもできるそうです。</p>
+
+<p>これも実際にデモをされていました。</p>
+
+<h4>Elevate your Intent &ndash; Matt Green さん</h4>
+
+<p>ソフトウェアの設計のお話でした。(RubyMotion に特化した訳ではなく、一般的な概念)</p>
+
+<p>責任の所在をドメインに応じて適宜分散し、小さくてシンプルなクラスを定義することで意図を明確に伝えるソースコードが書けるというお話でした。</p>
+
+<p>Dependencies (依存関係) は複雑さを生み、バグを生み出すので、それをドメインに合うように分離することが大事と説いていました。</p>
+
+<p>結局、依存は厄介なものであって、特に MVC の境界 (サービス層にあたるようなもの) はその依存関係が発生してしまうのでしいですが、それをうまく切り分けてシンプルにし、ドメインに基づいた名前を与え、エラー時には派手にエラーを挙げる (fail loudly) というのがうまく設計するポイントだと話していました。</p>
+
+<p>また、それを支援するライブラリとして <a href="https://github.com/mattgreen/elevate">Elevate</a> という gem を作って公開されました。</p>
+
+<p>スライド: <a href="https://speakerdeck.com/mattgreen/elevate-your-intent">Elevate Your Intent</a></p>
+
+<h4>Accessibility and RubyMotion &ndash; Austin Seraphin</h4>
+
+<p>アクセシビリティについての話でした。</p>
+
+<p>生まれつきの全盲である Austin さんの生活がいかにして iPhone の登場によって快適になり、さらに RubyMotion のおかげでいかにソフトウェア開発が容易になったか、というお話をまずはされました。</p>
+
+<p>『カメラを使って色を認識し、その色を音声で教えてくれるアプリを使ってみたけど、何にかざしても &ldquo;Black!&rdquo; としか認識されず、最初はアプリが壊れているのかと思ったら、実は夜で電気をつけていなかったために &ldquo;Black&rdquo; と認識されていたと気づき、電気をつけた』というエピソードが印象的でした。</p>
+
+<p>Xcode の Interface Builder は全く全盲者にとってはアクセシビリティに乏しく、とても辛いものだそうです。しかし、自分の好きなツールを自由に選択でき、コードで開発ができる RubyMotion はそんな方にも可能性を与えるものとして素晴らしいとのことでした。</p>
+
+<p>その話の後は、実際に開発者はどんな所に気をつけて開発すればいいのか、というところを具体的にレクチャーして頂きました。</p>
+
+<p>スライド: <a href="http://www.slideshare.net/AdrianoMartino/ruby-motion-andiosaccessibility">RUBY MOTION &amp; ACCESSIBILITY</a></p>
+
+<h4>Core Data For The Curious Rubyist &ndash; Jonathan Penn さん</h4>
+
+<p>資料 (PDF): <a href="http://cocoamanifest.net/features/2013-03-core-data-in-motion.pdf">Core Data For The Curious Rubyist</a></p>
+
+<p>Core Data についてのお話でした。</p>
+
+<p>「Core Data は SQLite の ORM ではなくオブジェクトグラフである」という話から始まり、Core Data を使う上で理解する必要のある以下の 5 つの概念についての説明がありました。</p>
+
+<ul>
+<li>Context (NSManagedObjectContext)</li>
+<li>Object (NSManagedObject)</li>
+<li>Model (NSManagedObejctModel)</li>
+<li>StoreCoordinator (NSPersistentStoreCoordinator)</li>
+<li>FetchedResultsController (NSFetchedResultsController)</li>
+</ul>
+
+
+<p>特に非同期処理周りはややこしそうですね。。。iOS 5 以上からは <code>parentContext</code> というプロパティができてやりやすくはなったらしいですが。</p>
+
+<p>Core Data のモデルファイルをコードから生成できる <a href="http://fousa.github.io/motion_migrate/">Motion Migrate</a> という gem も紹介されました。</p>
+
+<p>あとは RubyMotion 用の Core Data のラッパーとして以下の2つの gem が挙げられました。</p>
+
+<ul>
+<li><a href="https://github.com/alloy/MotionData">MotionData</a></li>
+<li><a href="https://github.com/awdogsgo2heaven/superbox">superbox</a></li>
+</ul>
+
+
+<h4>The Life and Times of an Object &ndash; Josh Ballanco さん</h4>
+
+<p>gdb を使った RubyMotion のデバッグの仕方の紹介とデモでした。</p>
+
+<p>RubyMotion では以下のコマンドで dbg が起動します。</p>
+
+<p><code>$ rake debug=1</code></p>
+
+<p>また、gdb 上で bt(backtrace), b(breakpoint), p(print), pro(print-ruby-object), x(x/4w と打っていた) などを使って実際のデバッグ風景を見せてくれました。</p>
+
+<p>僕が一番驚いたのは、<code>p (char *)class_getName(&lt;address&gt;)</code> のようにして Objective-C Runtime の関数が呼べることや、<code>(char *)[[$1 keys] inspect]</code> のようにして Ruby のメソッドも呼べてしまうことでした。Ruby 処理系が Objective-C Runtime 上で実装されているおかげなんですね。</p>
+
+<p>最後に <code>MallocStackLoggingNoCompat=YES rake debug=1</code> でデバッガを起動した後で <code>malloc_history</code> を使ってメモリの確保 / 解放の履歴を見る方法の説明がありました。</p>
+
+<h4>Concurrency in RubyMotion: Use the Multicore Luke! &ndash; Mateus Armando さん</h4>
+
+<p>GCD, NSOperationQueue を使った非同期処理についてのお話でした。</p>
+
+<p>GCD, NSOperationQueue の使い方についての全般的な説明、GCD / NSOperationQueue の比較もありました。</p>
+
+<p><a href="http://seanlilmateus.github.io">Mateus さんのブログ</a>には他にも GCD 関連のわかりやすい記事が掲載されています。</p>
+
+<p>スライド: <a href="https://speakerdeck.com/seanlilmateus/concurrency-patterns-in-rubymotion">CONCURRENCY PATTERNS IN RUBYMOTION</a></p>
+
+<h4>Get More From RubyMotion with RubyMine &ndash; Dennis Ushakov さん</h4>
+
+<p>RubyMine での開発、デバッグなどのデモでした。</p>
+
+<p>デバッグ用途だけで RubyMine を使うというのも割とありな気がします。</p>
+
+<h4>Crafting iOS Dev Tools in Redcar &ndash; Delisa Mason さん</h4>
+
+<p>Ruby で実装された <a href="http://redcareditor.com">Redcar</a> というエディタの紹介でした。</p>
+
+<p>実際に HTML でプラグインを書くライブコーディングによるデモと、エディタ上でドキュメントを見られたり、デバッグができると言った特徴の説明がありました。</p>
+
+<p>スライド: <a href="https://speakerdeck.com/kattrali/crafting-ios-dev-tools-in-redcar-the-ruby-editor">Crafting iOS Dev Tools in Redcar, the Ruby Editor</a></p>
+
+<p>以上で 1 日目が終わり、その日の夜は @watson1978 さんとムール貝食べてきました。</p>
+
+<p><img src="http://satococoa.github.io/images/201304/dinner.jpg"></p>
+
+<h3>2 日目</h3>
+
+<h4>NSRevolution: How Ruby hackers built the new Objective-C Open Source community &ndash; Mattt Thompson さん</h4>
+
+<p>Ruby, Objective-C 双方の歴史などを振り返るところから話が始まりました。</p>
+
+<p>Ruby は Smalltalk, perl, eiffel, lisp から強く影響を受けていて、ObjC は Smalltalk, C から影響を (C は影響というよりは、親みたいなものですが) 受けていて、双方ともメッセージパッシングについては Smalltalk の影響が大きいといった感じです。</p>
+
+<p>そして Ruby の影響で Objective-C での開発フローやツールも変わってきているという話に移り、以下のライブラリやツールの紹介がありました。</p>
+
+<h5><a href="http://cocoapods.org">CocoaPods</a></h5>
+
+<p>Bundler for Objective-C</p>
+
+<h5><a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a></h5>
+
+<p>Functional Reactive Programming Framework</p>
+
+<h5><a href="https://github.com/tombenner/nui">NUI</a></h5>
+
+<p>Stylesheets for iOS</p>
+
+<h5><a href="https://github.com/square/KIF">KIF</a></h5>
+
+<p>Testing framework</p>
+
+<h5><a href="https://github.com/moredip/Frank">Frank</a></h5>
+
+<p>Cucumber for iOS</p>
+
+<h5><a href="https://github.com/mattt/cupertino">Cupertino</a></h5>
+
+<p>CLI for Apple Developer
+<a href="https://github.com/mattt/shenzhen">Shenzhen</a>, <a href="https://github.com/mattt/houston">Houston</a>, <a href="https://github.com/mattt/venice">Venice</a>, <a href="https://github.com/mattt/dubai">Dubai</a></p>
+
+<h4>More Than You Need to Know About CocoaPods &ndash; Eloy Duran さん</h4>
+
+<p>CocoaPods についての説明と、今後の展開についてのお話でした。</p>
+
+<p>例えば <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> を使おうとした場合、通常は Xcode であちこちをいじらないといけないところ、CocoaPods を使えばとても簡単に使えるというのを実際に動画であらかじめ撮影したデモを見せてもらい、CocoaPods 無しのライブラリのインストールのあまりの煩雑さに会場は大ウケでした。</p>
+
+<p>CocoaPods の .podspec ファイルの運用については、従来は GitHub の Pull Request ベースで人力で運用していたところを、GitHub API と TravisCI API を使って、自動的に Pull Request を出してマージするサーバを作るようにする、というお話がありました。</p>
+
+<p>また、CocoaPods でインストールできるライブラリのドキュメントを集約する <a href="http://cocoadocs.org">CocoaDocs</a> というサイトができました。(Ruby で言うところの <a href="http://rubydoc.info">RubyDoc.info</a> ですね。</p>
+
+<h4>Wrapping iOS in RubyMotion &ndash; Clay Allsopp さん</h4>
+
+<p>RubyMotion でより Ruby らしくアプリケーションを作るためのラッパーを作るコツのお話でした。</p>
+
+<p>例えば delegate の代わりに callback を使うという例で以下のコードが挙げられていました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># CoreLocation delegate
+</span><span class='line'>Location.get do |location|
+</span><span class='line'>  p location[:to]
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>Location.get</code> メソッドはブロックをインスタンス変数に入れて保持し、delegate を <code>self</code> として delegate メソッド内でそのブロックを <code>call</code> しているといった具合です。</p>
+
+<p>また、ブロックを書くときも <code>-&gt;(arg1, arg2) {}</code> の記法を使ったり、成功時と失敗時に別々のブロックを渡すような ObjC のメソッドをラップするときには Ruby では一つのブロックを渡すようにしてブロック中で <code>if request.success?</code> みたいにして分岐する方が Ruby らしくなる、という話もありました。</p>
+
+<p>あとは定数や ENUM は Symbol で指定できるようにすると使いやすいね、とか camelCase は snake_case に、演算子のオーバーロード、メタプログラミングなどの話もありましたのでスライドを参照してください。</p>
+
+<p>スライド: <a href="https://speakerdeck.com/clayallsopp/wrapping-ios-with-rubymotion">Wrapping iOS with RubyMotion</a></p>
+
+<h4>Goodbye IB, Hello Teacup &ndash; Colin Gray さん</h4>
+
+<p>まずは <a href="https://github.com/rubymotion/teacup">teacup</a> gem の紹介でした。</p>
+
+<p>Layout と Style というオブジェクトを使ってロジックと見た目を切り離して書くことができます。</p>
+
+<p>また、<a href="https://github.com/colinta/sweettea">sweettea</a> も使うことで、Style をより CSS っぽく書くことも可能になります。</p>
+
+<p>この場で実機で UI を Firebug や Chrome の開発者ツールのようにデバッグができる Kiln (今は名前が変わって <a href="https://github.com/colinta/motion-xray">motion-xray</a> になっています) という gem の発表がありました。</p>
+
+<h4>Using BubbleWrap to Quickly Build RubyMotion Apps &ndash; Marin Usalj さん</h4>
+
+<p><a href="http://bubblewrap.io">BubbleWrap</a> の各モジュールの紹介と簡単な使い方のお話でした。</p>
+
+<h4>Mixing CoffeeScript in RubyMotion apps &ndash; Michael Erasmus さん</h4>
+
+<p>cross platform の開発のために Web と Native のハイブリッドアプリを作っていて、Web の部分では CoffeeScript を使っているよ、という内容でした。</p>
+
+<p>まだ試しているだけの段階で深いところまではやっていないけれども、ロジックを Web の中の CoffeeScript で書くことで各プラットフォームで再利用できるようにしたい、という狙いだそうです。</p>
+
+<p>Native と CoffeeScript (JavaScript) とのやりとりは iframe を使っているそうです。</p>
+
+<h4>Building Interactive Data Visualization Charts &ndash; Amit Kumar さん</h4>
+
+<p>Data visualization ということで、いくつかのグラフを描画するライブラリについての紹介の後、ご自身で作られた gem の紹介でした。</p>
+
+<h5>UIWebView を使うもの</h5>
+
+<ul>
+<li><a href="http://www.highcharts.com">Highcharts JS</a></li>
+</ul>
+
+
+<h5>Native</h5>
+
+<ul>
+<li>Shinobi (有償)</li>
+<li>iOS:Charts (有償)</li>
+<li>CorePlot</li>
+</ul>
+
+
+<p>このうち、Native かつ Open Source の CorePlot のラッパーが <a href="https://github.com/toamitkumar/motion-plot">motion-plot</a> です。</p>
+
+<p>スライド: <a href="https://speakerdeck.com/toamitkumar/rubymotion-building-interactive-data-visualization-charts">RubyMotion &ndash; Building Interactive Data Visualization Charts</a></p>
+
+<h4>Cocos2D, an Easier Way &ndash; Juan Karam さん</h4>
+
+<p>ゲーム開発用のフレームワークである Cocos2D と、それとよく組み合わせて使われる物理演算エンジンの Box2D についてのお話でした。</p>
+
+<p>Box2D は C++ で書かれているためにそのままでは RubyMotion から扱うことが出来ず、Objective-C でラッパーを書いてあげる必要があります。</p>
+
+<p>そのあたりに手をつけ、RubyMotion から扱いやすくした gem がこの場で発表された <a href="https://github.com/rubymotion/Joybox">Joybox</a> です。</p>
+
+<p>ライブコーディングであっという間にゲームを作っていた様子が圧巻でした。</p>
+
+<p>まだまだ未実装だったり、ドキュメントが全然なかったりするので協力者を募集しています。</p>
+
+<h4>Let&rsquo;s Move with CoreMotion &ndash; Akshat Paul さん、Abhishek Nalwaya さん</h4>
+
+<p>正直、内容をあんまり覚えていません。</p>
+
+<p>iPhone の Prezi アプリでプレゼンをしていたのですが、途中で Push 通知が来たり、電話がかかってきたりして爆笑した記憶が強く。。。</p>
+
+<p>iOS での加速度センサやジャイロスコープの扱いの話でした。</p>
+
+<h4>RubyMotion: Past, Present and Future &ndash; Laurent Sansonetti さん</h4>
+
+<p>Laurent さんのこれまでの半生と、今後の RubyMotion のロードマップについての発表がありました。</p>
+
+<h5>ロードマップ</h5>
+
+<ul>
+<li>Toolchain improvements</li>
+<li>Code generators</li>
+<li>Profiler (CPU, Memory)</li>
+<li>Code reloading (REPL)</li>
+<li>Static code analysis</li>
+<li>Tutorials</li>
+<li>Enterprise support</li>
+<li>More platforms</li>
+</ul>
+
+
+<p>この中では、やはり More platforms が気になりますね。(BlackBerry ではないそうです/笑)</p>
+
+<p>あとは Code reloading が便利そう。ちょっとした View の変更とかが再ビルドしなくても確認できるとなるとなかなか嬉しいですね。</p>
+
+<p>次回のカンファレンス、#inspect 2014 は NewYork city か Mexico あたりで開催される予定らしいです。</p>
+
+<h3>まとめ</h3>
+
+<p>暗い場所だったのでだいぶブレましたが、アフターパーティで Laurent さんと撮りました。</p>
+
+<p><img src="http://satococoa.github.io/images/201304/laurent.jpg"></p>
+
+<p>英語力の不足をひしひしと感じる中、なんとか発表の内容を理解しようと必死の2日間でした。なかなか参加者の方とコミュニケーションを取ることも大変だったのですが、最終日のアフターパーティではお酒の勢いを借りて色んな人とお話しできてよかったです。</p>
+
+<p>日本でも 5/29 に <a href="http://connpass.com/event/2095/">RubyMotion Kaigi 2013</a> というイベントを予定していて、Laurent さんにもしゃべってもらう予定です。</p>
+
+<p>15 年以上ぶりの海外で色々戸惑うところも多かったですが、記念すべき初めてのカンファレンスに参加できてとてもよかったです。</p>
+
+<p>あわせて読みたい: <a href="http://watson1978.github.io/blog/2013/03/31/rubymotion-conference-2013/">RubyMotion Conference 2013 &ndash; Watson&rsquo;s Blog</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Girls Tokyo 2nd に参加しました]]></title>
+    <link href="http://satococoa.github.io/blog/2013/03/03/rails-girls-tokyo-2nd/"/>
+    <updated>2013-03-03T12:53:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/03/03/rails-girls-tokyo-2nd</id>
+    <content type="html"><![CDATA[<p>LT枠だけでの参加でしたが、<a href="http://railsgirls.com/tokyo">Rails Girls Tokyo 2nd</a> に混ぜてもらいました！</p>
+
+<p>参加者の方が継続的に勉強を進められるコミュニティのご紹介として <a href="http://prog4designer.github.com/">#p4d</a> の宣伝をさせていただきました。</p>
+
+<p>発表資料置いておきます。(<a href="https://speakerdeck.com/satococoa/p4d-rails-girls-tokyo-2nd">スライドのページ</a> にある Download PDF のリンクから PDF をダウンロードすればリンクも動作します。)</p>
+
+<script async class="speakerdeck-embed" data-id="b3a93dc064cc013060a912313916f057" data-ratio="1.2994923857868" src="http://satococoa.github.io//speakerdeck.com/assets/embed.js"></script>
+
+
+<h2>【私撰】次のステップとしておすすめの Ruby コミュニティ【おまけ】</h2>
+
+<p>個人的に僕がよく顔を出すコミュニティのうち、Rails Girls の参加者にお勧めできるコミュニティを挙げてみます。</p>
+
+<p>昨日の帰り際に <a href="https://twitter.com/yotii23">@yotii23</a> さんともお話したのですが、まずは今回のコーチのいるコミュニティ（のコーチがちょうど参加している回）に行ってみるとすんなりとけ込めるのでは。と思います。</p>
+
+<p>コメントは全て僕の主観ですのでご注意を。</p>
+
+<hr />
+
+<h3>RailsGirls, More</h3>
+
+<p>公式なので、間違いなくここがおすすめ。参加方法はFBグループかメールで参加者の方に届くそうです。</p>
+
+<p>お問い合わせ先は <a href="https://twitter.com/yotii23">@yotii23</a> さんか <a href="https://twitter.com/publichtml">@publichtml</a> さんでいいのかな？</p>
+
+<hr />
+
+<h3><a href="http://prog4designer.github.com/">P4D デザイナー向けプログラム部</a></h3>
+
+<p>LT させてもらったので概要は省略。</p>
+
+<h4>会える人</h4>
+
+<ul>
+<li><a href="http://twitter.com/machida">@machida</a> さん<br/>
+<a href="http://fjord.jp">fjord</a> のデザイナさん。<a href="http://kuroigamen.com">KUROIGAMEN</a> の人。</li>
+<li><a href="http://twitter.com/ken_c_lo">@ken_c_lo</a> さん<br/>
+フリーのデザイナさん。<a href="https://speakerdeck.com/ken_c_lo/zurui-design">ズルいデザイン</a> の人。</li>
+<li><a href="https://twitter.com/shu_0115">@shu_0115</a> さん<br/>
+フリーの Rails エンジニア。<a href="http://rails4beginners.github.com/home/">Rails for Beginners</a> 主催の人。</li>
+<li><a href="http://twitter.com/satococoa">@satococoa</a><br/>
+僕ですね。最近は<a href="http://rubymotion.jp">RubyMotion JP</a> の人。</li>
+</ul>
+
+
+<hr />
+
+<h3><a href="https://ishikitakai.com/groups/1">Sendagaya.rb</a></h3>
+
+<p>毎週月曜日に meetup を開催している Ruby コミュニティです。今は新宿で毎週やっているのでアクセスの良さもポイント！</p>
+
+<p>僕がいるときに来てもらえれば普通に Rails も教えたりできます。</p>
+
+<p>紹介スライド &ndash;> <a href="http://decknotes.com/slides/17">ボクが東京に来て作ったモノ</a> by @fukajun</p>
+
+<h4>会える人</h4>
+
+<ul>
+<li><a href="http://twitter.com/fukajun">@fukajun</a> さん<br/>
+Rails エンジニア。<a href="http://decknotes.com/">DeckNotes</a> 作った人。</li>
+<li><a href="http://twitter.com/ppworks">@ppworks</a> さん<br/>
+Rails エンジニア。<a href="http://welove.herokuapp.com">we love heroku</a> 作った人。</li>
+<li><a href="https://twitter.com/tkawa">@tkawa</a> さん<br/>
+Rails エンジニア。REST の人。</li>
+</ul>
+
+
+<hr />
+
+<h3><a href="http://bukt.org/groups/3">Yokohama.rb</a></h3>
+
+<p>毎月第2土曜日あたりに横浜駅の一つ東京側の東神奈川駅から徒歩10分ほどの場所で開催しています。</p>
+
+<p>東京から参加している人も多く、僕も1時間ちょいかけて通っています。</p>
+
+<p>土曜日開催 &amp; Ruby レシピブック読書会などもあり、Ruby ビギナーにもとても参加しやすい雰囲気がポイントです。</p>
+
+<h4>会える人</h4>
+
+<ul>
+<li><a href="https://twitter.com/1syo">@1syo</a> さん  <br/>
+Rails エンジニア。<a href="http://regional.rubykaigi.org/minato01">みなとRuby会議01</a> 実行委員長。</li>
+<li><a href="https://twitter.com/hamakn">@hamakn</a> さん<br/>
+Rails エンジニア。<a href="http://d.hatena.ne.jp/hamakn/20130217">デブサミで発表</a> されてました。</li>
+</ul>
+
+
+<hr />
+
+<p>それぞれのコミュニティですごい人がたくさんいるのですが、失礼ながらとりあえずパッと頭に浮かんだ人だけ書かせていただきました。</p>
+
+<p>では、またどこかのコミュニティでお会いしましょう！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RubyFriendsCamera has been released!]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/25/rubyfriendscamera/"/>
+    <updated>2013-02-25T18:54:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/25/rubyfriendscamera</id>
+    <content type="html"><![CDATA[<p>Today I released RubyFriendsCamera and now available on <a href="https://itunes.apple.com/jp/app/ruby-friends-camera/id602073192?mt=8">AppStore</a>!</p>
+
+<p>This application is a client app for <a href="http://rubyfriends.com">#RubyFriends</a>.</p>
+
+<p>Using RubyFriendsCamera, you can easily share your photos to twitter with #RubyFriends hashtag.</p>
+
+<p>RubyFriendsCamera is developed with <a href="http://www.rubymotion.com">RubyMotion</a> and <a href="http://www.pixate.com">Pixate</a>.</p>
+
+<p>I&rsquo;d like to say thank you to <a href="https://twitter.com/ken_c_lo">@ken_c_lo</a> and <a href="https://twitter.com/machida">@machida</a>.
+They created a great application icon, splash screen, toolbar icons, background images.</p>
+
+<p>Source code is available here.</p>
+
+<ul>
+<li><a href="https://github.com/satococoa/RubyFriendsCamera">https://github.com/satococoa/RubyFriendsCamera</a></li>
+</ul>
+
+
+<p>Enjoy!</p>
+
+<hr />
+
+<p>RubyFriendsCamera というアプリケーションをリリースしました。</p>
+
+<p><a href="https://itunes.apple.com/jp/app/ruby-friends-camera/id602073192?mt=8">AppStore</a> からインストールできます。</p>
+
+<p>このアプリは <a href="http://rubyfriends.com">#RubyFriends</a> のクライアントアプリです。</p>
+
+<p>RubyFriendsCamera を使うと簡単に #RubyFriendsCamera ハッシュタグをつけて twitter に写真を UP することができます。</p>
+
+<p>RubyFriendsCamera は <a href="http://www.rubymotion.com">RubyMotion</a> と <a href="http://www.pixate.com">Pixate</a> を使って開発しています。</p>
+
+<p>突然の依頼にもかかわらず、アイコンや画像などを作っていただいた <a href="https://twitter.com/ken_c_lo">@ken_c_lo</a> さんと <a href="https://twitter.com/machida">@machida</a> さん、本当にありがとうございました。</p>
+
+<p>ソースコードも公開されています。</p>
+
+<ul>
+<li><a href="https://github.com/satococoa/RubyFriendsCamera">https://github.com/satococoa/RubyFriendsCamera</a></li>
+</ul>
+
+
+<p>たくさんの方に楽しんでいただけると嬉しいです。
+(ところで、どなたかAndroid 版作りませんか？仕様や画像など、必要でしたらシェアします。)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RubyMotion のデバッグで NSZombieEnabled を使う]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/20/debugging-rubymotion-using-nszombieenabled/"/>
+    <updated>2013-02-20T19:17:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/20/debugging-rubymotion-using-nszombieenabled</id>
+    <content type="html"><![CDATA[<p>RubyMotion でアプリをつくるとき、デバッグがやはり大変です。</p>
+
+<p>例えば GCD など非同期で実行されるブロック内で参照されるオブジェクトをインスタンス変数に入れていない場合、実際にそのブロックの処理が実行されるときには既にそのオブジェクトが解放されてしまっているというケースがあります。<br/>
+これが RubyMotion を使う上での一番厄介なハマりどころといえると思います。</p>
+
+<p>そのケースにハマった場合、何も有用なログを残さずにすとんと落ちてしまうことがありとても萎えます。</p>
+
+<p>例えば以下の例はあまりに単純すぎますが、当然アプリがすとんと落ちます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># app_delegate.rb
+</span><span class='line'>class AppDelegate
+</span><span class='line'>  def application(application, didFinishLaunchingWithOptions:launchOptions)
+</span><span class='line'>    main = MainController.new
+</span><span class='line'>    @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
+</span><span class='line'>    @window.rootViewController = main
+</span><span class='line'>    @window.makeKeyAndVisible
+</span><span class='line'>    true
+</span><span class='line'>  end
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'># main_controller.rb
+</span><span class='line'>class MainController &lt; UIViewController
+</span><span class='line'>  def viewDidLoad
+</span><span class='line'>    super
+</span><span class='line'>    label = UILabel.new.tap do |l|
+</span><span class='line'>      l.frame = [[10, 30], [300, 60]]
+</span><span class='line'>      l.text = 'hoge'
+</span><span class='line'>    end
+</span><span class='line'>    label.release # アプリを落とすために意図的に入れてます。
+</span><span class='line'>    view.addSubview(label)
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>実行するとこうなります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake
+</span><span class='line'>     Build ./build/iPhoneSimulator-6.1-Development
+</span><span class='line'>   Compile ./app/main_controller.rb
+</span><span class='line'>      Link ./build/iPhoneSimulator-6.1-Development/DebugDemo.app/DebugDemo
+</span><span class='line'>    Create ./build/iPhoneSimulator-6.1-Development/DebugDemo.dSYM
+</span><span class='line'>  Simulate ./build/iPhoneSimulator-6.1-Development/DebugDemo.app
+</span><span class='line'>((null))&gt; *** simulator session ended with error: Error Domain=DTiPhoneSimulatorErrorDomain Code=1 "シミュレートした App は終了しました。" UserInfo=0x10014db60 {NSLocalizedDescription=シミュレートした App は終了しました。, DTiPhoneSimulatorUnderlyingErrorCodeKey=-1}
+</span><span class='line'>rake aborted!
+</span><span class='line'>Command failed with status (1): [DYLD_FRAMEWORK_PATH="/Applications/Xcode.a...]
+</span><span class='line'>/Library/RubyMotion/lib/motion/project.rb:101:in `block in &lt;top (required)&gt;'
+</span><span class='line'>Tasks: TOP =&gt; default =&gt; simulator
+</span><span class='line'>(See full trace by running task with --trace)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このとき、少なくともどのオブジェクト（どのクラスのインスタンス）にアクセスしようとして落ちたのかがわかるだけでもデバッグの助けになります。</p>
+
+<p>以下のように <code>NSZombieEnabled=YES</code> という環境変数をつけるとその情報を出すことが出来ます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ NSZombieEnabled=YES rake
+</span><span class='line'>     Build ./build/iPhoneSimulator-6.1-Development
+</span><span class='line'>  Simulate ./build/iPhoneSimulator-6.1-Development/DebugDemo.app
+</span><span class='line'>2013-02-20 20:38:53.449 DebugDemo[21494:c07] *** -[UILabel superview]: message sent to deallocated instance 0xf1c9f40
+</span><span class='line'>(main)&gt; *** simulator session ended with error: Error Domain=DTiPhoneSimulatorErrorDomain Code=1 "シミュレートした App  は終了しました。" UserInfo=0x102252cc0 {NSLocalizedDescription=シミュレートした App は終了しました。, DTiPhoneSimulatorUnderlyingErrorCodeKey=-1}
+</span><span class='line'>rake aborted!
+</span><span class='line'>Command failed with status (1): [DYLD_FRAMEWORK_PATH="/Applications/Xcode.a...]
+</span><span class='line'>/Library/RubyMotion/lib/motion/project.rb:101:in `block in &lt;top (required)&gt;'
+</span><span class='line'>Tasks: TOP =&gt; default =&gt; simulator
+</span><span class='line'>(See full trace by running task with --trace)</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>2013-02-20 20:38:53.449 DebugDemo[21494:c07] *** -[UILabel superview]: message sent to deallocated instance 0xf1c9f40</code> って出ていますよね？これで、UILabelクラスのインスタンスが原因であることがわかります。</p>
+
+<p>NSZombieEnabled については <a href="http://cocoadev.com/wiki/NSZombie">NSZombieEnabled &ndash; CocoaDev</a> がわかりやすいです。<br/>
+ざっくり説明すると、解放されたオブジェクトのクラスを動的に <code>_NSZombie</code> に変更し、そのメモリ領域を解放させないようにしているおかげで上記のような情報をログに出してくれているようです。</p>
+
+<p>あとは <a href="http://rubymotion.jp/RubyMotionDocumentation/articles/debugging/index.html">Debugging RubyMotion applications</a> のページを参照していただいて、<code>debug</code>オプションを使ってステップ実行したりするとより詳しくデバッグすることが出来ます。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[DashDoc を入れてみた]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/18/install-dashdoc/"/>
+    <updated>2013-02-18T15:53:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/18/install-dashdoc</id>
+    <content type="html"><![CDATA[<p>Dash を Sublime Text からワンタッチで引くことができる DashDoc というプラグインを入れてみた。</p>
+
+<p>インストールはいつも通り Package Control からで OK。</p>
+
+<p>デフォルトで ctrl+h が割り当てられてしまっていたので、変更した。<br/>
+（この方法だと日本語入力時に不具合があります。追記をご参照ください。）</p>
+
+<p>Preferences > Package Settings > DashDoc > Key Bindings &ndash; User</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[
+</span><span class='line'>  { "keys": ["ctrl+h"], "command": "left_delete"},
+</span><span class='line'>  { "keys": ["shift+command+h"], "command": "dash_doc"},
+</span><span class='line'>  { "keys": ["ctrl+command+h"], "command": "dash_doc",
+</span><span class='line'>                            "args": { "syntax_sensitive": "true" } }
+</span><span class='line'>]</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<p>あと、RubyMotion のドキュメントを直で引きたかったので追加した。
+Preferences > Package Settings > DashDoc > Settings &ndash; User</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "syntax_sensitive": false,
+</span><span class='line'>  "syntax_docset_map":
+</span><span class='line'>  {
+</span><span class='line'>    "ActionScript": "actionscript",
+</span><span class='line'>    "C"           : "c",
+</span><span class='line'>    "C++"         : "cpp",
+</span><span class='line'>    "Clojure"     : "clojure",
+</span><span class='line'>    "CSS"         : "css",
+</span><span class='line'>    "Erlang"      : "erlang",
+</span><span class='line'>    "Groovy"      : "groovy",
+</span><span class='line'>    "Haskell"     : "haskell",
+</span><span class='line'>    "HTML"        : "html",
+</span><span class='line'>    "Java"        : "java7",
+</span><span class='line'>    "JavaScript"  : "javascript",
+</span><span class='line'>    "Lisp"        : "lisp",
+</span><span class='line'>    "Lua"         : "lua",
+</span><span class='line'>    "Perl"        : "perl",
+</span><span class='line'>    "PHP"         : "php",
+</span><span class='line'>    "Python"      : "python2",
+</span><span class='line'>    "Rails"       : "rails",
+</span><span class='line'>    "Ruby"        : "ruby",
+</span><span class='line'>    "Scala"       : "scala",
+</span><span class='line'>    "ShellScript" : "manpages",
+</span><span class='line'>    "SQL"         : "psql",
+</span><span class='line'>    "TCL"         : "tcl",
+</span><span class='line'>    "RubyMotion"  : "rubymotion"
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>しばらく使ってみよう。</p>
+
+<hr />
+
+<p>2013-02-20 追記:</p>
+
+<p><code>left_delete</code> を <code>ctrl+h</code> に割り当てると、日本語の入力時におかしなことになってしまいました。具体的には、確定前の日本語を <code>ctrl+h</code> で消したときに次の文字を入力すると復活してしまうという使いにくい状態になってしまいました。</p>
+
+<p>結局、以下のようにしました</p>
+
+<p>Preferences > Package Settings > DashDoc > Key Bindings &ndash; Default</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># 全部コメントアウト
+</span><span class='line'>[
+</span><span class='line'>  // { "keys": ["ctrl+h"], "command": "dash_doc"},
+</span><span class='line'>  // { "keys": ["ctrl+alt+h"], "command": "dash_doc",
+</span><span class='line'>  //                           "args": { "syntax_sensitive": "true" } }
+</span><span class='line'>]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Preferences > Package Settings > DashDoc > Key Bindings &ndash; User</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[
+</span><span class='line'>  { "keys": ["shift+command+h"], "command": "dash_doc"},
+</span><span class='line'>  { "keys": ["ctrl+command+h"], "command": "dash_doc",
+</span><span class='line'>                            "args": { "syntax_sensitive": "true" } }
+</span><span class='line'>]</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[第4回 Rails Girls, More 勉強会]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/17/rails-girls-more-4th/"/>
+    <updated>2013-02-17T12:58:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/17/rails-girls-more-4th</id>
+    <content type="html"><![CDATA[<p>2/16(土) に万葉さんで開催された第4回 Rails Girls, More 勉強会に僭越ながらコーチ役として参加させていただきました。</p>
+
+<p>勉強会のスタイルは、最初に参加者の方々に今日やりたいことを聞いて、それに合わせてコーチを割り当てて進めていくというなかなか贅沢なスタイル。</p>
+
+<p>この日は参加者のみなさんの進捗が比較的揃っていて、controller, view を経て model へと進む方が多かったです。</p>
+
+<p>コーチ役とはいえ、僕も初参加で何からどう教えていいかよくわかっていませんでしたが、そこは <a href="https://twitter.com/igaiga555">@igaiga555</a> 先生の作られたしっかりした資料があったおかげで特に困ることもなく進めることが出来ました。</p>
+
+<h2>資料から脱線した部分</h2>
+
+<p>資料にある部分は参加者の方もあとでそちらを見直せばいいと思うので、資料にはなく、僕が脱線して話したことについて少しメモします。</p>
+
+<h3><a href="http://www.sublimetext.com">Sublime Text 2</a></h3>
+
+<p>今使っているエディタが使いにくい、という方がいらっしゃったので、Sublime Text 2 をダウンロードしてもらいました。Windows版もあって素敵。</p>
+
+<p>今とても人気のあるエディタの一つで、vim や emacs よりはとっつきやすいエディタですので、エディタ選びに迷っている方は一度使ってみて下さい。有料ですが、お試し期間でも機能制限無し、お試し期間の期限もなし、という太っ腹なエディタです。（気に入ったら買うといいと思います。）</p>
+
+<h3>GitHub の使い方</h3>
+
+<p>お仕事で GitHub に触れる方もいらっしゃったので、リポジトリの作り方を一通りお見せしました。</p>
+
+<p>「Git, GitHub の勉強会もやれるといいよねー」と、勉強会後に夕食を食べながらコーチ陣で話をしていましたので、そのうちやれるかも？</p>
+
+<h3><code>schema_migrations</code></h3>
+
+<p>たまたま僕が担当させていただいたお二人が SQL をご存知の方だったので、DB に <code>schema_migrations</code> というテーブルができていて、そこに適用済みの migration が記録されているおかげで、適切に <code>rake db:migrate</code>, <code>rake db:rollback</code> できるんですねー、といったお話をしました。</p>
+
+<h3>RailsGuides</h3>
+
+<p>RailsGuides の中でも、<a href="http://guides.rubyonrails.org/active_record_querying.html">Active Record Query Interface</a> のページを紹介し、コンソール上で <code>order</code> メソッドや <code>where</code> メソッドで遊んでみていただきました。</p>
+
+<p>あと、<a href="http://guides.rubyonrails.org/getting_started.html">Getting Started with Rails</a> のページを上から順にざっと、「このセクションにはこんな内容が書いてあって&hellip;」といったレベルで説明させていただきました。今後自学自習される場合に、チュートリアルとしてすごくいい題材だと思ったので。</p>
+
+<h2>まとめ</h2>
+
+<p>初参加だったのでむしろ自分の方が緊張していましたが、とても和やかな雰囲気で楽しく参加させていただきました。</p>
+
+<p>今後も Validation, Relation, テスト, Git など色々盛りだくさんの内容でやっていくようですので、またお手伝いさせていただければ、と思います。</p>
+
+<p>RubyMotion もいつでも教えますよ！</p>
+
+<h2>宣伝</h2>
+
+<p>RailsGirls を入り口として色んな勉強会へ参加されるようになると、継続的に学習できていいのではと思います。</p>
+
+<p>ということで自分の主催するコミュニティを宣伝して終わります。</p>
+
+<h3>P4D(デザイナー向けプログラム部)</h3>
+
+<p>僕が主催させていただいているコミュニティで、プログラムもやりたいデザイナさんにプログラムを教えよう、という会です。</p>
+
+<p>最近は嬉しいことにプログラマがデザインを教えていただく逆パターンもよく見るようになってきて、プログラムについてもデザインについても気軽に相談できるコミュニティになりつつあります。</p>
+
+<p>デザイナさんが恒常的に少なめなので、ぜひお気軽にご参加ください。</p>
+
+<p>主に facebook グループ の <a href="https://www.facebook.com/groups/151208708350141/">P4D デザイナー向けプログラム部</a> でやりとりしてます。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MySQL の max_allowed_packet を設定]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/13/mysql-max-allowed-packet/"/>
+    <updated>2013-02-13T00:05:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/13/mysql-max-allowed-packet</id>
+    <content type="html"><![CDATA[<p>ActiveRecord で <code>Mysql2::Error: MySQL server has gone away</code> と言われて困ったのです。</p>
+
+<p>さっぱり原因がわからずに同僚の <a href="https://twitter.com/dianthudia">@DianthuDia</a> 先生に聞いてみたところ、どうやら大きなデータを MEDIUMTEXT 型のカラムに保存しようとしたときに、以下の MySQL の設定にひっかかって失敗していたらしいです。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; show variables like 'max_allowed_packet';
+</span><span class='line'>+--------------------+---------+
+</span><span class='line'>| Variable_name      | Value   |
+</span><span class='line'>+--------------------+---------+
+</span><span class='line'>| max_allowed_packet | 1048576 |
+</span><span class='line'>+--------------------+---------+
+</span><span class='line'>1 row in set (0.01 sec)</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>max_allowed_packet</code> は mysql サーバがクライアントから受け付けることの出来るパケット量の設定です。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># brew で入れた mysql の場合
+</span><span class='line'>$ cp /usr/local/Cellar/mysql/5.5.29/support-files/my-small.cnf /usr/local/etc/my.cnf
+</span><span class='line'>$ vim /usr/local/etc/my.cnf
+</span><span class='line'># [mysqld] 中に以下を追加
+</span><span class='line'>[mysqld]
+</span><span class='line'>max_allowed_packet=16M</span></code></pre></td></tr></table></div></figure>
+
+
+<p>MySQLを再起動して設定完了です。</p>
+
+<p>再起動無しで設定するには <code>GLOBAL VARIABLES</code> を設定します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ mysql -uroot -p
+</span><span class='line'>&gt; set global max_allowed_packet = 16 * 1024 * 1024;
+</span><span class='line'>&gt; show global variables like 'max_allowed_packet';    
+</span><span class='line'>+--------------------+----------+
+</span><span class='line'>| Variable_name      | Value    |
+</span><span class='line'>+--------------------+----------+
+</span><span class='line'>| max_allowed_packet | 16777216 |
+</span><span class='line'>+--------------------+----------+
+</span><span class='line'>1 row in set (0.01 sec)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>大丈夫になったっぽいです。ありがとうございました。<br/>
+詳しい人が社内にいると安心感がすごい。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[東京 Ruby 会議 10 3日目に参加しました]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/11/tkrk10-3rd-day/"/>
+    <updated>2013-02-11T01:36:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/11/tkrk10-3rd-day</id>
+    <content type="html"><![CDATA[<p>先日の東京 Ruby 会議 10 では大雪のため幻のスピーカーになってしまったのですが、今日はちゃんと発表してきました。</p>
+
+<h2>発表内容</h2>
+
+<script async class="speakerdeck-embed" data-id="e091e8f055ce0130b56f12313815634b" data-ratio="1.2994923857868" src="http://satococoa.github.io//speakerdeck.com/assets/embed.js"></script>
+
+
+<h3>RubyFriendsCamera の宣伝</h3>
+
+<p>気軽に #RubyFriends するためのアプリを #p4d のメンバーと一緒に作っています。2/23 の Ruby 20周年パーティに間に合うように AppStore でリリースしたいと思っています。</p>
+
+<h3>ライブコーディング</h3>
+
+<p>rails で scaffold したサーバサイドのデータを CRUD するクライアントアプリを RubyMotion で作りました。</p>
+
+<p>本当はデータの作成 / 更新 / 削除も実装したいと思って、実際に一度最後まで作ってみたりはしていたのですが、さすがに全然たどり着かなかったです。</p>
+
+<p>完成例のコードも公開してありますので参考にしていただければ幸いです。今日は見せられなかった Formotion gem を使った更新フォームも作ってあります。
+（実はグダグダになったとき用に完成版も clone して手元に持っていたのです。）</p>
+
+<ul>
+<li><a href="https://github.com/satococoa/tkrk10_server">サーバ側</a></li>
+<li><a href="https://github.com/satococoa/tkrk10_client">クライアント側</a></li>
+</ul>
+
+
+<p>もしこの発表で RubyMotion に興味を持ってくださった方がいらっしゃれば、ぜひお気軽に <a href="http://connpass.com/event/1745/">RubyMotion もくもく会</a> に遊びに来ていただけると幸いです。</p>
+
+<h2>まとめ</h2>
+
+<p>スタッフのみなさんはこの短い期間で 3日目の開催となって、準備とか色々大変だったと思います。貴重な発表の機会を頂けてとても感謝しています。</p>
+
+<p>今日発表された他の方の話も、コミュニティの話あり、技術の話あり、スピリチュアルな話あり、とバランスがとれていてとても参考になる話ばかりでしたね。
+（Ember.jsもさることながら、あのチャットシステムが気になる！）</p>
+
+<p>参加者の皆様含めて、本当にありがとうございました。今後ともよろしくお願いします。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Qiita 2-day Hackathon]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/05/qiita-2-day-hackathon/"/>
+    <updated>2013-02-05T02:21:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/05/qiita-2-day-hackathon</id>
+    <content type="html"><![CDATA[<p><a href="http://qiitahackathon03.peatix.com">Qiita 2-day Hackathon</a> に参加しました。</p>
+
+<p>このイベントは<a href="http://developer.github.com">GitHub API</a>を使って何らかのアプリケーションを開発しよう！というハッカソンです。</p>
+
+<p>詳しいテーマは当日発表され、「プログラマの問題を解決するサービス」とのことでした。</p>
+
+<p>当日の様子は公式のブログを見ていただくのがいいかなと思います。</p>
+
+<p><a href="http://blog.qiita.com/post/42345394076/qiita-2-day-hackathon-report">スペシャルゲストも登場して盛り上がったQiita 2-day Hackathon総まとめ！</a></p>
+
+<h2>僕の作ったもの</h2>
+
+<p>全くアイディアを持たずに参加したので、一日目は GitHub API を一通り眺めてターミナルから<code>curl</code>や <a href="https://github.com/nahi/httpclient">httpclient</a> で叩いてみただけでほとんど終わっちゃいました。</p>
+
+<p>全体的に GitHub API で何が出来るのかを把握できた後で、残り半日くらいで出来そうなものを考えたところ、自分の GitHub のプロフィールページを簡単に表示できて、 QR コードでシェアできるものならばデモまでもっていけそうかな、ということで作ってみました。</p>
+
+<p>リポジトリはこちらです。（READMEも何もなくてちょっと不親切ですが。）</p>
+
+<ul>
+<li><a href="https://github.com/satococoa/GHProfiles">satococoa/GHProfiles</a></li>
+</ul>
+
+
+<p>RubyMotion + Pixate です。せっかくここまで作ったので、Twitter、Facebook、GitHubのプロフィールを表示・共有できるアプリに仕上げて無料で公開したいなぁと思っています。</p>
+
+<h2>まとめ</h2>
+
+<p>GitHub API を使うという点、そして2日間という制限の中で各チーム結構アイディアがかぶったりしたのですが、その中でも「おっ」と思うアプリをつくったチームは本当にすごいなぁと思いました。</p>
+
+<p>特に僕と同じようにプロフィールを交換できるアプリを作ったチームのうち、音でデータのやりとりを実装されたチームがいて、その発想は全くなかったので驚きました。</p>
+
+<p>音とか光、使ってみたいなぁ。。。</p>
+
+<p>とても刺激になりました。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Dash で gem のドキュメントを参照する]]></title>
+    <link href="http://satococoa.github.io/blog/2013/01/22/view-rdoc-in-dash/"/>
+    <updated>2013-01-22T18:17:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/01/22/view-rdoc-in-dash</id>
+    <content type="html"><![CDATA[<blockquote class="twitter-tweet" data-in-reply-to="293602772425777154" lang="ja"><p>@<a href="https://twitter.com/satococoa">satococoa</a> やっぱウェブみにいくんですね、了解です。この辺も Dash とかで見れるようにしたいな</p>&mdash; Naoya Itoさん (@naoya_ito) <a href="https://twitter.com/naoya_ito/status/293602967179911168" data-datetime="2013-01-22T06:16:16+00:00">1月 22, 2013</a></blockquote>
+
+
+<script async src="http://satococoa.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>こんな話から、インストールした gem のドキュメントが見られる風な Docset が Dash にあったのを思い出してちょっと調べてみました。</p>
+
+<p>以下の手順に沿ってちょこちょこっと設定をすると、RDoc で生成された gem のドキュメントが見られました。</p>
+
+<h3>設定方法</h3>
+
+<ol>
+<li>Preferences… &ndash;> Downloads から &ldquo;Ruby Installed Gems&rdquo; というdocsetをインストール</li>
+<li>Preferences… &ndash;> Docsets に Ruby Gems という docset があるので、その一番右にあるギヤのボタンからrdocが置かれているパスを設定する。<code>gem env gempath</code> というコマンドで rdoc の置かれるパスがわかります。</li>
+<li>&ldquo;index&rdquo; ボタンを押すと Dash で使えるようになります。</li>
+</ol>
+
+
+<p>gem をインストールするときには .gemrc なりオプションなりで <code>--no-ri --no-rdoc</code> を指定している人が多いと思います。以下のコマンドで任意の gem の rdoc を生成することが出来ます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem rdoc --rdoc bubble-wrap</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>結果</h3>
+
+<p>こんな感じです。</p>
+
+<p><img src="http://satococoa.github.io/images/201301/rdoc-in-dash.png"></p>
+
+<h3>ついでに</h3>
+
+<p>横道にそれますが gem に限るのでしたら <code>yard</code> もおすすめです。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install yard
+</span><span class='line'>$ yard server --gems</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>gem rdoc</code> コマンドで rdoc を生成しておく必要もありません。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[東京 Ruby 会議 10に参加しました]]></title>
+    <link href="http://satococoa.github.io/blog/2013/01/15/tkrk10/"/>
+    <updated>2013-01-15T04:37:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/01/15/tkrk10</id>
+    <content type="html"><![CDATA[<p><a href="http://tokyo10.rubykaigi.info">東京 Ruby 会議 10</a> に2日間フルに参加してきました。</p>
+
+<h2>1日目</h2>
+
+<p>僕はほとんど #p4d の <a href="http://tokyo10.rubykaigi.info/workshops/p4d">Rubyist のためのデザイン講座</a> のことで頭がいっぱいだったので、無事にこれを実現できたことで満足です。</p>
+
+<p><a href="http://connpass.com/event/1185/">第一回プログラマ向けデザイン講座</a> に参加できなかった方にもたくさん参加していただけて、ワークショップの部屋がほぼ満員という状態にまでなったのでとても嬉しかったです。</p>
+
+<p>初導入の実習コーナーも楽しかったですね！</p>
+
+<p>#p4d を主催していながら、最近僕は自分の個人名義のプロダクトをあまり作れていなくてせっかく学んだことを活かす機会が作れていないので、今年は頑張りたいです。</p>
+
+<h2>2日目</h2>
+
+<p>朝から雨風が強く、お昼からは完全に大雪でした。</p>
+
+<p>本当はこの日の午後から RubyMotion 関連で発表をするはずだったのですが、残念ながらその前に東京 Ruby 会議 10 が大雪のため前倒しで終了となってしまいました。</p>
+
+<p>なので、しばらくは「幻のスピーカー」を名乗っていこうと思います。</p>
+
+<h3>発表しようと思っていたこと</h3>
+
+<p>RubyMotion を使って、Rails の Scaffold で作った簡単なアプリケーションのデータの CRUD を iOS で実装するライブコーディングをしようと思っていました。</p>
+
+<p>コードは github で公開されていますので、よろしければご覧下さい。</p>
+
+<p><a href="http://bubblewrap.io">BubbleWrap</a> と <a href="http://clayallsopp.github.com/formotion/">Formotion</a> を使っていて、これらのおかげで非常に簡単にサーバと通信するフォームやリストを作ることが出来ました。</p>
+
+<ul>
+<li><a href="https://github.com/satococoa/tkrk10_server">サーバ側</a></li>
+<li><a href="https://github.com/satococoa/tkrk10_client">クライアント側</a></li>
+</ul>
+
+
+<h2>まとめ</h2>
+
+<p>僕はほぼ #p4d のワークショップに時間を使っていてあまり歩き回ったりはしていなかったのですが、それでも今回もたくさんの Rubyist と交流することが出来ました。</p>
+
+<p>バッヂを使った交流は良いアイディアだな、と思いました。どうしても発表形式の勉強会なんかだと他の人と話をせずに終わってしまう可能性がありますからね。</p>
+
+<p>あと、大雪での打ち切りは本当にスタッフの方は悔しい思いをされたと思います。それを思うと心苦しいですが、でも2日間とても楽しかったです！</p>
+
+<p>スタッフのみなさん、発表者のみなさん、そして #p4d ワークショップに来てくれた方や協力してくれた方々、どうもありがとうございました。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2012年のまとめと2013年の抱負]]></title>
+    <link href="http://satococoa.github.io/blog/2012/12/31/2012-2013/"/>
+    <updated>2012-12-31T00:33:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/12/31/2012-2013</id>
+    <content type="html"><![CDATA[<p>2012年ももう最終日となってしまいましたので、まとめ的なブログでも書いてみようと思います。</p>
+
+<h2>2012年</h2>
+
+<p>2012年の年初に挙げた目標は「自重しない」ということでした。
+ある程度はその目標通り、色んなことにチャレンジできた1年だったと思います。</p>
+
+<p>特に思い出深い出来事を振り返ってみます。</p>
+
+<h3>みなとRuby会議01</h3>
+
+<p>6/2(土)に開催された<a href="http://regional.rubykaigi.org/minato01">みなとRuby会議01</a>の副実行委員長をやらせていただきました。</p>
+
+<p>ほとんどのメンバーが地域 Ruby 会議の運営が初めてという状態ではありましたが、1月から何度も打ち合わせを重ね、工夫を凝らして楽しい Ruby 会議を作ることが出来たと思います。</p>
+
+<p>そのときのエントリはこちらです。<a href="http://satococoa.github.com/blog/2012/06/04/minato-rubykaigi-01/">みなとRuby会議01</a></p>
+
+<p>唯一の心残りは Ruby アイドルの招致に失敗したことですね。</p>
+
+<h3>Yokohama.rb</h3>
+
+<p><a href="http://bukt.org/groups/3">Bu: Yokohama.rb</a></p>
+
+<p>今年も非常にお世話になりました。</p>
+
+<p>今、僕が積極的に勉強会などのコミュニティへ参加できるようになったのは Yokohama.rb でたくさんの仲間ができ、自信をもらったからです。</p>
+
+<p>ちなみによく聞かれるのですが、僕は横浜に住んでいません。むしろ最寄りは Asakusa.rb です。（来年は Asakusa.rb ももう少し参加したい。）<br/>
+前職に在職中に土日に参加できる Ruby の勉強会を探して、当時唯一見つけたのが Yokohama.rb だったのが参加の理由でした。</p>
+
+<p>ちなみに出欠確認に使っている <a href="http://bukt.org/">Bu</a> ですが、Yokohama.rb ファウンダーの<a href="https://twitter.com/dan5ya">だん</a>さん作で、現在 <a href="https://twitter.com/1syo">@1syo</a> さん主導でリファクタリングが進められています。→ <a href="https://github.com/1syo/bu">https://github.com/1syo/bu</a><br/>
+参加自由ですので Yokohama.rb メンバーはコードレビューとか参加してみては？とても勉強になりますよ。</p>
+
+<p>リファクタリングが落ち着いたら API を作って RubyMotion か Objective-C で iPhone クライアント作りたいです。どっち使うかは一緒にやってくれる人の希望次第で。</p>
+
+<h3>#P4D</h3>
+
+<p>今年は大体月1回ずつ何かしらのイベントを開催しました。</p>
+
+<p>特に<a href="http://connpass.com/event/1185/">第一回 プログラマ向けデザイン勉強会</a>の盛り上がりがすごかったですね。</p>
+
+<p>これがきっかけで発表してくださったデザイナさんにも改めて注目が集まり、今後の色んな展開につながりそうです。<br/>
+詳しくはまだ伏せますが、面白いことが進んでいるようなので楽しみにしています。</p>
+
+<p>来年早々の<a href="http://tokyo10.rubykaigi.info">東京Ruby会議10</a>では半日分 #p4d で枠をもらっているので、前述のデザイン勉強会を再演しようと思います。前回参加できなかった方はぜひぜひご参加ください。（もしかすると席が足りずに当日先着順の受付になるかもしれません。ご了承ください。）→ <a href="http://tokyo10.rubykaigi.info/workshops/p4d">#p4d 「Rubyistのためのデザイン講座」</a></p>
+
+<p>現在の #p4d は基本月1回平日夜に集まれる人で集まって、自由に開発をしたりデザイン・プログラムの相談をしたりするもくもく会のような形式で落ち着いてきました。<br/>
+来年からは月2回に増やして開催していきたいと思いますので、プログラミングに興味のあるデザイナさん、デザインに興味のあるプログラマさんはぜひお気軽にご参加ください。</p>
+
+<h3>RubyMotion</h3>
+
+<p>個人的に今年一番力を注いだのは <a href="http://www.rubymotion.com">RubyMotion</a> でした。</p>
+
+<p><a href="http://connpass.com/event/665/">第一回 RubyMotion勉強会</a> をはじめ、9月からは月1回 RubyMotionもくもく会を開催しています。</p>
+
+<p>また、<a href="http://www.adventar.org/calendars/18">RubyMotion Advent Calendar 2012</a> も企画し、無事に25日分の貴重な情報が集まりました。</p>
+
+<p><a href="http://jp.rubyist.net/magazine/">るびま</a>に<a href="http://jp.rubyist.net/magazine/?0039-IntroductionToRubyMotion">RubyMotion のご紹介</a>という記事を書かせていただいたのも本当に貴重な体験となりました。</p>
+
+<h3>仕事</h3>
+
+<p>とてもありがたいことに RubyMotion + Rails で仕事をしています。<br/>
+RubyMotionの発売が5月初旬でしたが、6月から仕事で使っています。</p>
+
+<p>当初は iOS の開発もほぼ初めての状態だったので何かおかしな動作をしても自分の書き方が悪いのかそれとも RubyMotion のバグなのかがわからずに、同じ実装を Objective-C でも書いてみて動作を比較したり、それを元にサポートにチケットを送ったり Pull Request を送ったりしていました。</p>
+
+<p>現在はかなり RubyMotion 自体が成熟してきたのと自分が Cocoa Touch に慣れてきたのがあり、効率よくものを作れるようになってきました。</p>
+
+<p>Rails を仕事で使うのは今のプロジェクトが初めてなのですが、周りに Ruby や Rails が得意な同僚がたくさんいるため、安心して開発を進めることが出来ています。</p>
+
+<p>すぐに同僚に相談できる環境というのが素晴らしいですね。お世話になっています。</p>
+
+<p>ちなみに僕の勤める<a href="http://1923.co.jp">株式会社イグニス</a>では現在一緒にアプリ作りをする仲間を募集しています。→ <a href="http://1923.co.jp/recruit.html">採用情報</a></p>
+
+<p>僕に個人的に声をかけていただいても結構ですので、お気軽にご連絡ください。一緒に RubyMotion や Objective-C、Rails でアプリをつくりませんか？</p>
+
+<ul>
+<li>twitter: <a href="https://twitter.com/satococoa">@satococoa</a></li>
+<li>facebook: <a href="https://www.facebook.com/satoshi.ebisawa">satoshi.ebisawa</a></li>
+<li>メール: <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#101;&#46;&#x73;&#97;&#116;&#111;&#x73;&#104;&#105;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;">&#101;&#x2e;&#115;&#x61;&#x74;&#111;&#115;&#x68;&#105;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#109;</a></li>
+</ul>
+
+
+<h2>2013年</h2>
+
+<p>来年は「広げる」をテーマにやってみようかな、と思います。</p>
+
+<p>具体的にやりたいと思っていることをざっくり挙げると、</p>
+
+<ul>
+<li>ビギナー向けiOSアプリ勉強会をやってみたい<br/>
+デザイナさんはもちろん、企画やプロデューサの方も対象として iOS アプリの作り方がざっくりわかるような勉強会を開催したい。</li>
+<li>第2回 プログラマ向けデザイン講座<br/>
+3月頃にやれればなぁ。。。と考えています。</li>
+<li>本や記事を書きたい<br/>
+まずは電子書籍で、いずれ紙媒体で出版される物を書きたいです。テーマは今ならやっぱり RubyMotion かなぁ。</li>
+</ul>
+
+
+<p>もともとPC スクールのインストラクターをしていたことがあって、ものを教えることが好きなので、もちろん自分の手を動かしてものづくりをしていくことは継続しつつも、その楽しさを広めていけるような活動をしたいと思っています。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RubyMotion Advent Calendar 2012 のアプリをつくりました]]></title>
+    <link href="http://satococoa.github.io/blog/2012/12/25/made-rubymotion-advent-calendar-2012-application/"/>
+    <updated>2012-12-25T22:06:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/12/25/made-rubymotion-advent-calendar-2012-application</id>
+    <content type="html"><![CDATA[<p>この記事は <a href="http://www.adventar.org/calendars/18">RubyMotion Advent Calendar 2012</a> の25日目の記事です。</p>
+
+<p>時間がちょっと足りなくてやっつけ感が半端ないですが、Advent Calendar に登録された記事を見られるアプリを作ってみました。</p>
+
+<p>ちょっと見積もりを誤ってしまい、細かい動作や見た目を調整している間がありませんでした＞＜</p>
+
+<p>（具体的には意外とカレンダーの表示に使っているライブラリの自由度が狭くて難儀してました。）</p>
+
+<p><img src="http://satococoa.github.io/images/201212/rubymo.png"></p>
+
+<p>リポジトリは以下です。</p>
+
+<p><a href="https://github.com/satococoa/RubyMo">https://github.com/satococoa/RubyMo</a></p>
+
+<p>カレンダーの表示は <a href="https://github.com/klazuka/Kal">Kal</a> を使い、エントリの表示には <a href="http://nimbuskit.info">NimbusKit</a> を使っています。</p>
+
+<p>簡単なサンプル程度のものではありますが、CocoaPods を用いたライブラリの導入や、BubbleWrap での RSS を取得する処理など、参考にしていただけるところもあると思います。</p>
+
+<h2>RubyMotion Advent Calendar 2012 のまとめ</h2>
+
+<p>本当に25日分エントリが集まって本当に嬉しく思っています。特に複数の記事を書いていただいた方にはとても感謝しています。</p>
+
+<p>来年 2013 年は <a href="http://www.rubymotion.com/conference/">#inspect 2013 &ndash; RubyMotion Conference</a> もありますし、まだ構想段階ではありますが日本でもカンファレンス(仮)をやりたいと思っています。</p>
+
+<p>今後ユーザーが増えてますます情報の共有が進んでくると、いよいよ仕事で実践投入する方も増えてくることと思います。</p>
+
+<p>来年もユーザー同士でのコミュニケーションが出来る場を作りつつ、自分でもいいアプリをどんどん作っていきたいと思います。</p>
+
+<p>今年お世話になった RubyMotion 関連の方々、本当にありがとうございました。また来年もよろしくお願いします。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[第4回 RubyMotion もくもく会]]></title>
+    <link href="http://satococoa.github.io/blog/2012/12/19/rubymotion-mokmok-4th/"/>
+    <updated>2012-12-19T20:39:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/12/19/rubymotion-mokmok-4th</id>
+    <content type="html"><![CDATA[<p>この記事は <a href="http://www.adventar.org/calendars/18">RubyMotion Advent Calendar 2012</a> の19日目の記事です。</p>
+
+<p>本日(12/19)、<a href="http://connpass.com/event/1534/">第4回 RubyMotion もくもく会</a> を開催しました。</p>
+
+<p>前回の様子は id:naoya さんの <a href="http://d.hatena.ne.jp/naoya/20121129/1354186463">RubyMotionもくもく会</a> のエントリをご参照ください。</p>
+
+<p><img src="http://satococoa.github.io/images/201212/rubymotion-mokmok-4th.jpg"></p>
+
+<h2>目的</h2>
+
+<p>大きな目的は、RubyMotion ユーザー間のつながりを作り、ノウハウ共有の場をつくるということです。</p>
+
+<p>発売から約7ヶ月という若いプロダクトである上有料(1万円超)という高いハードルもあり、Titaniumなどと比べるとまだまだ検索などでひっかかる情報量が少ない印象です。</p>
+
+<p>また、開発には Ruby と CocoaTouch の知識が必要となりますのでそのいずれかにある程度明るくないとハマる人は問題の切り分けも難しいくらいにとことんハマってしまう恐れがあります。</p>
+
+<p>そういうとき気軽に相談ができる場が必要なのでは、と考えて開催させていただいています。</p>
+
+<p>せっかく日本にコミッター(<a href="https://twitter.com/watson1978">@watson1978</a>さん)もいることですし、どんどん情報を共有していきたいな、と考えています。</p>
+
+<h2>内容</h2>
+
+<p>はじめに各自軽く自己紹介と今日やることの発表をします。あとは随時質問や雑談を交えながらそれぞれの課題をこなしていきます。</p>
+
+<p>今日は RubyMine を使っている方がいたので補完している様子やデバッグの様子を見せていただいたりしました。</p>
+
+<p>つい数日前に RubyMotion を始めたばかりという方やチュートリアルを進めている方もいらっしゃいました。</p>
+
+<p>実際にアプリを開発している方はそのアプリの開発やアップデートなどをすすめていました。</p>
+
+<p>あとはドラクエのプレイヤーを探している方や iPhone の復元をしている方などもいて、なかなか斬新でした。</p>
+
+<h2>今後</h2>
+
+<p>今後も月一回程度の開催頻度でやっていこうと思います。事前の知識や経験などは問いませんので RubyMotion に興味を持っている方はぜひお気軽にご参加ください。</p>
+
+<p>次回は1/23(水)です！→ <a href="http://connpass.com/event/1602/">第5回 RubyMotion もくもく会</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RubyMotion で Nimbus CSS を使ってみる]]></title>
+    <link href="http://satococoa.github.io/blog/2012/12/17/use-nimbus-css-with-rubymotion/"/>
+    <updated>2012-12-17T20:50:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/12/17/use-nimbus-css-with-rubymotion</id>
+    <content type="html"><![CDATA[<p>この記事は <a href="http://www.adventar.org/calendars/18">RubyMotion Advent Calendar 2012</a> の17日目の記事です。</p>
+
+<h2>Nimbus?</h2>
+
+<p>最近 <a href="http://fladdict.net/blog/2012/12/nimbus-kit.html">新Google Mapsアプリ採用のフレームワーク NimbusKit がいい感じ</a> で話題になった <a href="http://nimbuskit.info">NimbusKit</a> というフレームワークに興味を持ってちらっと調べてみたのですが、なんと CSS でアプリの View の定義ができるらしいということがわかりました。</p>
+
+<p>しかも、CSS を変更するとリアルタイムにその変更が反映されるそうじゃないですか！</p>
+
+<p>デモ動画はこちらです。</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/i_5LbQ8e9BU" frameborder="0" allowfullscreen></iframe>
+
+
+<p>さっそく、RubyMotion からも使えるか、試してみました。</p>
+
+<h2>インストール</h2>
+
+<p>普通に motion-cocoapods でインストールできます。
+Rakefile にこんな感じに書いて、いつも通り<code>$ rake</code>でOKです。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  app.pods do
+</span><span class='line'>    pod 'Nimbus'
+</span><span class='line'>  end</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>コード</h2>
+
+<p>Nimbus CSS 関連のコードだけ貼ります。基本的には公式のドキュメントの <a href="http://docs.nimbuskit.info/NimbusCSS.html">Nimbus: Nimbus CSS</a> にある &ldquo;Recommended Procedure for Storing Stylesheets&rdquo; をなぞっているだけです。</p>
+
+<p>app/app_delegate.rb</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class AppDelegate
+</span><span class='line'>  attr_accessor :stylesheet_cache
+</span><span class='line'>
+</span><span class='line'>  def application(application, didFinishLaunchingWithOptions:launchOptions)
+</span><span class='line'>    @window = UIWindow.alloc.initWithFrame(App.bounds)
+</span><span class='line'>
+</span><span class='line'>    path_prefix = NIPathForBundleResource(nil, 'css') # resouces/css に CSS を置く
+</span><span class='line'>    host = 'http://localhost:8888/' # CSSファイルの変更を監視サーバを指定する。後述。
+</span><span class='line'>    @stylesheet_cache = NIStylesheetCache.alloc.initWithPathPrefix(path_prefix)
+</span><span class='line'>    @chameleonObserver = NIChameleonObserver.alloc.initWithStylesheetCache(
+</span><span class='line'>      @stylesheet_cache, host:host)
+</span><span class='line'>    @chameleonObserver.watchSkinChanges
+</span><span class='line'>
+</span><span class='line'>    main_controller = MainController.alloc.initWithNibName(nil, bundle:nil)
+</span><span class='line'>    @root_controller = UINavigationController.alloc.initWithRootViewController(main_controller)
+</span><span class='line'>    @window.rootViewController = @root_controller
+</span><span class='line'>
+</span><span class='line'>    @window.makeKeyAndVisible
+</span><span class='line'>
+</span><span class='line'>    true
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>app/main_controller.rb</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class MainController &lt; UIViewController
+</span><span class='line'>  def dealloc
+</span><span class='line'>    # BubbleWrap を使っています。
+</span><span class='line'>    App.notification_center.unobserve(@style_observer)
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  def initWithNibName(nibNameOrNil, bundle:nibBundleOrNil)
+</span><span class='line'>    super
+</span><span class='line'>    stylesheet_cache = App.delegate.stylesheet_cache
+</span><span class='line'>    stylesheet = stylesheet_cache.stylesheetWithPath('main.css')
+</span><span class='line'>    @dom = NIDOM.alloc.initWithStylesheet(stylesheet)
+</span><span class='line'>    @style_observer = App.notification_center.observe(NIStylesheetDidChangeNotification, stylesheet) do |notif|
+</span><span class='line'>      @dom.refresh
+</span><span class='line'>    end
+</span><span class='line'>    self.title = 'Nimbus CSS'
+</span><span class='line'>    self
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  def loadView
+</span><span class='line'>    self.view = UIView.new.tap do |v|
+</span><span class='line'>      v.backgroundColor = UIColor.underPageBackgroundColor
+</span><span class='line'>    end
+</span><span class='line'>    bg_view = UIView.alloc.initWithFrame([[10, 10], [300, 300]])
+</span><span class='line'>    @dom.registerView(bg_view, withCSSClass:'background')
+</span><span class='line'>
+</span><span class='line'>    label = UILabel.new.tap do |l|
+</span><span class='line'>      l.text = 'Hello, Nimbus'
+</span><span class='line'>      l.frame = [[20, 20], [200, 100]]
+</span><span class='line'>    end
+</span><span class='line'>    @dom.registerView(label)
+</span><span class='line'>
+</span><span class='line'>    small_label = UILabel.new.tap do |l|
+</span><span class='line'>      l.text = 'small label'
+</span><span class='line'>      l.frame = [[20, 130], [200, 50]]
+</span><span class='line'>    end
+</span><span class='line'>    @dom.registerView(small_label, withCSSClass:'small')
+</span><span class='line'>
+</span><span class='line'>    self.view.addSubview(bg_view)
+</span><span class='line'>    self.view.addSubview(label)
+</span><span class='line'>    self.view.addSubview(small_label)
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  def viewDidUnLoad
+</span><span class='line'>    @dom.unregisterAllViews
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>resources/css/main.css</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>.background {
+</span><span class='line'>  background-color: red;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>UILabel {
+</span><span class='line'>  font: 24, "Verdana-Bold";
+</span><span class='line'>  background-color: clear;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>.small {
+</span><span class='line'>  font-size: 12;
+</span><span class='line'>  background-color: rgba(255, 255, 255, 0.7);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで実行すると、下図のような結果になるかと思います。</p>
+
+<p><img src="http://satococoa.github.io/images/201212/nimbus.png"></p>
+
+<p>ちなみに、使用できる CSS のプロパティ一覧は <a href="http://docs.nimbuskit.info/NimbusCSS.html">Nimbus: Nimbus CSS</a> の &ldquo;Supported CSS Properties&rdquo; のところにあります。<br/>
+本当は view の位置も調整できると嬉しかったのですが、まだ未対応のようです。</p>
+
+<h2>リアルタイムに変更してみる</h2>
+
+<p>さて、いよいよリアルタイムに変更してみたいと思います。</p>
+
+<p>前述のように、コード中に CSS ファイルの変更を監視するサーバを指定しました。これは <a href="https://github.com/jverkoey/nimbus">https://github.com/jverkoey/nimbus</a> から clone してくると src/css/chameleon にあります。</p>
+
+<p>node.js でできたツールですので、node.js の開発環境が整っていない方は適宜<code>brew install node</code>などをして入れてください。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd /path/to/chameleon
+</span><span class='line'>$ npm install
+</span><span class='line'>$ node chameleon.js --watch /path/to/resources/css</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上記のようにすると、サーバーが立ち上がると思います。念のためブラウザで確認してみましょう。</p>
+
+<p><a href="http://localhost:8888/watch">http://localhost:8888/watch</a> にアクセスし、CSS を保存すると変更されたファイルのパスが画面に表示されると思います。</p>
+
+<p>改めて <code>$ rake</code> し、<code>background-color</code> などを書き換えて遊んでみてください。</p>
+
+<h2>まとめ</h2>
+
+<p>このように、RubyMotion と motion-cocoapods を使えば Nimbus のような Objective-C で書かれたフレームワークも簡単に使うことができます。むしろ、Objective-C でやるよりもライブラリのインストールは楽かもしれません。</p>
+
+<p>今回は Nimbus CSS のみを使ってみましたが、Nimbus には他にもダッシュボード風の UI を作るクラスや、iOS 標準アプリの写真アプリみたいな UI を作るクラス、組み込みのブラウザとしてそのまま使えるクラスなども含まれています。</p>
+
+<p>うまく再利用して効率的にアプリ開発をしたいですね！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RubyMotion の小ワザ]]></title>
+    <link href="http://satococoa.github.io/blog/2012/12/08/rubymotion-tips/"/>
+    <updated>2012-12-08T19:30:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/12/08/rubymotion-tips</id>
+    <content type="html"><![CDATA[<p>この記事は <a href="http://www.adventar.org/calendars/18">RubyMotion Advent Calendar 2012</a> の8日目の記事です。</p>
+
+<p>実際に RubyMotion を使って開発する上で、知っておくとちょっと便利かもしれない小ワザを並べてみます。</p>
+
+<h2>複数の iOS 機器をつないでいるときにデプロイする機器を指定する</h2>
+
+<p>仕事で iOS アプリの開発をしていると、Mac に複数の機器をつないでいることもしばしばあります。そういうときに <code>rake device</code> する際、<code>id</code>パラメータを指定するとでプロイする機器を選択することができます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake device id=hogehoge</span></code></pre></td></tr></table></div></figure>
+
+
+<p>この際に使うidというのは Identifier のことで Xcode の Organizer で調べることができます。</p>
+
+<p><img src="http://satococoa.github.io/images/201212/identifier-in-organizer.png"></p>
+
+<h2>設定を yaml ファイルにまとめる</h2>
+
+<p>複数のアプリの開発をしていると、毎回 Rakefile に testflight の token を書くのは面倒ですし、Rakefile がごちゃっとしますよね。</p>
+
+<p>僕は yaml にそういった設定情報を書くようにしています。</p>
+
+<p>yaml ファイルはこんな感じ。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>testflight:
+</span><span class='line'>  api_token: API_TOKEN
+</span><span class='line'>  team_token: TEAM_TOKEN
+</span><span class='line'>  distribution_lists:
+</span><span class='line'>    - DIST_LISTS
+</span><span class='line'>
+</span><span class='line'>identifier: com.example.coolapp
+</span><span class='line'>
+</span><span class='line'>development:
+</span><span class='line'>  certificate: 'iPhone Developer: foo (bar)'
+</span><span class='line'>  provisioning: '/path/to/foo.mobileprovision'
+</span><span class='line'>
+</span><span class='line'>adhoc:
+</span><span class='line'>  certificate: 'iPhone Distribution: foo'
+</span><span class='line'>  provisioning: '/path/to/foo.mobileprovision'
+</span><span class='line'>
+</span><span class='line'>release:
+</span><span class='line'>  certificate: 'iPhone Distribution: foo'
+</span><span class='line'>  provisioning: '/path/to/foo.mobileprovision'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rakefile 内でこんな風に使います。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  require 'yaml'
+</span><span class='line'>  conf_file = './config.yml'
+</span><span class='line'>  if File.exists?(conf_file)
+</span><span class='line'>    config = YAML::load_file(conf_file)
+</span><span class='line'>    app.testflight.sdk        = 'vendor/TestFlightSDK'
+</span><span class='line'>    app.testflight.api_token  = config['testflight']['api_token']
+</span><span class='line'>    app.testflight.team_token = config['testflight']['team_token']
+</span><span class='line'>    app.testflight.notify     = true
+</span><span class='line'>    app.testflight.distribution_lists = config['testflight']['distribution_lists']
+</span><span class='line'>    app.identifier = config['identifier']
+</span><span class='line'>    app.info_plist['CFBundleURLTypes'] = [
+</span><span class='line'>      { 'CFBundleURLName' =&gt; config['identifier'],
+</span><span class='line'>        'CFBundleURLSchemes' =&gt; ['coolapp'] }
+</span><span class='line'>    ]
+</span><span class='line'>
+</span><span class='line'>    env = ENV['ENV'] || 'development'
+</span><span class='line'>    app.codesign_certificate = config[env]['certificate']
+</span><span class='line'>    app.provisioning_profile = config[env]['provisioning']
+</span><span class='line'>  end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>testflight で配布するときはこんな感じ。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake testflight notes="hogehoge" mode=release ENV=adhoc</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>RubyMotion のバージョンを戻す</h2>
+
+<p>RubyMotion をアップデートして何かおかしなことが起きたら、以下のコマンドで任意のバージョンに戻すことができます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ motion update --force-version=1.15</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>tap を使って処理をすっきりまとめて書く</h2>
+
+<p><code>Object#tap</code> を使うと、以下のように書くことができます。初期化の固まりを視覚的に認識しやすいので僕は気に入っています。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># 普通に書くと...
+</span><span class='line'>label = UILabel.new
+</span><span class='line'>label.frame = [[0, 0], [320, 10]]
+</span><span class='line'>label.lineBreakMode = UILineBreakModeWordWrap
+</span><span class='line'>label.numberOfLines = 0
+</span><span class='line'>label.font = UIFont.systemFontOfSize(12)
+</span><span class='line'>label.text = text
+</span><span class='line'>label.backgroundColor = UIColor.lightGrayColor
+</span><span class='line'>label.alpha = 0.8
+</span><span class='line'>label.sizeToFit
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'># tap を使ってまとまりを持たせる
+</span><span class='line'>label = UILabel.new.tap do |l|
+</span><span class='line'>  l.frame = [[0, 0], [320, 10]]
+</span><span class='line'>  l.lineBreakMode = UILineBreakModeWordWrap
+</span><span class='line'>  l.numberOfLines = 0
+</span><span class='line'>  l.font = UIFont.systemFontOfSize(12)
+</span><span class='line'>  l.text = text
+</span><span class='line'>  l.backgroundColor = UIColor.lightGrayColor
+</span><span class='line'>  l.alpha = 0.8
+</span><span class='line'>  l.sizeToFit
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>weak_frameworks</h2>
+
+<p>例えば deployment_target を 5.0 以上にしている場合でも、iOS 6.0 で起動中は Social フレームワークを使いたいというケース、あると思います。
+ただし、普通に <code>app.frameworks</code> に <code>Social</code> を足してしまうと iOS 6.0 以上にしか存在しないフレームワークなのでビルドが通らなくなってしまいます。</p>
+
+<p>そういうときは <code>app.weak_framework</code> を使えば、必要になったときにframeworkをロードするようになります。</p>
+
+<p>もちろん、iOS 5.0 で Social フレームワークが使えるわけではないので以下のように切り分けは必要です。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def can_open_tweet?
+</span><span class='line'>  if defined?(SLComposeViewController)
+</span><span class='line'>    SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)
+</span><span class='line'>  else
+</span><span class='line'>    TWTweetComposeViewController.canSendTweet
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以下のコマンドで使用するシミュレータの OS のバージョンを指定して起動することができます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake target=6.0</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>bundler を使う</h2>
+
+<p>RubyMotion 用の gem も BubbleWrap をはじめとしてたくさん出てきました。rails を使った開発のように Bundler を使用すると依存関係を管理することができ、複数人での開発などがしやすくなります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install bundler
+</span><span class='line'>$ bundle init # これで Gemfile が生成されるので必要な Gem を中に書く
+</span><span class='line'>$ bundle install --path vendor/bundle # gem をインストールするパスを指定</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Gemfile はこんな感じになります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>source "https://rubygems.org"
+</span><span class='line'>
+</span><span class='line'>gem 'bubble-wrap'
+</span><span class='line'>gem 'motion-cocoapods'
+</span><span class='line'>gem 'motion-testflight'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Bundler でインストールした gem を使うには Rakefile の冒頭の以下のようにします。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># -*- coding: utf-8 -*-
+</span><span class='line'>$:.unshift("/Library/RubyMotion/lib")
+</span><span class='line'>require 'motion/project'
+</span><span class='line'>require 'bundler/setup'
+</span><span class='line'>Bundler.require :default</span></code></pre></td></tr></table></div></figure>
+
+
+<p>一点注意があります。bundler でインストールされた rake とビルド時に使用する rake のバージョンが異なる場合、rake 実行時に以下のようなメッセージが表示されます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake
+</span><span class='line'>rake aborted!
+</span><span class='line'>You have already activated rake 10.0.2, but your Gemfile requires rake 0.9.5. Using bundle exec may solve this.
+</span><span class='line'>/path/to/Rakefile:4:in `&lt;top (required)&gt;'
+</span><span class='line'>(See full trace by running task with --trace)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>bundle exec を使うと、Bundler でインストールされた rake を使うことができます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ bundle exec rake</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>mode が development か release かを判断する</h2>
+
+<p>RubyMotion のプロジェクトのビルドには development と release の2つのモードがあります。</p>
+
+<p>development は開発用にシミュレータや開発機に転送するのに使い、release は AppStore への提出用です。</p>
+
+<p>以下のようにしてモードを指定してビルドすることができます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake mode=development
+</span><span class='line'># または
+</span><span class='line'>$ rake mode=release</span></code></pre></td></tr></table></div></figure>
+
+
+<p>現時点での両者の違いは、release モードにすると実行ファイルの最適化が行われることです。それによって、そのプロセスが無い分 development モードのビルドは早くなり、逆に実行時の速度が若干損なわれるそうです。（ベンチマークとっていないのでちょっとその差がどのくらいなのか、までは比べていませんが&hellip;）</p>
+
+<p>さて、モードによって処理を分けたいところも存在すると思います。development モードのときだけログを出したりとか。</p>
+
+<p>Rakefile の中では <code>app.development</code>, <code>app.release</code> というメソッドが使えます。それぞれブロックの中身が対応するモードのときにのみ実行されます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Motion::Project::App.setup do |app|
+</span><span class='line'>  # ...
+</span><span class='line'>  app.development do
+</span><span class='line'>    # This entitlement is required during development but must not be used for release.
+</span><span class='line'>    app.entitlements['get-task-allow'] = true
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rakefile ではなく実行コードの方では <code>RUBYMOTION_ENV</code> という定数が使えます。</p>
+
+<h2>まとめ</h2>
+
+<p>思いついたものをざっと並べただけでした。既に開発をバリバリやっている方にはご存知の物も多いかもしれませんが、参考になれば幸いです。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby 2.0.0-preview2 をインストール]]></title>
+    <link href="http://satococoa.github.io/blog/2012/12/02/install-ruby-2-dot-0-0-preview2/"/>
+    <updated>2012-12-02T17:11:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/12/02/install-ruby-2-dot-0-0-preview2</id>
+    <content type="html"><![CDATA[<p>普通に <code>rbenv install 2.0.0-preview2</code> したら openssl を require できなかったので以下の手順を行った。</p>
+
+<p>環境は
+&ndash; Mac OS X 10.8.2 (10.7.xからのアップグレード)
+&ndash; brew
+&ndash; brew でインストールした rbenv, ruby-build を使用
+&ndash; zsh</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew install openssl
+</span><span class='line'>$ vim .zshrc
+</span><span class='line'># 以下を追記
+</span><span class='line'>export CONFIGURE_OPTS='--with-readline-dir=/usr/local/opt/readline --with-openssl-dir=/usr/local/opt/openssl' 
+</span><span class='line'>$ rbenv install 2.0.0-preview2
+</span><span class='line'>$ rbenv global 2.0.0-preview2
+</span><span class='line'>$ ruby -ropen-uri -e 'p open("https://www.google.com/").read'
+</span><span class='line'>OpenSSL::SSL::SSLError: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
+</span><span class='line'>…(snip)
+</span><span class='line'># 証明書が無いのが原因？
+</span><span class='line'>$ curl -O http://curl.haxx.se/ca/cacert.pem
+</span><span class='line'># 証明書はどこに置けば良いの？
+</span><span class='line'>$ ruby -ropenssl -e 'p OpenSSL::X509::DEFAULT_CERT_FILE'
+</span><span class='line'>"/usr/local/etc/openssl/cert.pem"
+</span><span class='line'>$ mv cacert.pem /usr/local/etc/openssl/cert.pem</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RubyMotion のはじめの一歩]]></title>
+    <link href="http://satococoa.github.io/blog/2012/12/01/rubymotion-first-step/"/>
+    <updated>2012-12-01T01:07:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/12/01/rubymotion-first-step</id>
+    <content type="html"><![CDATA[<p>この記事は <a href="http://www.adventar.org/calendars/18">RubyMotion Advent Calendar 2012</a> の一日目の記事です。</p>
+
+<p>RubyMotion を買ってみたけれどもまだ具体的なアプリ作りまでは進んでいない方向けに、RubyMotion で手っ取り早くアプリ開発を始める手順をまとめてみます。</p>
+
+<h2>API リファレンスを準備する</h2>
+
+<p>RubyMotion での開発は <a href="https://developer.apple.com/jp/technologies/ios/cocoa-touch.html">Cocoa Touch</a> フレームワークを直接使いますので、Cocoa Touch の API リファレンスを常に引けるようにしておいて下さい。</p>
+
+<p><a href="http://www.rubymotion.com/developer-center/api/index.html">RubyMotion API Reference</a> を見るか、iOS アプリの開発を既に経験されている方は Cocoa Touch のドキュメントを見るのが良いと思います。</p>
+
+<p>RubyMotion 勉強会や RubyMotion もくもく会などで聞いてみたところ、<a href="https://itunes.apple.com/jp/app/dash-docs-snippets/id458034879?mt=12">Dash</a> を使っている人が大多数でした。</p>
+
+<p>Dash用の <a href="http://rubymotion.com/files/RubyMotion.docset.zip">RubyMotion Docset</a> も最近公開されました。（ファイルへの直リンクになっています。）</p>
+
+<h2>チュートリアル</h2>
+
+<p>手前味噌ですが、僕が以前 Rubyist Magazine に書かせていただいた記事がごく簡単なチュートリアルになっています。</p>
+
+<p><a href="http://jp.rubyist.net/magazine/?0039-IntroductionToRubyMotion">RubyMotion のご紹介</a></p>
+
+<p>もう少しアプリケーションとして楽しい物を作りたい方は id:naoya さんの記事を読みながら作ってみるのがおすすめです。</p>
+
+<p><a href="http://d.hatena.ne.jp/naoya/20120831/1346409758">RubyMotion &ndash; naoyaのはてなダイアリー</a></p>
+
+<p>あとは <a href="https://github.com/HipByte/RubyMotionSamples">RubyMotionSamples</a> を動かしてみながら、改造したりして遊ぶのが楽しいと思います。</p>
+
+<p>ここまでで大体の感触を掴んだら、もう少しがっつりしたチュートリアルを一通りやってみましょう。<a href="http://rubymotion-tutorial.com">RubyMotion Tutorial</a> がおすすめです。日本語への翻訳も途中までやっているのですが、最近全然進めていないです。。。</p>
+
+<p>僕はあまり詳しく見ていないのですが、<a href="http://iconoclastlabs.github.com/rubymotion_cookbook/">RubyMotion Cookbook</a> も参考になります。
+O&#8217;Reilly から出ている <a href="http://shop.oreilly.com/product/0636920021728.do">iOS 5 Programming Cookbook</a> という本に載っているサンプルコードを RubyMotion で実装しています。</p>
+
+<h2>全体像を理解する</h2>
+
+<p>もちろん RubyMotion 以前に iOS アプリの開発をされていた方は Cocoa Touch についてはもう熟知されていると思いますが、僕のように RubyMotion から iOS アプリ開発を始めた人は、チュートリアルを終えただけでは実際にアプリを開発しようと思っても手が止まってしまうかもしれません。</p>
+
+<p>RubyMotion からは離れてしまいますが、Objective-C で書かれた Apple の公式ドキュメントもとても参考になります。
+Apple が日本語に翻訳した PDF もあります。
+<a href="https://developer.apple.com/jp/devcenter/ios/library/japanese.html">日本語ドキュメント &ndash; Apple Developer</a></p>
+
+<p>「iOS View Controllerカタログ」、「iOS View Controller プログラミングガイド」、「iOS View プログラミングガイド」あたりはもしまだ読んでいないようでしたら一通り目を通すことをお勧めします。
+チュートリアルから先に進むときに必要な知識になります。</p>
+
+<p>コツさえ覚えてしまえば Objective-C で書かれたサンプルコードなどを RubyMotion で実装するのは容易ですので、Objective-C でコードが書かれた書籍も役に立ちます。個人的には <a href="http://tatsu-zine.com/books/objc">エキスパートObjective-Cプログラミング ― iOS/OS Xのメモリ管理とマルチスレッド</a> がメモリ管理周り(RubyMotion は ARC と同じようなメモリ管理の仕組みが備わっています)とGCDの話をわかりやすく解説していてくれたのでとてもためになりました。</p>
+
+<h2>Ruby らしく書く</h2>
+
+<p>Cocoa Touch フレームワークを Ruby らしく利用できるようにラップしたライブラリが色々あります。<a href="http://rubymotion-wrappers.com">RubyMotion wrappers</a> にまとまっていますが、BubbleWrap は特に使っている人が多いようです。</p>
+
+<p>既存の RubyGems は残念ながら使えないのですが、<a href="https://github.com/HipByte/motion-cocoapods">motion-cocoapods</a> を使うことで、Objective-C で書かれたライブラリを気軽に利用することができます。</p>
+
+<p>Ruby の特徴であるメタプログラミングを活かしたい方は <a href="http://clayallsopp.com/posts/rubymotion-metaprogramming/">RubyMotion Metaprogramming</a> のエントリがとても参考になります。</p>
+
+<h2>困ったときの解決方法</h2>
+
+<p>いざアプリを作り始めるとハマることも多々あると思います。</p>
+
+<p>英語ですが、<a href="http://stackoverflow.com">Stack Overflow</a>、<a href="https://groups.google.com/forum/?fromgroups#!forum/rubymotion">Googleグループ</a> で検索すると同じ問題でハマっている人もいると思います。</p>
+
+<p>RubyMotion の情報に絞ってしまうと情報量がまだまだ少ないので、積極的に Objective-C のコードが出てきても読み進めていく方がいいです。</p>
+
+<p>それでも解決しない場合などはコミュニティに質問を投げてしまうと良いと思います。
+twitter なら #rubymotionjp のハッシュタグをつけてつぶやいてみる、facebook なら <a href="https://www.facebook.com/groups/149315595198329/">RubyMotion JP</a> に書き込んでみる、などしてみてください。</p>
+
+<ul>
+<li><a href="http://rubymotion.jp">RubyMotionJP</a><br/>
+ドキュメントの翻訳やイベントの情報などが掲載されています</li>
+<li>RubyMotion 勉強会、もくもく会 などに参加する！</li>
+</ul>
+
+
+<h2>まとめ</h2>
+
+<p>iOS アプリの開発、楽しいです。RubyMotion や僕の書いた記事があなたの背中を押しますように。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RubyでGoogleReaderAPIにアクセスする]]></title>
+    <link href="http://satococoa.github.io/blog/2012/11/06/use-google-reader-api-with-ruby/"/>
+    <updated>2012-11-06T22:37:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/11/06/use-google-reader-api-with-ruby</id>
+    <content type="html"><![CDATA[<h2>やりたかったこと</h2>
+
+<p>あるサイトの過去記事を全部RDF or Atomで取得したかった。</p>
+
+<h2>手順</h2>
+
+<p><a href="https://github.com/nudded/GoogleReaderAPI">GoogleReaderApi</a> っていうgemがあったので使ってみた。</p>
+
+<p>実際はBundler使ってプロジェクト以下にインストールしたりしているが省略。</p>
+
+<p>パラメータとかエンドポイントはぐぐったら非公式のドキュメントが出てきたのでそちらを参照。</p>
+
+<p><a href="http://code.google.com/p/pyrfeed/wiki/GoogleReaderAPI">http://code.google.com/p/pyrfeed/wiki/GoogleReaderAPI</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install GoogleReaderApi
+</span><span class='line'>$ pry
+</span><span class='line'>&gt; require 'google_reader_api'
+</span><span class='line'>&gt; api = GoogleReaderApi::Api.new {:email =&gt; 'example@gmail.com', :password =&gt; 'password'}
+</span><span class='line'>&gt; api.get_link('atom/feed/http://example.com/feed.rdf', {n:10, r:'o', ot:Date.parse('2012-11-01').to_time.to_i})</span></code></pre></td></tr></table></div></figure>
+
+
+<p>こんな感じでとれたので、あとはSimpleRSSとかのgemを使ってパースするだけだ！と思いきや、1ヶ月以上昔のエントリの情報は取れないらしい。</p>
+
+<h2>cパラメータを使えばいいらしい</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; c = ''
+</span><span class='line'>&gt; rss = SimpleRSS.parse(
+</span><span class='line'>    api.get_link(
+</span><span class='line'>      'atom/feed/http://kanasoku.blog82.fc2.com/%3Fxml', {c:c}
+</span><span class='line'>    ).tap{|xml|
+</span><span class='line'>      c = xml.gsub(%r!^.*&lt;gr:continuation&gt;(.+)&lt;/gr:continuation&gt;.*$!m, $1)
+</span><span class='line'>    })
+</span><span class='line'>&gt; # 繰り返し</span></code></pre></td></tr></table></div></figure>
+
+
+<p>「次を読む」の要領でどんどんさかのぼれる。<br/>
+スクレイピングしないで済みそう。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[第一回プログラマ向けデザイン勉強会を開催しました]]></title>
+    <link href="http://satococoa.github.io/blog/2012/10/31/design4p-1st/"/>
+    <updated>2012-10-31T01:04:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/10/31/design4p-1st</id>
+    <content type="html"><![CDATA[<p>10/27(土)に <a href="http://connpass.com/event/1185/">第一回プログラマ向けデザイン勉強会</a> を開催しました。</p>
+
+<p>この勉強会は毎月やっている <a href="https://www.facebook.com/groups/151208708350141/">デザイナー向けプログラム部 (P4D)</a> の逆バージョンで、デザイナさんにプログラマがデザインを教わるという趣旨で開催しました。<br/>
+そして講師役として、いつもP4Dの方でもお世話になっている <a href="https://twitter.com/machida">@machida</a> さん、<a href="https://twitter.com/ken_c_lo">@ken_c_lo</a> さん、<a href="https://twitter.com/saucerjp">@saucerjp</a> さんの3人にお願いしました。<br/>
+もっともこの3人をはじめ、P4Dに参加されているデザイナさんは普通にJSやFlash、ObjCなんか書いていたりして単にデザイナと呼んでいいのかどうかは怪しいところですが。</p>
+
+<h2>RailsエンジニアのためのTwitter Bootstrapカスタマイズ例</h2>
+
+<script async class="speakerdeck-embed" data-id="508e2052aee4d50002021f36" data-ratio="1.299492385786802" src="http://satococoa.github.io//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>まずは@machidaさんのTwitter Bootstrapのカスタマイズ例の話からでした。</p>
+
+<p>このテーマはP4D参加のプログラマからしきりにリクエストのあった「Twitter Bootstrapを使うとみんなTwitter Bootstrapっぽいサイトになってしまうから、カスタマイズ方法を教えて！ただし手間はかけたくない！！」というワガママな願いを叶えてくれるものでした。</p>
+
+<p>特にデザインに悩んだときはとりあえずちょっとずつスタイルシートをいじった結果をスクリーンショットにとって、ぱっぱっと切り替えながらbefore / afterを比べると判断しやすい、という話が目から鱗でした。</p>
+
+<p>あとはこの次の@ken_c_loさんの発表でも再三出てくるのですが、<a href="http://sass-lang.com">sass</a> と <a href="http://compass-style.org">compass</a> が便利ですね。<br/>
+特にsassに備わっている<code>darken</code>とか<code>lighten</code>だとかは僕も活用できていなかったので、今後使ってみようと思います。</p>
+
+<p>会場には意外とRailsエンジニア以外の方もいらっしゃったので、僭越ながら僕の方から途中でちょこっとgemとかsassだとかの解説を入れさせていただきました。</p>
+
+<h2>ズルいデザインテクニック</h2>
+
+<script async class="speakerdeck-embed" data-id="508b975236b3f8000201a95e" data-ratio="1.4143646408839778" src="http://satococoa.github.io//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>続いて@ken_c_loさんによる「少ない手間と知識で &ldquo;それなり&rdquo; に見せる、ズルいデザインテクニック」のお話でした。</p>
+
+<p>この発表については、発表中から勉強会終了後にいたるまでTLやはてブで多数の「ズルい！」の賞賛の声が上がっていました。</p>
+
+<p>まさにタイトルに偽り無しで、ちょっとした手間をかけるだけでとたんに実物っぽく見せる技を惜しげも無く大公開していただきました。</p>
+
+<p>sass, compassを使って実例が挙げられていますが、WebだけではなくてLTのスライドやスマホアプリなどにも応用ができそうな普遍的な内容でした。</p>
+
+<p>あとは使っているエディタを聞かれて「vimです」と答えた場面はおおいに盛り上がりました。</p>
+
+<h2>ノンデザイナーのための配色理論</h2>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/14902681" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="http://www.slideshare.net/saucerjp/ss-14902681" title="ノンデザイナーのための配色理論" target="_blank">ノンデザイナーのための配色理論</a> </strong> from <strong><a href="http://www.slideshare.net/saucerjp" target="_blank">saucerjp</a></strong> </div></p>
+
+<p>最後は@saucerjpさんによる配色のお話でした。</p>
+
+<p>前半はまるで大学の授業のような感じで配色理論の大事なところだけをぎゅっと凝縮して教えていただきました。@saucerjpさんが完全に先生に見えましたw</p>
+
+<p>そして後半は、なんとこの日のために@saucerjpさんが開発した(!)色選びのためのWebアプリを使って、手軽にきれいな色選びができるという実演を行っていただきました。</p>
+
+<p>そのアプリはこちらです。<a href="http://hue360.herokuapp.com">[ HUE / 360 ] The Color Scheme Application</a></p>
+
+<p>JSのアプリケーションですが、Sinatra使ってHerokuにデプロイされているあたり、さすがですね。</p>
+
+<h2>Webサービスデザイン相談会</h2>
+
+<p>即興ですが、2名の方に名乗り出ていただいて実際に動作しているWebアプリのデザインをデザイナ陣にコンサルしてもらう、というコーナーを設けました。</p>
+
+<p>議論が白熱して時間ギリギリいっぱいまでアドバイスを出していただけました。</p>
+
+<h2>開催してみての感想</h2>
+
+<p>募集を始める前から参加希望者が多いことは予想していましたが、予想以上の反響でびっくりしました。<br/>
+また、Rubyist以外にもずいぶんリーチしていたことも意外でした。それだけデザインの知識を必要とするプログラマがたくさんいて、今までそのノウハウが十分にシェアされてきていなかったということの現れでしょうか。</p>
+
+<p>初の試みではありましたが、その後のソーシャルメディア等での反響を見るに、とてもいい勉強会にできたのでは、と思っています。</p>
+
+<p>発表してくださった3人の方、会場を貸してくださった KDDIウェブコミュニケーションズ様、そして参加してくださったみなさん、本当にありがとうございました。</p>
+
+<p>僕も素敵デザインなアプリが作れるように頑張りたいと思い、多いに刺激を貰いました。</p>
+
+<h2>次回予告や宣伝など</h2>
+
+<p>アポも許可もなんにも取っていませんが、町田さんのスライドによると次回は <a href="https://twitter.com/monoooki">@monoooki</a> さんや <a href="https://twitter.com/9d">@9d</a> さんや <a href="https://twitter.com/hmbrw">@hmbrw</a> さんによるフォント、スマホアプリのデザインなどのお話が聞けるらしいです。</p>
+
+<p>あとは来年の1/13, 14に予定されている <a href="http://tokyo10.rubykaigi.info">東京Ruby会議10</a> で半日分 P4D の枠をいただいていますので、そこで今回の再演か続編、及びワークショップもしくはデザイン相談会（要はまだあんまり詰めていない）なんかをやりたいと思っていますので要チェックです。</p>
+
+<p>デザイナ、エンジニア集まってお互いに学び合ったり、きゃっきゃウフフしたいという方はぜひお気軽に <a href="https://www.facebook.com/groups/151208708350141/">デザイナー向けプログラム部 (P4D)</a> へご参加ください。</p>
+]]></content>
+  </entry>
+  
+</feed>

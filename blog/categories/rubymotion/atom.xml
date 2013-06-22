@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rubymotion | satococoa's blog]]></title>
+  <link href="http://satococoa.github.io/blog/categories/rubymotion/atom.xml" rel="self"/>
+  <link href="http://satococoa.github.io/"/>
+  <updated>2013-06-22T16:06:02+09:00</updated>
+  <id>http://satococoa.github.io/</id>
+  <author>
+    <name><![CDATA[Satoshi Ebisawa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RubyFriendsCamera has been released!]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/25/rubyfriendscamera/"/>
+    <updated>2013-02-25T18:54:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/25/rubyfriendscamera</id>
+    <content type="html"><![CDATA[<p>Today I released RubyFriendsCamera and now available on <a href="https://itunes.apple.com/jp/app/ruby-friends-camera/id602073192?mt=8">AppStore</a>!</p>
+
+<p>This application is a client app for <a href="http://rubyfriends.com">#RubyFriends</a>.</p>
+
+<p>Using RubyFriendsCamera, you can easily share your photos to twitter with #RubyFriends hashtag.</p>
+
+<p>RubyFriendsCamera is developed with <a href="http://www.rubymotion.com">RubyMotion</a> and <a href="http://www.pixate.com">Pixate</a>.</p>
+
+<p>I&rsquo;d like to say thank you to <a href="https://twitter.com/ken_c_lo">@ken_c_lo</a> and <a href="https://twitter.com/machida">@machida</a>.
+They created a great application icon, splash screen, toolbar icons, background images.</p>
+
+<p>Source code is available here.</p>
+
+<ul>
+<li><a href="https://github.com/satococoa/RubyFriendsCamera">https://github.com/satococoa/RubyFriendsCamera</a></li>
+</ul>
+
+
+<p>Enjoy!</p>
+
+<hr />
+
+<p>RubyFriendsCamera というアプリケーションをリリースしました。</p>
+
+<p><a href="https://itunes.apple.com/jp/app/ruby-friends-camera/id602073192?mt=8">AppStore</a> からインストールできます。</p>
+
+<p>このアプリは <a href="http://rubyfriends.com">#RubyFriends</a> のクライアントアプリです。</p>
+
+<p>RubyFriendsCamera を使うと簡単に #RubyFriendsCamera ハッシュタグをつけて twitter に写真を UP することができます。</p>
+
+<p>RubyFriendsCamera は <a href="http://www.rubymotion.com">RubyMotion</a> と <a href="http://www.pixate.com">Pixate</a> を使って開発しています。</p>
+
+<p>突然の依頼にもかかわらず、アイコンや画像などを作っていただいた <a href="https://twitter.com/ken_c_lo">@ken_c_lo</a> さんと <a href="https://twitter.com/machida">@machida</a> さん、本当にありがとうございました。</p>
+
+<p>ソースコードも公開されています。</p>
+
+<ul>
+<li><a href="https://github.com/satococoa/RubyFriendsCamera">https://github.com/satococoa/RubyFriendsCamera</a></li>
+</ul>
+
+
+<p>たくさんの方に楽しんでいただけると嬉しいです。
+(ところで、どなたかAndroid 版作りませんか？仕様や画像など、必要でしたらシェアします。)</p>
+]]></content>
+  </entry>
+  
+</feed>

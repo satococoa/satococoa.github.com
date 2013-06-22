@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 日記 | satococoa's blog]]></title>
+  <link href="http://satococoa.github.io/blog/categories/ri-ji/atom.xml" rel="self"/>
+  <link href="http://satococoa.github.io/"/>
+  <updated>2013-06-22T16:06:02+09:00</updated>
+  <id>http://satococoa.github.io/</id>
+  <author>
+    <name><![CDATA[Satoshi Ebisawa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[2012年のまとめと2013年の抱負]]></title>
+    <link href="http://satococoa.github.io/blog/2012/12/31/2012-2013/"/>
+    <updated>2012-12-31T00:33:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/12/31/2012-2013</id>
+    <content type="html"><![CDATA[<p>2012年ももう最終日となってしまいましたので、まとめ的なブログでも書いてみようと思います。</p>
+
+<h2>2012年</h2>
+
+<p>2012年の年初に挙げた目標は「自重しない」ということでした。
+ある程度はその目標通り、色んなことにチャレンジできた1年だったと思います。</p>
+
+<p>特に思い出深い出来事を振り返ってみます。</p>
+
+<h3>みなとRuby会議01</h3>
+
+<p>6/2(土)に開催された<a href="http://regional.rubykaigi.org/minato01">みなとRuby会議01</a>の副実行委員長をやらせていただきました。</p>
+
+<p>ほとんどのメンバーが地域 Ruby 会議の運営が初めてという状態ではありましたが、1月から何度も打ち合わせを重ね、工夫を凝らして楽しい Ruby 会議を作ることが出来たと思います。</p>
+
+<p>そのときのエントリはこちらです。<a href="http://satococoa.github.com/blog/2012/06/04/minato-rubykaigi-01/">みなとRuby会議01</a></p>
+
+<p>唯一の心残りは Ruby アイドルの招致に失敗したことですね。</p>
+
+<h3>Yokohama.rb</h3>
+
+<p><a href="http://bukt.org/groups/3">Bu: Yokohama.rb</a></p>
+
+<p>今年も非常にお世話になりました。</p>
+
+<p>今、僕が積極的に勉強会などのコミュニティへ参加できるようになったのは Yokohama.rb でたくさんの仲間ができ、自信をもらったからです。</p>
+
+<p>ちなみによく聞かれるのですが、僕は横浜に住んでいません。むしろ最寄りは Asakusa.rb です。（来年は Asakusa.rb ももう少し参加したい。）<br/>
+前職に在職中に土日に参加できる Ruby の勉強会を探して、当時唯一見つけたのが Yokohama.rb だったのが参加の理由でした。</p>
+
+<p>ちなみに出欠確認に使っている <a href="http://bukt.org/">Bu</a> ですが、Yokohama.rb ファウンダーの<a href="https://twitter.com/dan5ya">だん</a>さん作で、現在 <a href="https://twitter.com/1syo">@1syo</a> さん主導でリファクタリングが進められています。→ <a href="https://github.com/1syo/bu">https://github.com/1syo/bu</a><br/>
+参加自由ですので Yokohama.rb メンバーはコードレビューとか参加してみては？とても勉強になりますよ。</p>
+
+<p>リファクタリングが落ち着いたら API を作って RubyMotion か Objective-C で iPhone クライアント作りたいです。どっち使うかは一緒にやってくれる人の希望次第で。</p>
+
+<h3>#P4D</h3>
+
+<p>今年は大体月1回ずつ何かしらのイベントを開催しました。</p>
+
+<p>特に<a href="http://connpass.com/event/1185/">第一回 プログラマ向けデザイン勉強会</a>の盛り上がりがすごかったですね。</p>
+
+<p>これがきっかけで発表してくださったデザイナさんにも改めて注目が集まり、今後の色んな展開につながりそうです。<br/>
+詳しくはまだ伏せますが、面白いことが進んでいるようなので楽しみにしています。</p>
+
+<p>来年早々の<a href="http://tokyo10.rubykaigi.info">東京Ruby会議10</a>では半日分 #p4d で枠をもらっているので、前述のデザイン勉強会を再演しようと思います。前回参加できなかった方はぜひぜひご参加ください。（もしかすると席が足りずに当日先着順の受付になるかもしれません。ご了承ください。）→ <a href="http://tokyo10.rubykaigi.info/workshops/p4d">#p4d 「Rubyistのためのデザイン講座」</a></p>
+
+<p>現在の #p4d は基本月1回平日夜に集まれる人で集まって、自由に開発をしたりデザイン・プログラムの相談をしたりするもくもく会のような形式で落ち着いてきました。<br/>
+来年からは月2回に増やして開催していきたいと思いますので、プログラミングに興味のあるデザイナさん、デザインに興味のあるプログラマさんはぜひお気軽にご参加ください。</p>
+
+<h3>RubyMotion</h3>
+
+<p>個人的に今年一番力を注いだのは <a href="http://www.rubymotion.com">RubyMotion</a> でした。</p>
+
+<p><a href="http://connpass.com/event/665/">第一回 RubyMotion勉強会</a> をはじめ、9月からは月1回 RubyMotionもくもく会を開催しています。</p>
+
+<p>また、<a href="http://www.adventar.org/calendars/18">RubyMotion Advent Calendar 2012</a> も企画し、無事に25日分の貴重な情報が集まりました。</p>
+
+<p><a href="http://jp.rubyist.net/magazine/">るびま</a>に<a href="http://jp.rubyist.net/magazine/?0039-IntroductionToRubyMotion">RubyMotion のご紹介</a>という記事を書かせていただいたのも本当に貴重な体験となりました。</p>
+
+<h3>仕事</h3>
+
+<p>とてもありがたいことに RubyMotion + Rails で仕事をしています。<br/>
+RubyMotionの発売が5月初旬でしたが、6月から仕事で使っています。</p>
+
+<p>当初は iOS の開発もほぼ初めての状態だったので何かおかしな動作をしても自分の書き方が悪いのかそれとも RubyMotion のバグなのかがわからずに、同じ実装を Objective-C でも書いてみて動作を比較したり、それを元にサポートにチケットを送ったり Pull Request を送ったりしていました。</p>
+
+<p>現在はかなり RubyMotion 自体が成熟してきたのと自分が Cocoa Touch に慣れてきたのがあり、効率よくものを作れるようになってきました。</p>
+
+<p>Rails を仕事で使うのは今のプロジェクトが初めてなのですが、周りに Ruby や Rails が得意な同僚がたくさんいるため、安心して開発を進めることが出来ています。</p>
+
+<p>すぐに同僚に相談できる環境というのが素晴らしいですね。お世話になっています。</p>
+
+<p>ちなみに僕の勤める<a href="http://1923.co.jp">株式会社イグニス</a>では現在一緒にアプリ作りをする仲間を募集しています。→ <a href="http://1923.co.jp/recruit.html">採用情報</a></p>
+
+<p>僕に個人的に声をかけていただいても結構ですので、お気軽にご連絡ください。一緒に RubyMotion や Objective-C、Rails でアプリをつくりませんか？</p>
+
+<ul>
+<li>twitter: <a href="https://twitter.com/satococoa">@satococoa</a></li>
+<li>facebook: <a href="https://www.facebook.com/satoshi.ebisawa">satoshi.ebisawa</a></li>
+<li>メール: <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x65;&#46;&#x73;&#x61;&#x74;&#x6f;&#115;&#x68;&#105;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x65;&#x2e;&#x73;&#x61;&#116;&#x6f;&#115;&#x68;&#x69;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;</a></li>
+</ul>
+
+
+<h2>2013年</h2>
+
+<p>来年は「広げる」をテーマにやってみようかな、と思います。</p>
+
+<p>具体的にやりたいと思っていることをざっくり挙げると、</p>
+
+<ul>
+<li>ビギナー向けiOSアプリ勉強会をやってみたい<br/>
+デザイナさんはもちろん、企画やプロデューサの方も対象として iOS アプリの作り方がざっくりわかるような勉強会を開催したい。</li>
+<li>第2回 プログラマ向けデザイン講座<br/>
+3月頃にやれればなぁ。。。と考えています。</li>
+<li>本や記事を書きたい<br/>
+まずは電子書籍で、いずれ紙媒体で出版される物を書きたいです。テーマは今ならやっぱり RubyMotion かなぁ。</li>
+</ul>
+
+
+<p>もともとPC スクールのインストラクターをしていたことがあって、ものを教えることが好きなので、もちろん自分の手を動かしてものづくりをしていくことは継続しつつも、その楽しさを広めていけるような活動をしたいと思っています。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hello Octopress]]></title>
+    <link href="http://satococoa.github.io/blog/2012/06/04/hello-octopress/"/>
+    <updated>2012-06-04T00:45:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/06/04/hello-octopress</id>
+    <content type="html"><![CDATA[<p>遅ればせながら<a href="http://octopress.org/">Octopress</a>を始めてみました。</p>
+
+<p>単にはてな記法を調べるのに疲れたのです。。。<br/>
+ほら、最近はほとんどMarkdownでメモ書きますし。</p>
+
+<p>インストールはこんな感じでした。</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>$ cd octopress
+</span><span class='line'>$ bundle install &mdash;path vendor
+</span><span class='line'>$ rake setup_github_pages # リポジトリのURL聞かれるので答える
+</span><span class='line'>$ rake install</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>デフォルトでも文字が大きめでコードハイライトが楽なのがいいですね。<br/>
+なるべく楽をしたいですからね。</p>
+]]></content>
+  </entry>
+  
+</feed>

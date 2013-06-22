@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: MySQL | satococoa's blog]]></title>
+  <link href="http://satococoa.github.io/blog/categories/mysql/atom.xml" rel="self"/>
+  <link href="http://satococoa.github.io/"/>
+  <updated>2013-06-22T16:06:02+09:00</updated>
+  <id>http://satococoa.github.io/</id>
+  <author>
+    <name><![CDATA[Satoshi Ebisawa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[MySQL の max_allowed_packet を設定]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/13/mysql-max-allowed-packet/"/>
+    <updated>2013-02-13T00:05:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/13/mysql-max-allowed-packet</id>
+    <content type="html"><![CDATA[<p>ActiveRecord で <code>Mysql2::Error: MySQL server has gone away</code> と言われて困ったのです。</p>
+
+<p>さっぱり原因がわからずに同僚の <a href="https://twitter.com/dianthudia">@DianthuDia</a> 先生に聞いてみたところ、どうやら大きなデータを MEDIUMTEXT 型のカラムに保存しようとしたときに、以下の MySQL の設定にひっかかって失敗していたらしいです。</p>
+
+<p>```</p>
+
+<blockquote><p>show variables like &lsquo;max_allowed_packet&rsquo;;
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&ndash;+
+| Variable_name      | Value   |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&ndash;+
+| max_allowed_packet | 1048576 |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&ndash;+
+1 row in set (0.01 sec)
+```</p></blockquote>
+
+<p><code>max_allowed_packet</code> は mysql サーバがクライアントから受け付けることの出来るパケット量の設定です。</p>
+
+<p>```</p>
+
+<h1>brew で入れた mysql の場合</h1>
+
+<p>$ cp /usr/local/Cellar/mysql/5.5.29/support-files/my-small.cnf /usr/local/etc/my.cnf
+$ vim /usr/local/etc/my.cnf</p>
+
+<h1>[mysqld] 中に以下を追加</h1>
+
+<p>[mysqld]
+max_allowed_packet=16M
+```</p>
+
+<p>MySQLを再起動して設定完了です。</p>
+
+<p>再起動無しで設定するには <code>GLOBAL VARIABLES</code> を設定します。</p>
+
+<p>```
+$ mysql -uroot -p</p>
+
+<blockquote><p>set global max_allowed_packet = 16 * 1024 * 1024;
+show global variables like &lsquo;max_allowed_packet&rsquo;;  <br/>
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;+
+| Variable_name      | Value    |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;+
+| max_allowed_packet | 16777216 |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;+
+1 row in set (0.01 sec)
+```</p></blockquote>
+
+<p>大丈夫になったっぽいです。ありがとうございました。<br/>
+詳しい人が社内にいると安心感がすごい。</p>
+]]></content>
+  </entry>
+  
+</feed>

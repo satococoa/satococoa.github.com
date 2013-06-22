@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rails | satococoa's blog]]></title>
+  <link href="http://satococoa.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://satococoa.github.io/"/>
+  <updated>2013-06-22T16:06:02+09:00</updated>
+  <id>http://satococoa.github.io/</id>
+  <author>
+    <name><![CDATA[Satoshi Ebisawa]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Girls Tokyo 2nd に参加しました]]></title>
+    <link href="http://satococoa.github.io/blog/2013/03/03/rails-girls-tokyo-2nd/"/>
+    <updated>2013-03-03T12:53:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/03/03/rails-girls-tokyo-2nd</id>
+    <content type="html"><![CDATA[<p>LT枠だけでの参加でしたが、<a href="http://railsgirls.com/tokyo">Rails Girls Tokyo 2nd</a> に混ぜてもらいました！</p>
+
+<p>参加者の方が継続的に勉強を進められるコミュニティのご紹介として <a href="http://prog4designer.github.com/">#p4d</a> の宣伝をさせていただきました。</p>
+
+<p>発表資料置いておきます。(<a href="https://speakerdeck.com/satococoa/p4d-rails-girls-tokyo-2nd">スライドのページ</a> にある Download PDF のリンクから PDF をダウンロードすればリンクも動作します。)</p>
+
+<script async class="speakerdeck-embed" data-id="b3a93dc064cc013060a912313916f057" data-ratio="1.2994923857868" src="http://satococoa.github.io//speakerdeck.com/assets/embed.js"></script>
+
+
+<h2>【私撰】次のステップとしておすすめの Ruby コミュニティ【おまけ】</h2>
+
+<p>個人的に僕がよく顔を出すコミュニティのうち、Rails Girls の参加者にお勧めできるコミュニティを挙げてみます。</p>
+
+<p>昨日の帰り際に <a href="https://twitter.com/yotii23">@yotii23</a> さんともお話したのですが、まずは今回のコーチのいるコミュニティ（のコーチがちょうど参加している回）に行ってみるとすんなりとけ込めるのでは。と思います。</p>
+
+<p>コメントは全て僕の主観ですのでご注意を。</p>
+
+<hr />
+
+<h3>RailsGirls, More</h3>
+
+<p>公式なので、間違いなくここがおすすめ。参加方法はFBグループかメールで参加者の方に届くそうです。</p>
+
+<p>お問い合わせ先は <a href="https://twitter.com/yotii23">@yotii23</a> さんか <a href="https://twitter.com/publichtml">@publichtml</a> さんでいいのかな？</p>
+
+<hr />
+
+<h3><a href="http://prog4designer.github.com/">P4D デザイナー向けプログラム部</a></h3>
+
+<p>LT させてもらったので概要は省略。</p>
+
+<h4>会える人</h4>
+
+<ul>
+<li><a href="http://twitter.com/machida">@machida</a> さん<br/>
+<a href="http://fjord.jp">fjord</a> のデザイナさん。<a href="http://kuroigamen.com">KUROIGAMEN</a> の人。</li>
+<li><a href="http://twitter.com/ken_c_lo">@ken_c_lo</a> さん<br/>
+フリーのデザイナさん。<a href="https://speakerdeck.com/ken_c_lo/zurui-design">ズルいデザイン</a> の人。</li>
+<li><a href="https://twitter.com/shu_0115">@shu_0115</a> さん<br/>
+フリーの Rails エンジニア。<a href="http://rails4beginners.github.com/home/">Rails for Beginners</a> 主催の人。</li>
+<li><a href="http://twitter.com/satococoa">@satococoa</a><br/>
+僕ですね。最近は<a href="http://rubymotion.jp">RubyMotion JP</a> の人。</li>
+</ul>
+
+
+<hr />
+
+<h3><a href="https://ishikitakai.com/groups/1">Sendagaya.rb</a></h3>
+
+<p>毎週月曜日に meetup を開催している Ruby コミュニティです。今は新宿で毎週やっているのでアクセスの良さもポイント！</p>
+
+<p>僕がいるときに来てもらえれば普通に Rails も教えたりできます。</p>
+
+<p>紹介スライド &ndash;> <a href="http://decknotes.com/slides/17">ボクが東京に来て作ったモノ</a> by @fukajun</p>
+
+<h4>会える人</h4>
+
+<ul>
+<li><a href="http://twitter.com/fukajun">@fukajun</a> さん<br/>
+Rails エンジニア。<a href="http://decknotes.com/">DeckNotes</a> 作った人。</li>
+<li><a href="http://twitter.com/ppworks">@ppworks</a> さん<br/>
+Rails エンジニア。<a href="http://welove.herokuapp.com">we love heroku</a> 作った人。</li>
+<li><a href="https://twitter.com/tkawa">@tkawa</a> さん<br/>
+Rails エンジニア。REST の人。</li>
+</ul>
+
+
+<hr />
+
+<h3><a href="http://bukt.org/groups/3">Yokohama.rb</a></h3>
+
+<p>毎月第2土曜日あたりに横浜駅の一つ東京側の東神奈川駅から徒歩10分ほどの場所で開催しています。</p>
+
+<p>東京から参加している人も多く、僕も1時間ちょいかけて通っています。</p>
+
+<p>土曜日開催 &amp; Ruby レシピブック読書会などもあり、Ruby ビギナーにもとても参加しやすい雰囲気がポイントです。</p>
+
+<h4>会える人</h4>
+
+<ul>
+<li><a href="https://twitter.com/1syo">@1syo</a> さん  <br/>
+Rails エンジニア。<a href="http://regional.rubykaigi.org/minato01">みなとRuby会議01</a> 実行委員長。</li>
+<li><a href="https://twitter.com/hamakn">@hamakn</a> さん<br/>
+Rails エンジニア。<a href="http://d.hatena.ne.jp/hamakn/20130217">デブサミで発表</a> されてました。</li>
+</ul>
+
+
+<hr />
+
+<p>それぞれのコミュニティですごい人がたくさんいるのですが、失礼ながらとりあえずパッと頭に浮かんだ人だけ書かせていただきました。</p>
+
+<p>では、またどこかのコミュニティでお会いしましょう！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[第4回 Rails Girls, More 勉強会]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/17/rails-girls-more-4th/"/>
+    <updated>2013-02-17T12:58:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/17/rails-girls-more-4th</id>
+    <content type="html"><![CDATA[<p>2/16(土) に万葉さんで開催された第4回 Rails Girls, More 勉強会に僭越ながらコーチ役として参加させていただきました。</p>
+
+<p>勉強会のスタイルは、最初に参加者の方々に今日やりたいことを聞いて、それに合わせてコーチを割り当てて進めていくというなかなか贅沢なスタイル。</p>
+
+<p>この日は参加者のみなさんの進捗が比較的揃っていて、controller, view を経て model へと進む方が多かったです。</p>
+
+<p>コーチ役とはいえ、僕も初参加で何からどう教えていいかよくわかっていませんでしたが、そこは <a href="https://twitter.com/igaiga555">@igaiga555</a> 先生の作られたしっかりした資料があったおかげで特に困ることもなく進めることが出来ました。</p>
+
+<h2>資料から脱線した部分</h2>
+
+<p>資料にある部分は参加者の方もあとでそちらを見直せばいいと思うので、資料にはなく、僕が脱線して話したことについて少しメモします。</p>
+
+<h3><a href="http://www.sublimetext.com">Sublime Text 2</a></h3>
+
+<p>今使っているエディタが使いにくい、という方がいらっしゃったので、Sublime Text 2 をダウンロードしてもらいました。Windows版もあって素敵。</p>
+
+<p>今とても人気のあるエディタの一つで、vim や emacs よりはとっつきやすいエディタですので、エディタ選びに迷っている方は一度使ってみて下さい。有料ですが、お試し期間でも機能制限無し、お試し期間の期限もなし、という太っ腹なエディタです。（気に入ったら買うといいと思います。）</p>
+
+<h3>GitHub の使い方</h3>
+
+<p>お仕事で GitHub に触れる方もいらっしゃったので、リポジトリの作り方を一通りお見せしました。</p>
+
+<p>「Git, GitHub の勉強会もやれるといいよねー」と、勉強会後に夕食を食べながらコーチ陣で話をしていましたので、そのうちやれるかも？</p>
+
+<h3><code>schema_migrations</code></h3>
+
+<p>たまたま僕が担当させていただいたお二人が SQL をご存知の方だったので、DB に <code>schema_migrations</code> というテーブルができていて、そこに適用済みの migration が記録されているおかげで、適切に <code>rake db:migrate</code>, <code>rake db:rollback</code> できるんですねー、といったお話をしました。</p>
+
+<h3>RailsGuides</h3>
+
+<p>RailsGuides の中でも、<a href="http://guides.rubyonrails.org/active_record_querying.html">Active Record Query Interface</a> のページを紹介し、コンソール上で <code>order</code> メソッドや <code>where</code> メソッドで遊んでみていただきました。</p>
+
+<p>あと、<a href="http://guides.rubyonrails.org/getting_started.html">Getting Started with Rails</a> のページを上から順にざっと、「このセクションにはこんな内容が書いてあって&hellip;」といったレベルで説明させていただきました。今後自学自習される場合に、チュートリアルとしてすごくいい題材だと思ったので。</p>
+
+<h2>まとめ</h2>
+
+<p>初参加だったのでむしろ自分の方が緊張していましたが、とても和やかな雰囲気で楽しく参加させていただきました。</p>
+
+<p>今後も Validation, Relation, テスト, Git など色々盛りだくさんの内容でやっていくようですので、またお手伝いさせていただければ、と思います。</p>
+
+<p>RubyMotion もいつでも教えますよ！</p>
+
+<h2>宣伝</h2>
+
+<p>RailsGirls を入り口として色んな勉強会へ参加されるようになると、継続的に学習できていいのではと思います。</p>
+
+<p>ということで自分の主催するコミュニティを宣伝して終わります。</p>
+
+<h3>P4D(デザイナー向けプログラム部)</h3>
+
+<p>僕が主催させていただいているコミュニティで、プログラムもやりたいデザイナさんにプログラムを教えよう、という会です。</p>
+
+<p>最近は嬉しいことにプログラマがデザインを教えていただく逆パターンもよく見るようになってきて、プログラムについてもデザインについても気軽に相談できるコミュニティになりつつあります。</p>
+
+<p>デザイナさんが恒常的に少なめなので、ぜひお気軽にご参加ください。</p>
+
+<p>主に facebook グループ の <a href="https://www.facebook.com/groups/151208708350141/">P4D デザイナー向けプログラム部</a> でやりとりしてます。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CentOS + chef-solo で rails が動くサーバを作る]]></title>
+    <link href="http://satococoa.github.io/blog/2012/09/13/building-rails-server-on-centos-with-chef-solo/"/>
+    <updated>2012-09-13T15:32:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2012/09/13/building-rails-server-on-centos-with-chef-solo</id>
+    <content type="html"><![CDATA[<p>CentOS + chef-solo で rails が動く All in one サーバを準備する</p>
+
+<h2>目標</h2>
+
+<p>VPS を立ちあげてすぐに All-in-one (DB, Web, App 全部入り) で rails アプリケーションが動くシンプルなサーバを立ち上げる。</p>
+
+<p>ローカルの VirtualBox にインストールして検証する。</p>
+
+<p>ちなみに、Linux のセットアップをするときには未だに僕は slicehost のドキュメント <a href="http://articles.slicehost.com">http://articles.slicehost.com</a> を見ています。
+もっとモダンなところがあったら教えて下さい。</p>
+
+<p>chef の概要については <a href="http://wiki.opscode.com/pages/viewpage.action?pageId=24019581">http://wiki.opscode.com/pages/viewpage.action?pageId=24019581</a> をざっと読んだのみで、あとは使いながら覚えていく戦法。</p>
+
+<h2>構成</h2>
+
+<ul>
+<li>CentOS 6.3</li>
+<li>Ruby 1.9.3</li>
+<li>node (asset pipeline のため)</li>
+<li>nginx</li>
+<li>passenger</li>
+<li>MySQL</li>
+</ul>
+
+
+<p>ruby のインストールは、変なことにハマりたくないので rvm も rbenv も使わず、/usr/local に普通にインストールする。</p>
+
+<h2>OS インストール</h2>
+
+<p>OS タイプは Red Hat (64bit) を選択。メインメモリは 512MB。
+ISO イメージは &ldquo;CentOS-6.3-x86_64-netinstall.iso&rdquo; を使用。
+ネットワークの設定はアダプタ 1 が NAT、アダプタ 2 をホストオンリーアダプタとし、vboxnet0 をあらかじめ VirtualBox の環境設定から作成しておく。</p>
+
+<p>あとは普通にインストール。ネットインストールなので OS イメージの URL を聞かれる。"<a href="http://ftp.iij.ad.jp/pub/linux/centos/6.3/os/x86_64">http://ftp.iij.ad.jp/pub/linux/centos/6.3/os/x86_64</a>" を指定した。</p>
+
+<p>インストールが終わったら Devices メニューから .iso を取り外して再起動。</p>
+
+<p>システムを最新にしておく。</p>
+
+<p>```</p>
+
+<h1>yum update</h1>
+
+<p>```</p>
+
+<h2>基本設定 (chef が動くところまで)</h2>
+
+<h3>ネットワークの設定 (ホストオンリーネットワーク)</h3>
+
+<p>eth0 は NAT としてセットアップされているので VM からインターネットはアクセスできる。
+ローカルから VM へアクセスできるように、eth1 をセットアップする。</p>
+
+<p>vi /etc/sysconfig/network-scripts/ifcfg-eth1</p>
+
+<p><code>
+DEVICE="eth1"
+BOOTPROTO="static" # 変更
+HWADDR="XX:XX:XX:XX:XX:XX"
+NM_CONTROLLED="yes"
+ONBOOT="yes" # 変更
+TYPE="Ethernet"
+UUID="xxxxxxxxxx"
+IPADDR="192.168.56.10" # 追加
+NETMASK="255.255.255.0" # 追加
+</code>
+最後の IPADDR, NETMASK は VirtualBox の環境設定から作ったホストオンリーアダプタの設定に合わせる。</p>
+
+<p>ネットワークを再起動して ping が通ることを確認。</p>
+
+<p>```</p>
+
+<h1>service network restart # VM 上で</h1>
+
+<p>$ ping 192.168.56.10 # ローカルから
+```</p>
+
+<h3>一般ユーザの作成</h3>
+
+<p>deploy というユーザーを作り、そのユーザーでデプロイしたりrailsを動かしたりする。</p>
+
+<p>```</p>
+
+<h1>useradd deploy -G wheel</h1>
+
+<h1>passwd deploy</h1>
+
+<p>```</p>
+
+<p>sudo できるように。</p>
+
+<p>```</p>
+
+<h1>visudo</h1>
+
+<p>```</p>
+
+<p>以下の行のコメントアウトを解除</p>
+
+<p>```</p>
+
+<h1>%wheel  ALL=(ALL) ALL</h1>
+
+<p>```</p>
+
+<p>ここから先は deploy ユーザーで作業するので、一度ログアウトして deploy ユーザーでログイン。</p>
+
+<p><strong>余談</strong>
+ここまでやったところで、<a href="http://vagrantup.com">Vagrant</a> というものの存在を思い出して少し萎えた。</p>
+
+<h3>SSH</h3>
+
+<p>ローカルマシンから公開鍵を転送。</p>
+
+<p><code>
+$ scp ~/.ssh/id_rsa.pub deploy@192.168.56.10:/tmp
+bash: scp: コマンドが見つかりません
+lost connection
+</code></p>
+
+<p>あれ、VM 側に scp が入っていない。</p>
+
+<p>VM 側で openssh-clients を入れてから再挑戦して OK。</p>
+
+<p><code>
+$ sudo yum install openssh-clients
+</code></p>
+
+<p>改めて共通鍵のコピー。</p>
+
+<p><code>
+$ mkdir .ssh
+$ chmod 700 .ssh
+$ mv /tmp/id_rsa.pub .ssh/authorized_keys
+$ chmod 600 .ssh/authorized_keys
+</code></p>
+
+<p>sshd の設定、再起動。</p>
+
+<p>```
+$ sudo vi /etc/ssh/sshd_config</p>
+
+<h1>変更点</h1>
+
+<p>Port XXXX # 適当なポートに変更
+PubkeyAuthentication yes
+PasswordAuthentication no
+$ sudo service sshd restart
+```</p>
+
+<p>ここから先はローカルからログインして作業する。</p>
+
+<p><code>
+$ ssh deploy@192.168.56.10 -p XXXX
+</code></p>
+
+<h3>iptables</h3>
+
+<p>```
+$ sudo iptables -L # 現状を確認
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination       <br/>
+ACCEPT     all  &mdash;  anywhere             anywhere            state RELATED,ESTABLISHED
+ACCEPT     icmp &mdash;  anywhere             anywhere          <br/>
+ACCEPT     all  &mdash;  anywhere             anywhere          <br/>
+ACCEPT     tcp  &mdash;  anywhere             anywhere            state NEW tcp dpt:ssh
+REJECT     all  &mdash;  anywhere             anywhere            reject-with icmp-host-prohibited</p>
+
+<p>Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination       <br/>
+REJECT     all  &mdash;  anywhere             anywhere            reject-with icmp-host-prohibited</p>
+
+<p>Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+$ sudo iptables -F # 一旦すべて削除
+$ sudo vi /etc/iptables.up.rules</p>
+
+<h1><a href="http://articles.slicehost.com/assets/2007/9/4/iptables.txt">http://articles.slicehost.com/assets/2007/9/4/iptables.txt</a> からまるごと。SSH のポートを自分の環境に合わせるのを忘れないように。</h1>
+
+<p>*filter</p>
+
+<h1>Allows all loopback (lo0) traffic and drop all traffic to 127/8 that doesn&rsquo;t use lo0</h1>
+
+<p>-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -d 127.0.0.0/8 -j REJECT</p>
+
+<h1>Accepts all established inbound connections</h1>
+
+<p>-A INPUT -m state &mdash;state ESTABLISHED,RELATED -j ACCEPT</p>
+
+<h1>Allows all outbound traffic</h1>
+
+<h1>You can modify this to only allow certain traffic</h1>
+
+<p>-A OUTPUT -j ACCEPT</p>
+
+<h1>Allows HTTP and HTTPS connections from anywhere (the normal ports for websites)</h1>
+
+<p>-A INPUT -p tcp &mdash;dport 80 -j ACCEPT
+-A INPUT -p tcp &mdash;dport 443 -j ACCEPT</p>
+
+<h1>Allows SSH connections</h1>
+
+<p>#</p>
+
+<h1>THE -dport NUMBER IS THE SAME ONE YOU SET UP IN THE SSHD_CONFIG FILE</h1>
+
+<p>#
+-A INPUT -p tcp -m state &mdash;state NEW &mdash;dport XXXX -j ACCEPT</p>
+
+<h1>Allow ping</h1>
+
+<p>-A INPUT -p icmp -m icmp &mdash;icmp-type 8 -j ACCEPT</p>
+
+<h1>log iptables denied calls</h1>
+
+<p>-A INPUT -m limit &mdash;limit 5/min -j LOG &mdash;log-prefix &ldquo;iptables denied: &rdquo; &mdash;log-level 7</p>
+
+<h1>Reject all other inbound &ndash; default deny unless explicitly allowed policy</h1>
+
+<p>-A INPUT -j REJECT
+-A FORWARD -j REJECT</p>
+
+<p>COMMIT
+$ sudo iptables-restore &lt; /etc/iptables.up.rules
+$ sudo service iptables save
+```</p>
+
+<p>いったんここで VirtualBox のスナップショットを取っておいた。
+<strong>実はssh, iptablesもchefで管理するもの？</strong></p>
+
+<h3>chef のインストールまで</h3>
+
+<p>ruby, chef をインストールするのに必要なところまでインストールする。</p>
+
+<p>```</p>
+
+<h1>ruby インストールに必要なパッケージ</h1>
+
+<p>$ sudo yum -y install git gcc gcc-c++ make autoconf openssl-devel zlib-devel readline-devel curl-devel gettext-devel
+$ curl -O <a href="http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz">http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz</a>
+$ tar xzvf yaml-0.1.4.tar.gz
+$ cd yaml-0.1.4
+$ ./configure &mdash;prefix=/usr/local
+$ make
+$ sudo make install
+$ cd ..</p>
+
+<h1>ruby インストール</h1>
+
+<p>$ curl -O <a href="http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz">http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz</a>
+$ tar xzvf ruby-1.9.3-p194.tar.gz
+$ cd ruby-1.9.3-p194
+$ ./configure &mdash;prefix=/usr/local &mdash;enable-shared &mdash;disable-install-doc &mdash;with-opt-dir=/usr/local/lib
+$ make
+$ make test
+$ sudo make install
+$ cd ..</p>
+
+<h1>/usr/local/bin に ruby が入るので、sudo 時に path が通るようにする</h1>
+
+<p>$ sudo visudo</p>
+
+<h1>&ldquo;:/usr/local/bin"を追加</h1>
+
+<p>Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin</p>
+
+<h1>chef インストール</h1>
+
+<p>$ sudo gem install chef &mdash;no-ri &mdash;no-rdoc
+```</p>
+
+<p>ここまでで chef のインストール完了。
+スナップショットをとっておく。</p>
+
+<h2>chef のリポジトリを作る</h2>
+
+<p><code>
+$ git clone git://github.com/opscode/chef-repo.git
+$ cd chef-repo
+</code></p>
+
+<p>chef-solo の設定を config/solo.rb に作る。</p>
+
+<p><code>
+file_cache_path "/home/deploy/chef-repo"
+cookbook_path "/home/deploy/chef-repo/cookbooks"
+role_path "/home/deploy/chef-repo/roles"
+log_level :debug
+</code></p>
+
+<h2>chef の cookbook を作る (もらってくる)</h2>
+
+<p>以下のように chef の cookbook が公開されているところが複数ある。</p>
+
+<ul>
+<li><a href="http://community.opscode.com/cookbooks">http://community.opscode.com/cookbooks</a></li>
+<li><a href="https://github.com/opscode-cookbooks">https://github.com/opscode-cookbooks</a></li>
+<li><a href="https://github.com/cookbooks">https://github.com/cookbooks</a></li>
+</ul>
+
+
+<p>もらってきて必要に応じてカスタマイズする。
+自分のリポジトリに置いてみました。試行錯誤中。
+まだ全然足りていない。</p>
+
+<p>これ、取得元と同期とったりするのは大変ですね。</p>
+
+<p><a href="https://github.com/satococoa/chef-repo">satococoa/chef-repo</a></p>
+
+<p>submoduleにしちゃうと自前でカスタマイズしたときに面倒だし、どうしよう。。。</p>
+
+<p>あとは今回作りたいサーバは All-in-one だが、後で使いやすいように base, web, db に role を分けてみた。</p>
+
+<h2>chef でインストール</h2>
+
+<p>サーバに deploy ユーザーでログインした状態で以下を実行。</p>
+
+<p><code>
+$ git clone git://github.com/satococoa/chef-repo.git
+$ sudo chef-solo -c ~/chef-repo/config/solo.rb -j ~/chef-repo/config/all_in_one.json
+</code></p>
+
+<h2>あとは</h2>
+
+<p>ひたすら cookbook を作ったりカスタマイズしたりするのみ。
+iptables とかも chef を使ったほうがいいのだろうか。
+（インストールするソフトウェアによってはポート開ける必要があるため）
+monit とか logrotate とか munin とかもやらねば。</p>
+
+<h2>参考 URL</h2>
+
+<ul>
+<li><a href="http://wiki.opscode.com/display/~tily/Home">http://wiki.opscode.com/display/~tily/Home</a></li>
+<li><a href="http://wiki.opscode.com/display/~tily/Chef+Solo">http://wiki.opscode.com/display/~tily/Chef+Solo</a></li>
+<li><a href="http://higelog.brassworks.jp/?p=654">chef-soloで作業環境構築の自動化 | ひげろぐ</a></li>
+</ul>
+
+
+<h2>追記</h2>
+
+<p>このあと2つほどハマッてしまった。</p>
+
+<ol>
+<li>VirtualBox の GuestAdditions を入れようとしたら gcc, make, autoconf が必要だった。</li>
+<li>SELinux 有効の状態で Postfix が起動しなかった。</li>
+</ol>
+
+
+<p>SELinux の件は潔く無効にした。</p>
+
+<p>```
+$ sudo getenforce
+Enforcing # => 有効
+$ sudo setenforce 0 # => 無効にする
+$ sudo getenforce
+Permissive</p>
+
+<h1>続いて、再起動後も無効になるようにする</h1>
+
+<p>$ sudo vi /etc/sysconfig/selinux
+SELinux=disabled # この一行のみ編集
+```</p>
+
+<h2>追記2</h2>
+
+<p>こうして準備したサーバに capistrano で初めてデプロイするときの手順。<br/>
+(capistrano-ext を使っている前提)</p>
+
+<p>```
+$ cap staging deploy:setup
+$ cap staging deploy:check
+$ cap staging deploy:update</p>
+
+<h1>サーバ上で</h1>
+
+<p>$ rake RAILS_ENV=staging db:setup
+$ rake RAILS_ENV=staging db:seed
+```</p>
+
+<h2>追記3</h2>
+
+<p><code>
+$ cap staging deploy:cold
+</code>
+これで <code>rake db:migration</code> までやってくれるんですね。知らなかった。<br/>
+restartじゃなくて、startになるようですし、こちらの方がいいですね。</p>
+]]></content>
+  </entry>
+  
+</feed>

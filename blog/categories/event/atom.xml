@@ -1,96 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE HTML>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>satococoa's blog</title>
-	<meta name="author" content="Satoshi Ebisawa">
-
-	
-	<meta name="description" content="3/28, 29 にベルギーのブリュッセルで開催された RubyMotion Conference #inspect 2013 に参加しました。 英語力にだいぶ不安がある中、頑張って聴き取ってきた内容をメモしたいと思います。 1 日目 A Brave New World: Learning &hellip;">
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<link href="/atom.xml" rel="alternate" title="satococoa's blog" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/favicon.png" rel="shortcut icon">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	
-</head>
-
-
-<body>
-	<header id="header" class="inner"><h1><a href="/">satococoa's blog</a></h1>
-<nav id="main-nav"><ul class="main">
-	<li><a href="/">Blog</a></li>
-	<li><a href="/blog/archives">Archives</a></li>
-</ul>
-</nav>
-<nav id="mobile-nav">
-	<div class="alignleft menu">
-		<a class="button">Menu</a>
-		<div class="container"><ul class="main">
-	<li><a href="/">Blog</a></li>
-	<li><a href="/blog/archives">Archives</a></li>
-</ul>
-</div>
-	</div>
-	<div class="alignright search">
-		<a class="button"></a>
-		<div class="container">
-			<form action="http://google.com/search" method="get">
-				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:satococoa.github.io">
-			</form>
-		</div>
-	</div>
-</nav>
-<nav id="sub-nav" class="alignright">
-	<div class="social">
-		
-		<a class="facebook" href="http://www.facebook.com/satoshi.ebisawa" title="Facebook">Facebook</a>
-		
-		
-		
-		<a class="twitter" href="http://twitter.com/satococoa" title="Twitter">Twitter</a>
-		
-		
-		<a class="github" href="https://github.com/satococoa" title="GitHub">GitHub</a>
-		
+  <title><![CDATA[Category: event | satococoa's blog]]></title>
+  <link href="http://satococoa.github.io/blog/categories/event/atom.xml" rel="self"/>
+  <link href="http://satococoa.github.io/"/>
+  <updated>2013-06-22T16:06:02+09:00</updated>
+  <id>http://satococoa.github.io/</id>
+  <author>
+    <name><![CDATA[Satoshi Ebisawa]]></name>
     
-		
-		
-		
-		
-		
-		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
-		
-    
-	</div>
-	<form class="search" action="http://google.com/search" method="get">
-		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:satococoa.github.io">
-	</form>
-</nav>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
-</header>
-	
-		
-	
-	<div id="content" class="inner">
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/04/20/rubymotion-conference-number-inspect-2013/">
-		
-			RubyMotion Conference #inspect 2013</a>
-	</h2>
-	<div class="entry-content">
-		<p>3/28, 29 にベルギーのブリュッセルで開催された <a href="http://www.rubymotion.com/conference/">RubyMotion Conference #inspect 2013</a> に参加しました。</p>
+  
+  <entry>
+    <title type="html"><![CDATA[RubyMotion Conference #inspect 2013]]></title>
+    <link href="http://satococoa.github.io/blog/2013/04/20/rubymotion-conference-number-inspect-2013/"/>
+    <updated>2013-04-20T14:00:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/04/20/rubymotion-conference-number-inspect-2013</id>
+    <content type="html"><![CDATA[<p>3/28, 29 にベルギーのブリュッセルで開催された <a href="http://www.rubymotion.com/conference/">RubyMotion Conference #inspect 2013</a> に参加しました。</p>
 
 <p>英語力にだいぶ不安がある中、頑張って聴き取ってきた内容をメモしたいと思います。</p>
 
@@ -301,15 +229,14 @@ Interface Builder を見たときに、まるで Visual Basic を思い出すよ
 
 <p>例えば delegate の代わりに callback を使うという例で以下のコードが挙げられていました。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># CoreLocation delegate
-</span><span class='line'>Location.get do |location|
-</span><span class='line'>  p location[:to]
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+<p>```</p>
 
+<h1>CoreLocation delegate</h1>
+
+<p>Location.get do |location|
+  p location[:to]
+end
+```</p>
 
 <p><code>Location.get</code> メソッドはブロックをインスタンス変数に入れて保持し、delegate を <code>self</code> として delegate メソッド内でそのブロックを <code>call</code> しているといった具合です。</p>
 
@@ -422,53 +349,21 @@ Interface Builder を見たときに、まるで Visual Basic を思い出すよ
 <p>15 年以上ぶりの海外で色々戸惑うところも多かったですが、記念すべき初めてのカンファレンスに参加できてとてもよかったです。</p>
 
 <p>あわせて読みたい: <a href="http://watson1978.github.io/blog/2013/03/31/rubymotion-conference-2013/">RubyMotion Conference 2013 &ndash; Watson&rsquo;s Blog</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+]]></content>
+  </entry>
   
-
-
-<time datetime="2013-04-20T14:00:00+09:00" pubdate data-updated="true">Apr 20<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rubymotion/'>RubyMotion</a>, <a class='category' href='/blog/categories/event/'>event</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/03/03/rails-girls-tokyo-2nd/">
-		
-			Rails Girls Tokyo 2nd に参加しました</a>
-	</h2>
-	<div class="entry-content">
-		<p>LT枠だけでの参加でしたが、<a href="http://railsgirls.com/tokyo">Rails Girls Tokyo 2nd</a> に混ぜてもらいました！</p>
+  <entry>
+    <title type="html"><![CDATA[Rails Girls Tokyo 2nd に参加しました]]></title>
+    <link href="http://satococoa.github.io/blog/2013/03/03/rails-girls-tokyo-2nd/"/>
+    <updated>2013-03-03T12:53:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/03/03/rails-girls-tokyo-2nd</id>
+    <content type="html"><![CDATA[<p>LT枠だけでの参加でしたが、<a href="http://railsgirls.com/tokyo">Rails Girls Tokyo 2nd</a> に混ぜてもらいました！</p>
 
 <p>参加者の方が継続的に勉強を進められるコミュニティのご紹介として <a href="http://prog4designer.github.com/">#p4d</a> の宣伝をさせていただきました。</p>
 
 <p>発表資料置いておきます。(<a href="https://speakerdeck.com/satococoa/p4d-rails-girls-tokyo-2nd">スライドのページ</a> にある Download PDF のリンクから PDF をダウンロードすればリンクも動作します。)</p>
 
-<script async class="speakerdeck-embed" data-id="b3a93dc064cc013060a912313916f057" data-ratio="1.2994923857868" src="//speakerdeck.com/assets/embed.js"></script>
+<script async class="speakerdeck-embed" data-id="b3a93dc064cc013060a912313916f057" data-ratio="1.2994923857868" src="http://satococoa.github.io//speakerdeck.com/assets/embed.js"></script>
 
 
 <h2>【私撰】次のステップとしておすすめの Ruby コミュニティ【おまけ】</h2>
@@ -554,454 +449,15 @@ Rails エンジニア。<a href="http://d.hatena.ne.jp/hamakn/20130217">デブ�
 <p>それぞれのコミュニティですごい人がたくさんいるのですが、失礼ながらとりあえずパッと頭に浮かんだ人だけ書かせていただきました。</p>
 
 <p>では、またどこかのコミュニティでお会いしましょう！</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+]]></content>
+  </entry>
   
-
-
-<time datetime="2013-03-03T12:53:00+09:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/event/'>event</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/02/25/rubyfriendscamera/">
-		
-			RubyFriendsCamera Has Been Released!</a>
-	</h2>
-	<div class="entry-content">
-		<p>Today I released RubyFriendsCamera and now available on <a href="https://itunes.apple.com/jp/app/ruby-friends-camera/id602073192?mt=8">AppStore</a>!</p>
-
-<p>This application is a client app for <a href="http://rubyfriends.com">#RubyFriends</a>.</p>
-
-<p>Using RubyFriendsCamera, you can easily share your photos to twitter with #RubyFriends hashtag.</p>
-
-<p>RubyFriendsCamera is developed with <a href="http://www.rubymotion.com">RubyMotion</a> and <a href="http://www.pixate.com">Pixate</a>.</p>
-
-<p>I&rsquo;d like to say thank you to <a href="https://twitter.com/ken_c_lo">@ken_c_lo</a> and <a href="https://twitter.com/machida">@machida</a>.
-They created a great application icon, splash screen, toolbar icons, background images.</p>
-
-<p>Source code is available here.</p>
-
-<ul>
-<li><a href="https://github.com/satococoa/RubyFriendsCamera">https://github.com/satococoa/RubyFriendsCamera</a></li>
-</ul>
-
-
-<p>Enjoy!</p>
-
-<hr />
-
-<p>RubyFriendsCamera というアプリケーションをリリースしました。</p>
-
-<p><a href="https://itunes.apple.com/jp/app/ruby-friends-camera/id602073192?mt=8">AppStore</a> からインストールできます。</p>
-
-<p>このアプリは <a href="http://rubyfriends.com">#RubyFriends</a> のクライアントアプリです。</p>
-
-<p>RubyFriendsCamera を使うと簡単に #RubyFriendsCamera ハッシュタグをつけて twitter に写真を UP することができます。</p>
-
-<p>RubyFriendsCamera は <a href="http://www.rubymotion.com">RubyMotion</a> と <a href="http://www.pixate.com">Pixate</a> を使って開発しています。</p>
-
-<p>突然の依頼にもかかわらず、アイコンや画像などを作っていただいた <a href="https://twitter.com/ken_c_lo">@ken_c_lo</a> さんと <a href="https://twitter.com/machida">@machida</a> さん、本当にありがとうございました。</p>
-
-<p>ソースコードも公開されています。</p>
-
-<ul>
-<li><a href="https://github.com/satococoa/RubyFriendsCamera">https://github.com/satococoa/RubyFriendsCamera</a></li>
-</ul>
-
-
-<p>たくさんの方に楽しんでいただけると嬉しいです。
-(ところで、どなたかAndroid 版作りませんか？仕様や画像など、必要でしたらシェアします。)</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-25T18:54:00+09:00" pubdate data-updated="true">Feb 25<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rubymotion/'>rubymotion</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/02/20/debugging-rubymotion-using-nszombieenabled/">
-		
-			RubyMotion のデバッグで NSZombieEnabled を使う</a>
-	</h2>
-	<div class="entry-content">
-		<p>RubyMotion でアプリをつくるとき、デバッグがやはり大変です。</p>
-
-<p>例えば GCD など非同期で実行されるブロック内で参照されるオブジェクトをインスタンス変数に入れていない場合、実際にそのブロックの処理が実行されるときには既にそのオブジェクトが解放されてしまっているというケースがあります。<br/>
-これが RubyMotion を使う上での一番厄介なハマりどころといえると思います。</p>
-
-<p>そのケースにハマった場合、何も有用なログを残さずにすとんと落ちてしまうことがありとても萎えます。</p>
-
-<p>例えば以下の例はあまりに単純すぎますが、当然アプリがすとんと落ちます。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># app_delegate.rb
-</span><span class='line'>class AppDelegate
-</span><span class='line'>  def application(application, didFinishLaunchingWithOptions:launchOptions)
-</span><span class='line'>    main = MainController.new
-</span><span class='line'>    @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
-</span><span class='line'>    @window.rootViewController = main
-</span><span class='line'>    @window.makeKeyAndVisible
-</span><span class='line'>    true
-</span><span class='line'>  end
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'># main_controller.rb
-</span><span class='line'>class MainController &lt; UIViewController
-</span><span class='line'>  def viewDidLoad
-</span><span class='line'>    super
-</span><span class='line'>    label = UILabel.new.tap do |l|
-</span><span class='line'>      l.frame = [[10, 30], [300, 60]]
-</span><span class='line'>      l.text = 'hoge'
-</span><span class='line'>    end
-</span><span class='line'>    label.release # アプリを落とすために意図的に入れてます。
-</span><span class='line'>    view.addSubview(label)
-</span><span class='line'>  end
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-
-<p>実行するとこうなります。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake
-</span><span class='line'>     Build ./build/iPhoneSimulator-6.1-Development
-</span><span class='line'>   Compile ./app/main_controller.rb
-</span><span class='line'>      Link ./build/iPhoneSimulator-6.1-Development/DebugDemo.app/DebugDemo
-</span><span class='line'>    Create ./build/iPhoneSimulator-6.1-Development/DebugDemo.dSYM
-</span><span class='line'>  Simulate ./build/iPhoneSimulator-6.1-Development/DebugDemo.app
-</span><span class='line'>((null))&gt; *** simulator session ended with error: Error Domain=DTiPhoneSimulatorErrorDomain Code=1 "シミュレートした App は終了しました。" UserInfo=0x10014db60 {NSLocalizedDescription=シミュレートした App は終了しました。, DTiPhoneSimulatorUnderlyingErrorCodeKey=-1}
-</span><span class='line'>rake aborted!
-</span><span class='line'>Command failed with status (1): [DYLD_FRAMEWORK_PATH="/Applications/Xcode.a...]
-</span><span class='line'>/Library/RubyMotion/lib/motion/project.rb:101:in `block in &lt;top (required)&gt;'
-</span><span class='line'>Tasks: TOP =&gt; default =&gt; simulator
-</span><span class='line'>(See full trace by running task with --trace)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>このとき、少なくともどのオブジェクト（どのクラスのインスタンス）にアクセスしようとして落ちたのかがわかるだけでもデバッグの助けになります。</p>
-
-<p>以下のように <code>NSZombieEnabled=YES</code> という環境変数をつけるとその情報を出すことが出来ます。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ NSZombieEnabled=YES rake
-</span><span class='line'>     Build ./build/iPhoneSimulator-6.1-Development
-</span><span class='line'>  Simulate ./build/iPhoneSimulator-6.1-Development/DebugDemo.app
-</span><span class='line'>2013-02-20 20:38:53.449 DebugDemo[21494:c07] *** -[UILabel superview]: message sent to deallocated instance 0xf1c9f40
-</span><span class='line'>(main)&gt; *** simulator session ended with error: Error Domain=DTiPhoneSimulatorErrorDomain Code=1 "シミュレートした App  は終了しました。" UserInfo=0x102252cc0 {NSLocalizedDescription=シミュレートした App は終了しました。, DTiPhoneSimulatorUnderlyingErrorCodeKey=-1}
-</span><span class='line'>rake aborted!
-</span><span class='line'>Command failed with status (1): [DYLD_FRAMEWORK_PATH="/Applications/Xcode.a...]
-</span><span class='line'>/Library/RubyMotion/lib/motion/project.rb:101:in `block in &lt;top (required)&gt;'
-</span><span class='line'>Tasks: TOP =&gt; default =&gt; simulator
-</span><span class='line'>(See full trace by running task with --trace)</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>2013-02-20 20:38:53.449 DebugDemo[21494:c07] *** -[UILabel superview]: message sent to deallocated instance 0xf1c9f40</code> って出ていますよね？これで、UILabelクラスのインスタンスが原因であることがわかります。</p>
-
-<p>NSZombieEnabled については <a href="http://cocoadev.com/wiki/NSZombie">NSZombieEnabled &ndash; CocoaDev</a> がわかりやすいです。<br/>
-ざっくり説明すると、解放されたオブジェクトのクラスを動的に <code>_NSZombie</code> に変更し、そのメモリ領域を解放させないようにしているおかげで上記のような情報をログに出してくれているようです。</p>
-
-<p>あとは <a href="http://rubymotion.jp/RubyMotionDocumentation/articles/debugging/index.html">Debugging RubyMotion applications</a> のページを参照していただいて、<code>debug</code>オプションを使ってステップ実行したりするとより詳しくデバッグすることが出来ます。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-20T19:17:00+09:00" pubdate data-updated="true">Feb 20<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rubymotion/'>RubyMotion</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/02/18/install-dashdoc/">
-		
-			DashDoc を入れてみた</a>
-	</h2>
-	<div class="entry-content">
-		<p>Dash を Sublime Text からワンタッチで引くことができる DashDoc というプラグインを入れてみた。</p>
-
-<p>インストールはいつも通り Package Control からで OK。</p>
-
-<p>デフォルトで ctrl+h が割り当てられてしまっていたので、変更した。<br/>
-（この方法だと日本語入力時に不具合があります。追記をご参照ください。）</p>
-
-<p>Preferences > Package Settings > DashDoc > Key Bindings &ndash; User</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[
-</span><span class='line'>  { "keys": ["ctrl+h"], "command": "left_delete"},
-</span><span class='line'>  { "keys": ["shift+command+h"], "command": "dash_doc"},
-</span><span class='line'>  { "keys": ["ctrl+command+h"], "command": "dash_doc",
-</span><span class='line'>                            "args": { "syntax_sensitive": "true" } }
-</span><span class='line'>]</span></code></pre></td></tr></table></div></figure>
-
-
-<hr />
-
-<p>あと、RubyMotion のドキュメントを直で引きたかったので追加した。
-Preferences > Package Settings > DashDoc > Settings &ndash; User</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  "syntax_sensitive": false,
-</span><span class='line'>  "syntax_docset_map":
-</span><span class='line'>  {
-</span><span class='line'>    "ActionScript": "actionscript",
-</span><span class='line'>    "C"           : "c",
-</span><span class='line'>    "C++"         : "cpp",
-</span><span class='line'>    "Clojure"     : "clojure",
-</span><span class='line'>    "CSS"         : "css",
-</span><span class='line'>    "Erlang"      : "erlang",
-</span><span class='line'>    "Groovy"      : "groovy",
-</span><span class='line'>    "Haskell"     : "haskell",
-</span><span class='line'>    "HTML"        : "html",
-</span><span class='line'>    "Java"        : "java7",
-</span><span class='line'>    "JavaScript"  : "javascript",
-</span><span class='line'>    "Lisp"        : "lisp",
-</span><span class='line'>    "Lua"         : "lua",
-</span><span class='line'>    "Perl"        : "perl",
-</span><span class='line'>    "PHP"         : "php",
-</span><span class='line'>    "Python"      : "python2",
-</span><span class='line'>    "Rails"       : "rails",
-</span><span class='line'>    "Ruby"        : "ruby",
-</span><span class='line'>    "Scala"       : "scala",
-</span><span class='line'>    "ShellScript" : "manpages",
-</span><span class='line'>    "SQL"         : "psql",
-</span><span class='line'>    "TCL"         : "tcl",
-</span><span class='line'>    "RubyMotion"  : "rubymotion"
-</span><span class='line'>  }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>しばらく使ってみよう。</p>
-
-<hr />
-
-<p>2013-02-20 追記:</p>
-
-<p><code>left_delete</code> を <code>ctrl+h</code> に割り当てると、日本語の入力時におかしなことになってしまいました。具体的には、確定前の日本語を <code>ctrl+h</code> で消したときに次の文字を入力すると復活してしまうという使いにくい状態になってしまいました。</p>
-
-<p>結局、以下のようにしました</p>
-
-<p>Preferences > Package Settings > DashDoc > Key Bindings &ndash; Default</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># 全部コメントアウト
-</span><span class='line'>[
-</span><span class='line'>  // { "keys": ["ctrl+h"], "command": "dash_doc"},
-</span><span class='line'>  // { "keys": ["ctrl+alt+h"], "command": "dash_doc",
-</span><span class='line'>  //                           "args": { "syntax_sensitive": "true" } }
-</span><span class='line'>]</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Preferences > Package Settings > DashDoc > Key Bindings &ndash; User</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[
-</span><span class='line'>  { "keys": ["shift+command+h"], "command": "dash_doc"},
-</span><span class='line'>  { "keys": ["ctrl+command+h"], "command": "dash_doc",
-</span><span class='line'>                            "args": { "syntax_sensitive": "true" } }
-</span><span class='line'>]</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-18T15:53:00+09:00" pubdate data-updated="true">Feb 18<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/sublimetext/'>sublimetext</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/02/17/rails-girls-more-4th/">
-		
-			第4回 Rails Girls, More 勉強会</a>
-	</h2>
-	<div class="entry-content">
-		<p>2/16(土) に万葉さんで開催された第4回 Rails Girls, More 勉強会に僭越ながらコーチ役として参加させていただきました。</p>
+  <entry>
+    <title type="html"><![CDATA[第4回 Rails Girls, More 勉強会]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/17/rails-girls-more-4th/"/>
+    <updated>2013-02-17T12:58:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/17/rails-girls-more-4th</id>
+    <content type="html"><![CDATA[<p>2/16(土) に万葉さんで開催された第4回 Rails Girls, More 勉強会に僭越ながらコーチ役として参加させていただきました。</p>
 
 <p>勉強会のスタイルは、最初に参加者の方々に今日やりたいことを聞いて、それに合わせてコーチを割り当てて進めていくというなかなか贅沢なスタイル。</p>
 
@@ -1058,153 +514,19 @@ Preferences > Package Settings > DashDoc > Settings &ndash; User</p>
 <p>デザイナさんが恒常的に少なめなので、ぜひお気軽にご参加ください。</p>
 
 <p>主に facebook グループ の <a href="https://www.facebook.com/groups/151208708350141/">P4D デザイナー向けプログラム部</a> でやりとりしてます。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+]]></content>
+  </entry>
   
-
-
-<time datetime="2013-02-17T12:58:00+09:00" pubdate data-updated="true">Feb 17<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/event/'>event</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/02/13/mysql-max-allowed-packet/">
-		
-			MySQL の Max_allowed_packet を設定</a>
-	</h2>
-	<div class="entry-content">
-		<p>ActiveRecord で <code>Mysql2::Error: MySQL server has gone away</code> と言われて困ったのです。</p>
-
-<p>さっぱり原因がわからずに同僚の <a href="https://twitter.com/dianthudia">@DianthuDia</a> 先生に聞いてみたところ、どうやら大きなデータを MEDIUMTEXT 型のカラムに保存しようとしたときに、以下の MySQL の設定にひっかかって失敗していたらしいです。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; show variables like 'max_allowed_packet';
-</span><span class='line'>+--------------------+---------+
-</span><span class='line'>| Variable_name      | Value   |
-</span><span class='line'>+--------------------+---------+
-</span><span class='line'>| max_allowed_packet | 1048576 |
-</span><span class='line'>+--------------------+---------+
-</span><span class='line'>1 row in set (0.01 sec)</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>max_allowed_packet</code> は mysql サーバがクライアントから受け付けることの出来るパケット量の設定です。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># brew で入れた mysql の場合
-</span><span class='line'>$ cp /usr/local/Cellar/mysql/5.5.29/support-files/my-small.cnf /usr/local/etc/my.cnf
-</span><span class='line'>$ vim /usr/local/etc/my.cnf
-</span><span class='line'># [mysqld] 中に以下を追加
-</span><span class='line'>[mysqld]
-</span><span class='line'>max_allowed_packet=16M</span></code></pre></td></tr></table></div></figure>
-
-
-<p>MySQLを再起動して設定完了です。</p>
-
-<p>再起動無しで設定するには <code>GLOBAL VARIABLES</code> を設定します。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ mysql -uroot -p
-</span><span class='line'>&gt; set global max_allowed_packet = 16 * 1024 * 1024;
-</span><span class='line'>&gt; show global variables like 'max_allowed_packet';    
-</span><span class='line'>+--------------------+----------+
-</span><span class='line'>| Variable_name      | Value    |
-</span><span class='line'>+--------------------+----------+
-</span><span class='line'>| max_allowed_packet | 16777216 |
-</span><span class='line'>+--------------------+----------+
-</span><span class='line'>1 row in set (0.01 sec)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>大丈夫になったっぽいです。ありがとうございました。<br/>
-詳しい人が社内にいると安心感がすごい。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-13T00:05:00+09:00" pubdate data-updated="true">Feb 13<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mysql/'>MySQL</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/02/11/tkrk10-3rd-day/">
-		
-			東京 Ruby 会議 10 3日目に参加しました</a>
-	</h2>
-	<div class="entry-content">
-		<p>先日の東京 Ruby 会議 10 では大雪のため幻のスピーカーになってしまったのですが、今日はちゃんと発表してきました。</p>
+  <entry>
+    <title type="html"><![CDATA[東京 Ruby 会議 10 3日目に参加しました]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/11/tkrk10-3rd-day/"/>
+    <updated>2013-02-11T01:36:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/11/tkrk10-3rd-day</id>
+    <content type="html"><![CDATA[<p>先日の東京 Ruby 会議 10 では大雪のため幻のスピーカーになってしまったのですが、今日はちゃんと発表してきました。</p>
 
 <h2>発表内容</h2>
 
-<script async class="speakerdeck-embed" data-id="e091e8f055ce0130b56f12313815634b" data-ratio="1.2994923857868" src="//speakerdeck.com/assets/embed.js"></script>
+<script async class="speakerdeck-embed" data-id="e091e8f055ce0130b56f12313815634b" data-ratio="1.2994923857868" src="http://satococoa.github.io//speakerdeck.com/assets/embed.js"></script>
 
 
 <h3>RubyFriendsCamera の宣伝</h3>
@@ -1236,47 +558,15 @@ Preferences > Package Settings > DashDoc > Settings &ndash; User</p>
 （Ember.jsもさることながら、あのチャットシステムが気になる！）</p>
 
 <p>参加者の皆様含めて、本当にありがとうございました。今後ともよろしくお願いします。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+]]></content>
+  </entry>
   
-
-
-<time datetime="2013-02-11T01:36:00+09:00" pubdate data-updated="true">Feb 11<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/event/'>event</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/02/05/qiita-2-day-hackathon/">
-		
-			Qiita 2-day Hackathon</a>
-	</h2>
-	<div class="entry-content">
-		<p><a href="http://qiitahackathon03.peatix.com">Qiita 2-day Hackathon</a> に参加しました。</p>
+  <entry>
+    <title type="html"><![CDATA[Qiita 2-day Hackathon]]></title>
+    <link href="http://satococoa.github.io/blog/2013/02/05/qiita-2-day-hackathon/"/>
+    <updated>2013-02-05T02:21:00+09:00</updated>
+    <id>http://satococoa.github.io/blog/2013/02/05/qiita-2-day-hackathon</id>
+    <content type="html"><![CDATA[<p><a href="http://qiitahackathon03.peatix.com">Qiita 2-day Hackathon</a> に参加しました。</p>
 
 <p>このイベントは<a href="http://developer.github.com">GitHub API</a>を使って何らかのアプリケーションを開発しよう！というハッカソンです。</p>
 
@@ -1310,155 +600,7 @@ Preferences > Package Settings > DashDoc > Settings &ndash; User</p>
 <p>音とか光、使ってみたいなぁ。。。</p>
 
 <p>とても刺激になりました。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+]]></content>
+  </entry>
   
-
-
-<time datetime="2013-02-05T02:21:00+09:00" pubdate data-updated="true">Feb 5<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/event/'>event</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/01/22/view-rdoc-in-dash/">
-		
-			Dash で Gem のドキュメントを参照する</a>
-	</h2>
-	<div class="entry-content">
-		<blockquote class="twitter-tweet" data-in-reply-to="293602772425777154" lang="ja"><p>@<a href="https://twitter.com/satococoa">satococoa</a> やっぱウェブみにいくんですね、了解です。この辺も Dash とかで見れるようにしたいな</p>&mdash; Naoya Itoさん (@naoya_ito) <a href="https://twitter.com/naoya_ito/status/293602967179911168" data-datetime="2013-01-22T06:16:16+00:00">1月 22, 2013</a></blockquote>
-
-
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-<p>こんな話から、インストールした gem のドキュメントが見られる風な Docset が Dash にあったのを思い出してちょっと調べてみました。</p>
-
-<p>以下の手順に沿ってちょこちょこっと設定をすると、RDoc で生成された gem のドキュメントが見られました。</p>
-
-<h3>設定方法</h3>
-
-<ol>
-<li>Preferences… &ndash;> Downloads から &ldquo;Ruby Installed Gems&rdquo; というdocsetをインストール</li>
-<li>Preferences… &ndash;> Docsets に Ruby Gems という docset があるので、その一番右にあるギヤのボタンからrdocが置かれているパスを設定する。<code>gem env gempath</code> というコマンドで rdoc の置かれるパスがわかります。</li>
-<li>&ldquo;index&rdquo; ボタンを押すと Dash で使えるようになります。</li>
-</ol>
-
-
-<p>gem をインストールするときには .gemrc なりオプションなりで <code>--no-ri --no-rdoc</code> を指定している人が多いと思います。以下のコマンドで任意の gem の rdoc を生成することが出来ます。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem rdoc --rdoc bubble-wrap</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>結果</h3>
-
-<p>こんな感じです。</p>
-
-<p><img src="/images/201301/rdoc-in-dash.png"></p>
-
-<h3>ついでに</h3>
-
-<p>横道にそれますが gem に限るのでしたら <code>yard</code> もおすすめです。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install yard
-</span><span class='line'>$ yard server --gems</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>gem rdoc</code> コマンドで rdoc を生成しておく必要もありません。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-22T18:17:00+09:00" pubdate data-updated="true">Jan 22<span>nd</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>ruby</a>
-
-
-</div>
-	
-</div>
-</article>
-
-<nav id="pagenavi">
-    
-    
-        <a href="/blog/page/2/" class="next">Next</a>
-    
-    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
-</nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2013
-
-    Satoshi Ebisawa
-
-</footer>
-	<script src="/javascripts/slash.js"></script>
-<script src="/javascripts/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-	$('.fancybox').fancybox();
-})(jQuery);
-</script> <!-- Delete or comment this line to disable Fancybox -->
-
-
-
-
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-32351198-1']);
-		_gaq.push(['_trackPageview']);
-
-		(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
-
-
-
-</body>
-</html>
+</feed>
